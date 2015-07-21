@@ -8,12 +8,14 @@
 
 import Foundation
 
+public typealias Milestone = String
+
 public protocol Issue {
   /* VARIABLES */
   var number: Int { get }
-	var title: String { get set }
+  var title: String { get set }
   var body: String { get set }
-	var state: State { get set }
+  var state: State { get set }
   
 	var labels: [Label] { get set }
 	var milestone: Milestone { get set }
@@ -21,7 +23,7 @@ public protocol Issue {
   var locked: Bool { get }
   
   var creationDate: NSDate { get }
-  var closeDate: NSDate { get }
+  var closeDate: NSDate? { get }
   
   /* FUNCTIONS */
   func open(withTitle title: String, message: String)
@@ -39,7 +41,7 @@ public protocol Issue {
 }
 
 extension Issue where Self: Assignable {
-  var canAssign: Bool { return true }
+  public var canAssign: Bool { return true }
 }
 
 public protocol Assignable {

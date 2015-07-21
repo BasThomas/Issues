@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import IssueKit
+import NXOAuth2Client
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,7 +16,21 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   var window: UIWindow?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    // Override point for customization after application launch.
+    let oAuthStore = NXOAuth2AccountStore.sharedStore()
+    
+    oAuthStore.setClientID(ClientID,
+      secret: ClientSecret,
+      authorizationURL: NSURL(string: "https://github.com/login/oauth/authorize"),
+      tokenURL: NSURL(string: "https://github.com/login/oauth/access_token"),
+      redirectURL: NSURL(string: "nl.basbroek.Issues://callback"),
+      forAccountType: "Github")
+    
+    oAuthStore.requestAccessToAccountWithType("Github")
+    
+    return true
+  }
+  
+  func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
     return true
   }
 

@@ -8,7 +8,21 @@
 
 import Foundation
 
-public enum State {
-	case Open
-	case Closed
+public enum State: String {
+  case Open
+  case Closed
+  
+  public static let allValues = [Open, Closed]
+  
+  public init?(rawValue: String) {
+    for value in State.allValues {
+      if value.rawValue.lowercaseString == rawValue.lowercaseString {
+        self = value
+        
+        return
+      }
+    }
+    
+    return nil
+  }
 }
