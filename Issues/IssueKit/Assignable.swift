@@ -10,22 +10,28 @@ import Foundation
 
 public protocol Assignable {
   
-  func addAssignee(assignee: Assignee)
-  func addAssignees(assignees: [Assignee])
+  mutating func addAssignee(assignee: Assignee)
+  mutating func addAssignees(assignees: Set<Assignee>)
   
-  func removeAssignee(assignee: Assignee)
-  func removeAssignees(assignees: [Assignee])
+  mutating func removeAssignee(assignee: Assignee) -> Bool
+  mutating func removeAssignees(assignees: Set<Assignee>)
 }
 
 extension Assignable {
   
-  public func addAssignees(assignees: [Assignee]) {
+  /// Adds a set of assignees.
+  ///
+  /// - Parameter assignees: the assignees to add.
+  public mutating func addAssignees(assignees: Set<Assignee>) {
     for assignee in assignees {
       self.addAssignee(assignee)
     }
   }
   
-  public func removeAssignees(assignees: [Assignee]) {
+  /// Removes a set of assignees.
+  ///
+  /// - Parameter assignees: the assignees to remove.
+  public mutating func removeAssignees(assignees: Set<Assignee>) {
     for assignee in assignees {
       self.removeAssignee(assignee)
     }

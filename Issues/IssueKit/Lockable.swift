@@ -10,13 +10,6 @@ import Foundation
 
 public protocol Lockable {
   
-  func lock()
-  func unlock()
-}
-
-extension Issue where Self: Lockable {
-  
-  public var locked: Bool {
-    return true
-  }
+  mutating func lock()
+  mutating func unlock()
 }

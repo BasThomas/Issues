@@ -8,20 +8,39 @@
 
 import Foundation
 
+private let Now = NSDate()
+
 public struct GitHubIssue: Issue {
   
   public var number: Int
   public var title: String
-  public var body: String
+  public var body: String?
   public var state: State
+  public var locked: Bool
   
   public var comments: [Comment]
-  public var assignees: [Assignee]
-  public var labels: [Label]
-  public var milestone: Milestone
+  public var assignees: Set<Assignee>
+  public var labels: Set<Label>
+  public var milestone: Milestone?
   
   public var creationDate: NSDate
   public var closingDate: NSDate?
+  
+  public init(number: Int, title: String, body: String? = nil, state: State = .Open, locked: Bool = false, comments: [Comment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: Milestone? = nil, creationDate: NSDate = Now, closingDate: NSDate? = nil) {
+    self.number = number
+    self.title = title
+    self.body = body
+    self.state = state
+    self.locked = locked
+    
+    self.comments = comments
+    self.assignees = assignees
+    self.labels = labels
+    self.milestone = milestone
+    
+    self.creationDate = creationDate
+    self.closingDate = closingDate
+  }
 }
 
 extension GitHubIssue: Editable {
@@ -102,7 +121,7 @@ extension GitHubIssue: Editable {
 //    DELETE /repos/:owner/:repo/issues/:number/labels/:name
   }
   
-  public mutating func replaceLabels(withLabels labels: [Label]) {
+  public mutating func replaceLabels(withLabels labels: Set<Label>) {
     self.labels = labels
   }
   
@@ -136,22 +155,32 @@ extension GitHubIssue: Commentable {
 
 extension GitHubIssue: Lockable {
   
-  public func lock() {
-    
+  /// Locks the issue.
+  public mutating func lock(){
+    self.locked = true
   }
   
-  public func unlock() {
-    
+  /// Unlocks the issue.
+  public mutating func unlock(){
+    self.locked = false
   }
 }
 
 extension GitHubIssue: Assignable {
   
-  public func addAssignee(assignee: Assignee) {
-    
+  /// Adds an assignee to the issue.
+  ///
+  /// - Parameter assignee: assignee to add.
+  public mutating func addAssignee(assignee: Assignee) {
+    self.assignees.insert(assignee)
   }
   
-  public func removeAssignee(assignee: Assignee) {
-    
+  /// Removes an assignee to the issue.
+  ///
+  /// - Parameter assignee: assignee to remove.
+  ///
+  /// - Returns `Bool` true if the assignee could be removed, else false.
+  public mutating func removeAssignee(assignee: Assignee) -> Bool {
+    return self.assignees.remove(assignee) != nil
   }
 }

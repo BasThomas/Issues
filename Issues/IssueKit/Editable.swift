@@ -21,24 +21,24 @@ public protocol Editable {
   func editMilestone(milestone: Milestone)
   
   func addLabel(label: Label)
-  func addLabels(labels: [Label])
+  func addLabels(labels: Set<Label>)
   
   func removeLabel(label: Label)
-  func removeLabels(labels: [Label])
+  func removeLabels(labels: Set<Label>)
   
-  mutating func replaceLabels(withLabels labels: [Label])
+  mutating func replaceLabels(withLabels labels: Set<Label>)
   mutating func removeLabels()
 }
 
 extension Editable {
   
-  public func addLabels(labels: [Label]) {
+  public func addLabels(labels: Set<Label>) {
     for label in labels {
       self.addLabel(label)
     }
   }
   
-  public func removeLabels(labels: [Label]) {
+  public func removeLabels(labels: Set<Label>) {
     for label in labels {
       self.removeLabel(label)
     }

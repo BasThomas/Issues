@@ -19,6 +19,7 @@
 		49024A6D1B5F8E0D00F5FAE3 /* Milestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A6C1B5F8E0D00F5FAE3 /* Milestone.swift */; };
 		49024A6F1B5F8F1900F5FAE3 /* GitHubMilestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A6E1B5F8F1900F5FAE3 /* GitHubMilestone.swift */; };
 		49024A711B5F8F7D00F5FAE3 /* Milestoneable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A701B5F8F7D00F5FAE3 /* Milestoneable.swift */; };
+		49024A731B5FAFEF00F5FAE3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A721B5FAFEF00F5FAE3 /* MainViewController.swift */; };
 		4911FBBC1B51174400018812 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911FBBB1B51174400018812 /* Environment.swift */; };
 		49437BF41B4B05E0001C8557 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF31B4B05E0001C8557 /* Issue.swift */; };
 		49437BFA1B4B0705001C8557 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF91B4B0705001C8557 /* State.swift */; };
@@ -150,6 +151,7 @@
 		49024A6C1B5F8E0D00F5FAE3 /* Milestone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Milestone.swift; sourceTree = "<group>"; };
 		49024A6E1B5F8F1900F5FAE3 /* GitHubMilestone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubMilestone.swift; sourceTree = "<group>"; };
 		49024A701B5F8F7D00F5FAE3 /* Milestoneable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Milestoneable.swift; sourceTree = "<group>"; };
+		49024A721B5FAFEF00F5FAE3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		4911FBBB1B51174400018812 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		4911FBBD1B5118BA00018812 /* libPods-NXOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-NXOAuth2Client.a"; path = "Pods/../build/Debug-iphoneos/libPods-NXOAuth2Client.a"; sourceTree = "<group>"; };
 		49437BF31B4B05E0001C8557 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
@@ -368,6 +370,7 @@
 		49CB37E71B41EF3A00809682 /* Issues */ = {
 			isa = PBXGroup;
 			children = (
+				49024A721B5FAFEF00F5FAE3 /* MainViewController.swift */,
 				49CB37E81B41EF3A00809682 /* AppDelegate.swift */,
 				49CB37EE1B41EF3A00809682 /* Main.storyboard */,
 				49CB37F31B41EF3A00809682 /* LaunchScreen.storyboard */,
@@ -778,6 +781,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */,
+				49024A731B5FAFEF00F5FAE3 /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
