@@ -8,6 +8,8 @@
 
 import Foundation
 
-public protocol User {
-  /* VARIABLES */
+public typealias Assignee = User
+
+public struct User {
+  
 }

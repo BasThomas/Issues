@@ -52,7 +52,7 @@ extension IssueController {
   public var lockedIssues: [Issue] {
     var issues: [Issue] = []
     
-    for issue in self.issues where issue.locked {
+    for issue in self.issues where issue.state == .Locked {
       issues.append(issue)
     }
     
@@ -62,7 +62,7 @@ extension IssueController {
   public var unlockedIssues: [Issue] {
     var issues: [Issue] = []
     
-    for issue in self.issues where !issue.locked {
+    for issue in self.issues where issue.state != .Locked {
       issues.append(issue)
     }
     

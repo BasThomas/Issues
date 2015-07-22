@@ -9,10 +9,12 @@
 import Foundation
 
 public enum State: String {
+  
   case Open
   case Closed
+  case Locked
   
-  public static let allValues = [Open, Closed]
+  public static let allValues = [Open, Closed, Locked]
   
   public init?(rawValue: String) {
     for value in State.allValues {

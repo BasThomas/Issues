@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ParseController {
+public class ParseController {
   public static let sharedInstance = ParseController()
   
   public func parseIssues(json: [String: AnyObject]) -> [Issue] {
