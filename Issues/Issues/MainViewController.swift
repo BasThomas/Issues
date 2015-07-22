@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    let issue = GitHubIssue(number: 1, title: "Test")
+    _ = GitHubIssue(number: 1, title: "Test")
     //issue.addAssignee(Assignee(name: "Bas"))
   }
 

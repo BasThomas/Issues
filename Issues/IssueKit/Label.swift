@@ -12,10 +12,14 @@ public typealias Hex = String
 
 public struct Label {
   
+  /// Name of the label.
   public var name: String
+  
+  /// Hex(color) of the label.
   public var color: Hex
 }
 
+// MARK: - Hashable
 extension Label: Hashable {
   
   /// The hash value.
@@ -24,8 +28,10 @@ extension Label: Hashable {
   }
 }
 
+// MARK: - Equatable
 extension Label: Equatable {}
 
 public func ==(lhs: Label, rhs: Label) -> Bool {
-  return lhs.name == rhs.name && lhs.color == rhs.color
+  return lhs.name == rhs.name &&
+    lhs.color == rhs.color
 }

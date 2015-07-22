@@ -10,7 +10,7 @@ import Foundation
 
 public protocol Labelable {
   
-  func createLabel(label: Label)
+  mutating func addLabel(label: Label)
   func editLabel(label: Label, withLabel editedLabel: Label)
-  func deleteLabel(label: Label)
+  mutating func removeLabel(label: Label)
 }

@@ -10,6 +10,7 @@ import Foundation
 
 public protocol Milestone {
   
+  var id: Int? { get }
   var title: String { get }
   var state: State { get }
   var description: String? { get }

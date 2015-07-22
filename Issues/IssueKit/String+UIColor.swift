@@ -9,49 +9,59 @@
 import Foundation
 
 extension String {
+  
+  /// Counts the string.
   public var count: Int {
     return self.characters.count
   }
   
-  public func colorFromHexString() -> UIColor? {
+  /// Creates a UIColor from the Hex-string.
+  ///
+  /// - Throws: `CreationError` if the string is invalid for creating a UIColor.
+  ///
+  /// - Returns `UIColor` color corresponding to the hex.
+  public func colorFromHexString() throws -> UIColor {
     var red:   CGFloat = 0.0
     var green: CGFloat = 0.0
     var blue:  CGFloat = 0.0
     var alpha: CGFloat = 1.0
     
+    let hex: Hex
+    
     if self.hasPrefix("#") {
-      let index   = advance(self.startIndex, 1)
-      let hex     = self.substringFromIndex(index)
-      let scanner = NSScanner(string: hex)
-      var hexValue: CUnsignedLongLong = 0
-      if scanner.scanHexLongLong(&hexValue) {
-        switch (hex.characters.count) {
-        case 3:
-          red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
-          green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
-          blue  = CGFloat(hexValue & 0x00F)              / 15.0
-        case 4:
-          red   = CGFloat((hexValue & 0xF000) >> 12)     / 15.0
-          green = CGFloat((hexValue & 0x0F00) >> 8)      / 15.0
-          blue  = CGFloat((hexValue & 0x00F0) >> 4)      / 15.0
-          alpha = CGFloat(hexValue & 0x000F)             / 15.0
-        case 6:
-          red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
-          green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
-          blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
-        case 8:
-          red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
-          green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
-          blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
-          alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
-        default:
-          return nil
-        }
-      } else {
-        return nil
+      let index = advance(self.startIndex, 1)
+      hex       = self.substringFromIndex(index)
+    } else {
+      hex       = self
+    }
+    
+    let scanner = NSScanner(string: hex)
+    var hexValue: CUnsignedLongLong = 0
+    if scanner.scanHexLongLong(&hexValue) {
+      switch (hex.count) {
+      case 3:
+        red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
+        green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
+        blue  = CGFloat(hexValue & 0x00F)              / 15.0
+      case 4:
+        red   = CGFloat((hexValue & 0xF000) >> 12)     / 15.0
+        green = CGFloat((hexValue & 0x0F00) >> 8)      / 15.0
+        blue  = CGFloat((hexValue & 0x00F0) >> 4)      / 15.0
+        alpha = CGFloat(hexValue & 0x000F)             / 15.0
+      case 6:
+        red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
+        green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
+        blue  = CGFloat(hexValue & 0x0000FF)           / 255.0
+      case 8:
+        red   = CGFloat((hexValue & 0xFF000000) >> 24) / 255.0
+        green = CGFloat((hexValue & 0x00FF0000) >> 16) / 255.0
+        blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
+        alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
+      default:
+        throw CreationError.Invalid(error: "Invalid amount of characters")
       }
     } else {
-      return nil
+      throw CreationError.Invalid(error: "Given string is not a hexadecimal")
     }
     
     return UIColor(red: red, green: green, blue: blue, alpha: alpha)

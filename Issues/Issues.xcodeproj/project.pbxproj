@@ -25,8 +25,11 @@
 		49437BFA1B4B0705001C8557 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF91B4B0705001C8557 /* State.swift */; };
 		49437BFC1B4B072E001C8557 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFB1B4B072E001C8557 /* User.swift */; };
 		49437C001B4B0D04001C8557 /* String+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFF1B4B0D04001C8557 /* String+UIColor.swift */; };
-		49437C021B4BCE23001C8557 /* IssueController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437C011B4BCE23001C8557 /* IssueController.swift */; };
 		495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495750D21B51B356007F9EA7 /* GitHubIssue.swift */; };
+		499050BF1B5FE1F7009DF94B /* CreationError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050BE1B5FE1F7009DF94B /* CreationError.swift */; };
+		499050C31B5FF8B0009DF94B /* EditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C21B5FF8B0009DF94B /* EditError.swift */; };
+		499050C51B6037E1009DF94B /* GitHubComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C41B6037E1009DF94B /* GitHubComment.swift */; };
+		499050C81B6051CA009DF94B /* Array+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C71B6051CA009DF94B /* Array+Remove.swift */; };
 		49CB0BAF1B51410D0030A51A /* ParseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB0BAE1B51410D0030A51A /* ParseController.swift */; };
 		49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB37E81B41EF3A00809682 /* AppDelegate.swift */; };
 		49CB37F01B41EF3A00809682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CB37EE1B41EF3A00809682 /* Main.storyboard */; };
@@ -158,8 +161,11 @@
 		49437BF91B4B0705001C8557 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		49437BFB1B4B072E001C8557 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		49437BFF1B4B0D04001C8557 /* String+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UIColor.swift"; sourceTree = "<group>"; };
-		49437C011B4BCE23001C8557 /* IssueController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueController.swift; sourceTree = "<group>"; };
 		495750D21B51B356007F9EA7 /* GitHubIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubIssue.swift; sourceTree = "<group>"; };
+		499050BE1B5FE1F7009DF94B /* CreationError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreationError.swift; sourceTree = "<group>"; };
+		499050C21B5FF8B0009DF94B /* EditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditError.swift; sourceTree = "<group>"; };
+		499050C41B6037E1009DF94B /* GitHubComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubComment.swift; sourceTree = "<group>"; };
+		499050C71B6051CA009DF94B /* Array+Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Remove.swift"; sourceTree = "<group>"; };
 		49CB0BAE1B51410D0030A51A /* ParseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseController.swift; sourceTree = "<group>"; };
 		49CB37E51B41EF3A00809682 /* Issues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CB37E81B41EF3A00809682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -244,13 +250,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		49024A5F1B5F7C3100F5FAE3 /* Issue */ = {
+		49024A5F1B5F7C3100F5FAE3 /* GitHub */ = {
 			isa = PBXGroup;
 			children = (
+				49024A661B5F8B0800F5FAE3 /* GitHubRepository.swift */,
 				495750D21B51B356007F9EA7 /* GitHubIssue.swift */,
 				49024A6E1B5F8F1900F5FAE3 /* GitHubMilestone.swift */,
+				499050C41B6037E1009DF94B /* GitHubComment.swift */,
 			);
-			name = Issue;
+			name = GitHub;
 			sourceTree = "<group>";
 		};
 		49024A681B5F8B2B00F5FAE3 /* Skills */ = {
@@ -266,20 +274,13 @@
 			name = Skills;
 			sourceTree = "<group>";
 		};
-		49024A6B1B5F8B5500F5FAE3 /* Repository */ = {
-			isa = PBXGroup;
-			children = (
-				49024A661B5F8B0800F5FAE3 /* GitHubRepository.swift */,
-			);
-			name = Repository;
-			sourceTree = "<group>";
-		};
 		49437C041B4BD6B1001C8557 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				49CB381F1B41F20200809682 /* IssueKit.h */,
 				49CB38211B41F20200809682 /* Info.plist */,
 				49437BFF1B4B0D04001C8557 /* String+UIColor.swift */,
+				499050C71B6051CA009DF94B /* Array+Remove.swift */,
 				4911FBBB1B51174400018812 /* Environment.swift */,
 			);
 			name = "Supporting Files";
@@ -288,8 +289,8 @@
 		49437C051B4BD6C9001C8557 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				49437C011B4BCE23001C8557 /* IssueController.swift */,
 				49CB0BAE1B51410D0030A51A /* ParseController.swift */,
+				499050C11B5FEB8D009DF94B /* Protocols */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -297,12 +298,11 @@
 		49437C061B4BD6DD001C8557 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				49024A5F1B5F7C3100F5FAE3 /* Issue */,
-				49024A6B1B5F8B5500F5FAE3 /* Repository */,
+				49024A5F1B5F7C3100F5FAE3 /* GitHub */,
 				49437BF91B4B0705001C8557 /* State.swift */,
 				49437BFB1B4B072E001C8557 /* User.swift */,
-				49024A601B5F875900F5FAE3 /* Comment.swift */,
 				49024A641B5F88FC00F5FAE3 /* Label.swift */,
+				499050C01B5FE1FE009DF94B /* Errors */,
 				49437C071B4BD6E7001C8557 /* Protocols */,
 			);
 			name = Models;
@@ -311,9 +311,10 @@
 		49437C071B4BD6E7001C8557 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				49437BF31B4B05E0001C8557 /* Issue.swift */,
 				49024A691B5F8B3600F5FAE3 /* Repository.swift */,
+				49437BF31B4B05E0001C8557 /* Issue.swift */,
 				49024A6C1B5F8E0D00F5FAE3 /* Milestone.swift */,
+				49024A601B5F875900F5FAE3 /* Comment.swift */,
 				49024A681B5F8B2B00F5FAE3 /* Skills */,
 			);
 			name = Protocols;
@@ -335,6 +336,22 @@
 				49CB38441B41F24700809682 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		499050C01B5FE1FE009DF94B /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				499050BE1B5FE1F7009DF94B /* CreationError.swift */,
+				499050C21B5FF8B0009DF94B /* EditError.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
+		499050C11B5FEB8D009DF94B /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Protocols;
 			sourceTree = "<group>";
 		};
 		49CB37DC1B41EF3900809682 = {
@@ -805,11 +822,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499050BF1B5FE1F7009DF94B /* CreationError.swift in Sources */,
 				49024A6D1B5F8E0D00F5FAE3 /* Milestone.swift in Sources */,
+				499050C51B6037E1009DF94B /* GitHubComment.swift in Sources */,
 				49437C001B4B0D04001C8557 /* String+UIColor.swift in Sources */,
 				49024A5A1B5F7BDC00F5FAE3 /* Labelable.swift in Sources */,
 				4911FBBC1B51174400018812 /* Environment.swift in Sources */,
-				49437C021B4BCE23001C8557 /* IssueController.swift in Sources */,
 				49024A671B5F8B0800F5FAE3 /* GitHubRepository.swift in Sources */,
 				49024A711B5F8F7D00F5FAE3 /* Milestoneable.swift in Sources */,
 				495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */,
@@ -818,11 +836,13 @@
 				49024A581B5F7BCD00F5FAE3 /* Editable.swift in Sources */,
 				49024A651B5F88FC00F5FAE3 /* Label.swift in Sources */,
 				49024A611B5F875900F5FAE3 /* Comment.swift in Sources */,
+				499050C31B5FF8B0009DF94B /* EditError.swift in Sources */,
 				49437BFC1B4B072E001C8557 /* User.swift in Sources */,
 				49024A6A1B5F8B3600F5FAE3 /* Repository.swift in Sources */,
 				49CB0BAF1B51410D0030A51A /* ParseController.swift in Sources */,
 				49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */,
 				49437BFA1B4B0705001C8557 /* State.swift in Sources */,
+				499050C81B6051CA009DF94B /* Array+Remove.swift in Sources */,
 				49024A631B5F87A000F5FAE3 /* Commentable.swift in Sources */,
 				49024A6F1B5F8F1900F5FAE3 /* GitHubMilestone.swift in Sources */,
 			);

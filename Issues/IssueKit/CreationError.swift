@@ -1,5 +1,5 @@
 //
-//  Comment.swift
+//  CreationError.swift
 //  Issues
 //
 //  Created by Bas Broek on 22/07/15.
@@ -8,7 +8,8 @@
 
 import Foundation
 
-public protocol Comment {
+public enum CreationError: ErrorType {
   
-  var body: String { get }
+  case Invalid(error: String)
+  case Unknown
 }

@@ -10,21 +10,20 @@ import Foundation
 
 public protocol Editable {
   
-  func open(withTitle title: String, body: String?)
-  func close(withBody body: String?)
-  func reopen(withBody body: String?)
+  mutating func close(withComment comment: String?)
+  mutating func reopen(withComment comment: String?)
   
-  func editTitle(title: String)
-  func editBody(body: String)
+  mutating func editTitle(title: String)
+  mutating func editBody(body: String)
   
-  func addMilestone(milestone: Milestone)
-  func editMilestone(milestone: Milestone)
+  mutating func addMilestone(milestone: Milestone) throws
+  mutating func editMilestone(milestone: Milestone) throws
   
-  func addLabel(label: Label)
-  func addLabels(labels: Set<Label>)
+  mutating func addLabel(label: Label)
+  mutating func addLabels(labels: Set<Label>)
   
-  func removeLabel(label: Label)
-  func removeLabels(labels: Set<Label>)
+  mutating func removeLabel(label: Label)
+  mutating func removeLabels(labels: Set<Label>)
   
   mutating func replaceLabels(withLabels labels: Set<Label>)
   mutating func removeLabels()
@@ -32,13 +31,19 @@ public protocol Editable {
 
 extension Editable {
   
-  public func addLabels(labels: Set<Label>) {
+  /// Adds the labels to the issue.
+  ///
+  /// - Parameter labels: set of labels to add to the issue.
+  public mutating func addLabels(labels: Set<Label>) {
     for label in labels {
       self.addLabel(label)
     }
   }
   
-  public func removeLabels(labels: Set<Label>) {
+  /// Removes the labels to the issue.
+  ///
+  /// - Parameter labels: set of labels to remove from the issue.
+  public mutating func removeLabels(labels: Set<Label>) {
     for label in labels {
       self.removeLabel(label)
     }

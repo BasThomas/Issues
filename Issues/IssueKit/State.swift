@@ -12,19 +12,17 @@ public enum State: String {
   
   case Open
   case Closed
-  case Locked
   
-  public static let allValues = [Open, Closed, Locked]
+  /// All values of the enum.
+  public static let allValues = [Open, Closed]
   
   public init?(rawValue: String) {
-    for value in State.allValues {
-      if value.rawValue.lowercaseString == rawValue.lowercaseString {
-        self = value
-        
-        return
-      }
-    }
+    let value = State.allValues.filter { $0.rawValue.lowercaseString == rawValue.lowercaseString }
     
-    return nil
+    if let state = value.first {
+      self = state
+    } else {
+      return nil
+    }
   }
 }

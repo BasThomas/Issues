@@ -8,9 +8,9 @@
 
 import Foundation
 
-public protocol MilestoneAble {
+public protocol Milestoneable {
   
-  func createMilestone(milestone: Milestone)
+  mutating func addMilestone(milestone: Milestone)
   func editMilestone(milestone: Milestone, withMilestone editedMilestone: Milestone)
-  func deleteMilestone(milestone: Milestone)
+  mutating func removeMilestone(milestone: Milestone)
 }

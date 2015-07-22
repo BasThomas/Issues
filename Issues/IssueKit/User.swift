@@ -12,6 +12,7 @@ public typealias Assignee = User
 
 public struct User {
   
+  /// Name of the user.
   public var name: String
   
   public init(name: String) {
@@ -19,6 +20,7 @@ public struct User {
   }
 }
 
+// MARK: - Hashable
 extension User: Hashable {
   
   /// The hash value.
@@ -27,6 +29,7 @@ extension User: Hashable {
   }
 }
 
+// MARK: - Equatable
 extension User: Equatable {}
 
 public func ==(lhs: User, rhs: User) -> Bool {
