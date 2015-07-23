@@ -358,13 +358,13 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
-		499F76FE1B61A63500D09B1F /* Supporting FilesTests */ = {
+		499F76FE1B61A63500D09B1F /* Extension Tests */ = {
 			isa = PBXGroup;
 			children = (
 				49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */,
 				499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */,
 			);
-			name = "Supporting FilesTests";
+			name = "Extension Tests";
 			sourceTree = "<group>";
 		};
 		49B8D00D1B61909A007C4E9C /* Supporting Files */ = {
@@ -448,7 +448,7 @@
 		49CB382C1B41F20200809682 /* IssueKitTests */ = {
 			isa = PBXGroup;
 			children = (
-				499F76FE1B61A63500D09B1F /* Supporting FilesTests */,
+				499F76FE1B61A63500D09B1F /* Extension Tests */,
 				49CB382D1B41F20200809682 /* IssueKitTests.swift */,
 				49B8D00D1B61909A007C4E9C /* Supporting Files */,
 			);

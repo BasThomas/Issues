@@ -25,13 +25,13 @@ class Array_RemoveTests: XCTestCase {
   func testRemoveFromEmptyArray() {
     var emptyArray: [String] = []
     
-    XCTAssertFalse(emptyArray.removeObject(foo), "As the array \(emptyArray) is empty, \(foo) couldn't be removed.")
+    XCTAssertFalse(emptyArray.removeObject(foo), "As the array \(emptyArray) is empty, \(foo) shouldn't be removeable.")
   }
   
   func testRemoveInvalidObjectFromArray() {
     var fooArray = [foo]
     
-    XCTAssertFalse(fooArray.removeObject(bar), "As the array \(fooArray) doesn't contain \(bar), \(bar) couldn't be removed.")
+    XCTAssertFalse(fooArray.removeObject(bar), "As the array \(fooArray) doesn't contain \(bar), \(bar) shouldn't be removeable.")
   }
   
   func testRemoveValidObjectFromArray() {

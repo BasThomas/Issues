@@ -9,6 +9,9 @@
 import XCTest
 import IssueKit
 
+private let InvalidHex = "The Hex was invalid."
+private let InvalidColor = "The color was invalid."
+
 class String_UIColorTests: XCTestCase {
   
   override func setUp() {
@@ -24,22 +27,22 @@ class String_UIColorTests: XCTestCase {
     let green = "0F0"
     let blue = "00F"
     
-    XCTAssertNotNil(red.color, "The Hex was invalid.")
+    XCTAssertNotNil(red.color, InvalidHex)
     
     if let red = red.color {
-      XCTAssertEqual(red, UIColor.redColor(), "The color was invalid.")
+      XCTAssertEqual(red, UIColor.redColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(green.color, "The Hex was invalid.")
+    XCTAssertNotNil(green.color, InvalidHex)
     
     if let green = green.color {
-      XCTAssertEqual(green, UIColor.greenColor(), "The color was invalid.")
+      XCTAssertEqual(green, UIColor.greenColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(blue.color, "The Hex was invalid.")
+    XCTAssertNotNil(blue.color, InvalidHex)
     
     if let blue = blue.color {
-      XCTAssertEqual(blue, UIColor.blueColor(), "The color was invalid.")
+      XCTAssertEqual(blue, UIColor.blueColor(), InvalidColor)
     }
   }
   
@@ -48,22 +51,22 @@ class String_UIColorTests: XCTestCase {
     let cyan = "#0FF"
     let magenta = "#F0F"
     
-    XCTAssertNotNil(yellow.color, "The Hex was invalid.")
+    XCTAssertNotNil(yellow.color, InvalidHex)
     
     if let yellow = yellow.color {
-      XCTAssertEqual(yellow, UIColor.yellowColor(), "The color was invalid.")
+      XCTAssertEqual(yellow, UIColor.yellowColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(cyan.color, "The Hex was invalid.")
+    XCTAssertNotNil(cyan.color, InvalidHex)
     
     if let cyan = cyan.color {
-      XCTAssertEqual(cyan, UIColor.cyanColor(), "The color was invalid.")
+      XCTAssertEqual(cyan, UIColor.cyanColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(magenta.color, "The Hex was invalid.")
+    XCTAssertNotNil(magenta.color, InvalidHex)
     
     if let magenta = magenta.color {
-      XCTAssertEqual(magenta, UIColor.magentaColor(), "The color was invalid.")
+      XCTAssertEqual(magenta, UIColor.magentaColor(), InvalidColor)
     }
   }
   
@@ -72,22 +75,22 @@ class String_UIColorTests: XCTestCase {
     let green = "00FF00"
     let blue = "0000FF"
     
-    XCTAssertNotNil(red.color, "The Hex was invalid.")
+    XCTAssertNotNil(red.color, InvalidHex)
     
     if let red = red.color {
-      XCTAssertEqual(red, UIColor.redColor(), "The color was invalid.")
+      XCTAssertEqual(red, UIColor.redColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(green.color, "The Hex was invalid.")
+    XCTAssertNotNil(green.color, InvalidHex)
     
     if let green = green.color {
-      XCTAssertEqual(green, UIColor.greenColor(), "The color was invalid.")
+      XCTAssertEqual(green, UIColor.greenColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(blue.color, "The Hex was invalid.")
+    XCTAssertNotNil(blue.color, InvalidHex)
     
     if let blue = blue.color {
-      XCTAssertEqual(blue, UIColor.blueColor(), "The color was invalid.")
+      XCTAssertEqual(blue, UIColor.blueColor(), InvalidColor)
     }
   }
   
@@ -96,22 +99,22 @@ class String_UIColorTests: XCTestCase {
     let cyan = "#00FFFF"
     let magenta = "#FF00FF"
     
-    XCTAssertNotNil(yellow.color, "The Hex was invalid.")
+    XCTAssertNotNil(yellow.color, InvalidHex)
     
     if let yellow = yellow.color {
-      XCTAssertEqual(yellow, UIColor.yellowColor(), "The color was invalid.")
+      XCTAssertEqual(yellow, UIColor.yellowColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(cyan.color, "The Hex was invalid.")
+    XCTAssertNotNil(cyan.color, InvalidHex)
     
     if let cyan = cyan.color {
-      XCTAssertEqual(cyan, UIColor.cyanColor(), "The color was invalid.")
+      XCTAssertEqual(cyan, UIColor.cyanColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(magenta.color, "The Hex was invalid.")
+    XCTAssertNotNil(magenta.color, InvalidHex)
     
     if let magenta = magenta.color {
-      XCTAssertEqual(magenta, UIColor.magentaColor(), "The color was invalid.")
+      XCTAssertEqual(magenta, UIColor.magentaColor(), InvalidColor)
     }
   }
   
@@ -120,22 +123,22 @@ class String_UIColorTests: XCTestCase {
     let transparentGreen = "00FF0066"
     let transparentBlue = "0000FF66"
     
-    XCTAssertNotNil(transparentRed.color, "The Hex was invalid.")
+    XCTAssertNotNil(transparentRed.color, InvalidHex)
     
     if let transparentRed = transparentRed.color {
-      XCTAssertEqual(transparentRed, UIColor.transparentRedColor(), "The color was invalid.")
+      XCTAssertEqual(transparentRed, UIColor.transparentRedColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(transparentGreen.color, "The Hex was invalid.")
+    XCTAssertNotNil(transparentGreen.color, InvalidHex)
     
     if let transparentGreen = transparentGreen.color {
-      XCTAssertEqual(transparentGreen, UIColor.transparentGreenColor(), "The color was invalid.")
+      XCTAssertEqual(transparentGreen, UIColor.transparentGreenColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(transparentBlue.color, "The Hex was invalid.")
+    XCTAssertNotNil(transparentBlue.color, InvalidHex)
     
     if let transparentBlue = transparentBlue.color {
-      XCTAssertEqual(transparentBlue, UIColor.transparentBlueColor(), "The color was invalid.")
+      XCTAssertEqual(transparentBlue, UIColor.transparentBlueColor(), InvalidColor)
     }
   }
   
@@ -144,22 +147,22 @@ class String_UIColorTests: XCTestCase {
     let transparentCyan = "#00FFFF66"
     let transparentMagenta = "#FF00FF66"
     
-    XCTAssertNotNil(transparentYellow.color, "The Hex was invalid.")
+    XCTAssertNotNil(transparentYellow.color, InvalidHex)
     
     if let transparentYellow = transparentYellow.color {
-      XCTAssertEqual(transparentYellow, UIColor.transparentYellowColor(), "The color was invalid.")
+      XCTAssertEqual(transparentYellow, UIColor.transparentYellowColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(transparentCyan.color, "The Hex was invalid.")
+    XCTAssertNotNil(transparentCyan.color, InvalidHex)
     
     if let transparentCyan = transparentCyan.color {
-      XCTAssertEqual(transparentCyan, UIColor.transparentCyanColor(), "The color was invalid.")
+      XCTAssertEqual(transparentCyan, UIColor.transparentCyanColor(), InvalidColor)
     }
     
-    XCTAssertNotNil(transparentMagenta.color, "The Hex was invalid.")
+    XCTAssertNotNil(transparentMagenta.color, InvalidHex)
     
     if let transparentMagenta = transparentMagenta.color {
-      XCTAssertEqual(transparentMagenta, UIColor.transparentMagentaColor(), "The color was invalid.")
+      XCTAssertEqual(transparentMagenta, UIColor.transparentMagentaColor(), InvalidColor)
     }
   }
   
@@ -167,8 +170,8 @@ class String_UIColorTests: XCTestCase {
     let hashtagGibberish = "#gibberish"
     let gibberish = "gibberish"
     
-    XCTAssertNil(hashtagGibberish.color, "\(hashtagGibberish) is not a color, last I checked.")
-    XCTAssertNil(gibberish.color, "\(gibberish) is not a color, last I checked.")
+    XCTAssertNil(hashtagGibberish.color, "\(hashtagGibberish) is not a color.")
+    XCTAssertNil(gibberish.color, "\(gibberish) is not a color.")
   }
   
   func testInvalidHexLength() {
