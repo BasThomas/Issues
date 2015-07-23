@@ -16,11 +16,7 @@ extension String {
   }
   
   /// Creates a UIColor from the Hex-string.
-  ///
-  /// - Throws: `CreationError` if the string is invalid for creating a UIColor.
-  ///
-  /// - Returns `UIColor` color corresponding to the hex.
-  public func colorFromHexString() throws -> UIColor {
+  public var color: UIColor? {
     var red:   CGFloat = 0.0
     var green: CGFloat = 0.0
     var blue:  CGFloat = 0.0
@@ -30,9 +26,9 @@ extension String {
     
     if self.hasPrefix("#") {
       let index = advance(self.startIndex, 1)
-      hex       = self.substringFromIndex(index)
+      hex = self.substringFromIndex(index)
     } else {
-      hex       = self
+      hex = self
     }
     
     let scanner = NSScanner(string: hex)
@@ -43,11 +39,6 @@ extension String {
         red   = CGFloat((hexValue & 0xF00) >> 8)       / 15.0
         green = CGFloat((hexValue & 0x0F0) >> 4)       / 15.0
         blue  = CGFloat(hexValue & 0x00F)              / 15.0
-      case 4:
-        red   = CGFloat((hexValue & 0xF000) >> 12)     / 15.0
-        green = CGFloat((hexValue & 0x0F00) >> 8)      / 15.0
-        blue  = CGFloat((hexValue & 0x00F0) >> 4)      / 15.0
-        alpha = CGFloat(hexValue & 0x000F)             / 15.0
       case 6:
         red   = CGFloat((hexValue & 0xFF0000) >> 16)   / 255.0
         green = CGFloat((hexValue & 0x00FF00) >> 8)    / 255.0
@@ -58,12 +49,12 @@ extension String {
         blue  = CGFloat((hexValue & 0x0000FF00) >> 8)  / 255.0
         alpha = CGFloat(hexValue & 0x000000FF)         / 255.0
       default:
-        throw CreationError.Invalid(error: "Invalid amount of characters")
+        return nil
       }
-    } else {
-      throw CreationError.Invalid(error: "Given string is not a hexadecimal")
+      
+      return UIColor(red: red, green: green, blue: blue, alpha: alpha)
     }
     
-    return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+    return nil
   }
 }

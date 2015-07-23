@@ -15,7 +15,7 @@ extension Array where Element: Equatable {
   /// - Parameter object: object to remove.
   ///
   /// - Returns `Bool` true if the object could be removed, else false.
-  mutating func removeObject(object: Generator.Element) -> Bool {
+  public mutating func removeObject(object: Generator.Element) -> Bool {
     if let index = self.indexOf(object) {
       self.removeAtIndex(index)
       

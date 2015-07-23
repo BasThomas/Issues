@@ -13,9 +13,6 @@ class MainViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    _ = GitHubIssue(number: 1, title: "Test")
-    //issue.addAssignee(Assignee(name: "Bas"))
   }
 
   override func didReceiveMemoryWarning() {
