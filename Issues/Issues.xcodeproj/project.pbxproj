@@ -30,6 +30,8 @@
 		499050C31B5FF8B0009DF94B /* EditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C21B5FF8B0009DF94B /* EditError.swift */; };
 		499050C51B6037E1009DF94B /* GitHubComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C41B6037E1009DF94B /* GitHubComment.swift */; };
 		499050C81B6051CA009DF94B /* Array+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C71B6051CA009DF94B /* Array+Remove.swift */; };
+		499F76FD1B61A25D00D09B1F /* Array+RemoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */; };
+		49B8D00C1B619094007C4E9C /* String+UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */; };
 		49CB0BAF1B51410D0030A51A /* ParseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB0BAE1B51410D0030A51A /* ParseController.swift */; };
 		49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB37E81B41EF3A00809682 /* AppDelegate.swift */; };
 		49CB37F01B41EF3A00809682 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49CB37EE1B41EF3A00809682 /* Main.storyboard */; };
@@ -166,6 +168,8 @@
 		499050C21B5FF8B0009DF94B /* EditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditError.swift; sourceTree = "<group>"; };
 		499050C41B6037E1009DF94B /* GitHubComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubComment.swift; sourceTree = "<group>"; };
 		499050C71B6051CA009DF94B /* Array+Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Remove.swift"; sourceTree = "<group>"; };
+		499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RemoveTests.swift"; sourceTree = "<group>"; };
+		49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UIColorTests.swift"; sourceTree = "<group>"; };
 		49CB0BAE1B51410D0030A51A /* ParseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseController.swift; sourceTree = "<group>"; };
 		49CB37E51B41EF3A00809682 /* Issues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issues.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		49CB37E81B41EF3A00809682 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -354,6 +358,23 @@
 			name = Protocols;
 			sourceTree = "<group>";
 		};
+		499F76FE1B61A63500D09B1F /* Supporting FilesTests */ = {
+			isa = PBXGroup;
+			children = (
+				49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */,
+				499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */,
+			);
+			name = "Supporting FilesTests";
+			sourceTree = "<group>";
+		};
+		49B8D00D1B61909A007C4E9C /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				49CB382F1B41F20200809682 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		49CB37DC1B41EF3900809682 = {
 			isa = PBXGroup;
 			children = (
@@ -427,8 +448,9 @@
 		49CB382C1B41F20200809682 /* IssueKitTests */ = {
 			isa = PBXGroup;
 			children = (
+				499F76FE1B61A63500D09B1F /* Supporting FilesTests */,
 				49CB382D1B41F20200809682 /* IssueKitTests.swift */,
-				49CB382F1B41F20200809682 /* Info.plist */,
+				49B8D00D1B61909A007C4E9C /* Supporting Files */,
 			);
 			path = IssueKitTests;
 			sourceTree = "<group>";
@@ -852,6 +874,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				499F76FD1B61A25D00D09B1F /* Array+RemoveTests.swift in Sources */,
+				49B8D00C1B619094007C4E9C /* String+UIColorTests.swift in Sources */,
 				49CB382E1B41F20200809682 /* IssueKitTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
