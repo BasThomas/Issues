@@ -8,6 +8,22 @@
 
 import Foundation
 
+// MARK: - OAuth
+public enum OAuth: String {
+  
+  /// [string] access token of the user.
+  case AccessToken = "access_token"
+}
+
+// MARK: StringRawPresentable
+extension OAuth: StringRawPresentable {
+  
+  /// The corresponding value of the "raw" type.
+  public var string: String {
+    return self.rawValue.lowercaseString
+  }
+}
+
 // MARK: Issues
 public enum Issues: String {
   
@@ -69,7 +85,7 @@ public enum Issues: String {
   case Since
 }
 
-// MARK: StringRawable
+// MARK: StringRawPresentable
 extension Issues: StringRawPresentable {
   
   /// The corresponding value of the "raw" type.
@@ -109,7 +125,7 @@ public enum Comments: String {
   case Since
 }
 
-// MARK: StringRawable
+// MARK: StringRawPresentable
 extension Comments: StringRawPresentable {
   
   /// The corresponding value of the "raw" type.
@@ -128,7 +144,7 @@ public enum Labels: String {
   case Color
 }
 
-// MARK: StringRawable
+// MARK: StringRawPresentable
 extension Labels: StringRawPresentable {
   
   /// The corresponding value of the "raw" type.
@@ -197,7 +213,7 @@ public enum Milestones: String {
   case DueOn = "due_on"
 }
 
-// MARK: StringRawable
+// MARK: StringRawPresentable
 extension Milestones: StringRawPresentable {
   
   /// The corresponding value of the "raw" type.
@@ -282,7 +298,7 @@ public enum Repositories: String {
   case Anon
 }
 
-// MARK: StringRawable
+// MARK: StringRawPresentable
 extension Repositories: StringRawPresentable {
   
   /// The corresponding value of the "raw" type.

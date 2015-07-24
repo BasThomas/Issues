@@ -7,13 +7,24 @@
 //
 
 import Foundation
+import Alamofire
+import SwiftyJSON
 
 /// API's base URL.
-public let baseUrl = "https://api.github.com"
+public let BaseURL = "https://api.github.com"
 
 public class ParseController {
   
   public static let sharedInstance = ParseController()
+  
+  public func requestIssues() {
+    Alamofire.request(.GET, URLString: "\(BaseURL)\(issues)", parameters: [OAuth.AccessToken.string: AccessToken])
+      .responseJSON { _, response, json, error in
+        print("response: \(response)")
+        print("JSON: \(json)")
+        print("Error: \(error)")
+    }
+  }
   
   public func parseIssues(json: [String: AnyObject]) -> [Issue] {
     print(json)
@@ -45,6 +56,7 @@ public class ParseController {
 }
 
 extension ParseController {
+  
   private func parseJSON(jsonString: String) -> AnyObject? {
     let data = (jsonString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
     
@@ -59,5 +71,11 @@ extension ParseController {
     }
     
     return nil
+  }
+  
+  private func jsonFromAnyObject(anyObject data: AnyObject?) throws -> JSON {
+    guard let data = data as? NSData else { throw JSONError.InvalidData }
+    
+    return JSON(data: data)
   }
 }

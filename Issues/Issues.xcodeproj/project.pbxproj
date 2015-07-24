@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1CFF31C9EDFE395D674FDC22 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21696A3FB18FFADF5185AD1 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		49024A581B5F7BCD00F5FAE3 /* Editable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A571B5F7BCD00F5FAE3 /* Editable.swift */; };
 		49024A5A1B5F7BDC00F5FAE3 /* Labelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A591B5F7BDC00F5FAE3 /* Labelable.swift */; };
 		49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A5B1B5F7BEA00F5FAE3 /* Lockable.swift */; };
@@ -20,6 +21,7 @@
 		49024A6F1B5F8F1900F5FAE3 /* GitHubMilestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A6E1B5F8F1900F5FAE3 /* GitHubMilestone.swift */; };
 		49024A711B5F8F7D00F5FAE3 /* Milestoneable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A701B5F8F7D00F5FAE3 /* Milestoneable.swift */; };
 		49024A731B5FAFEF00F5FAE3 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A721B5FAFEF00F5FAE3 /* MainViewController.swift */; };
+		49025EB21B62F14000D56882 /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49025EB11B62F14000D56882 /* JSONError.swift */; };
 		4911FBBC1B51174400018812 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911FBBB1B51174400018812 /* Environment.swift */; };
 		4912A4871B621C89002E6F38 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4861B621C89002E6F38 /* Requests.swift */; };
 		4912A4891B621C9E002E6F38 /* Parameters.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4881B621C9E002E6F38 /* Parameters.swift */; };
@@ -160,6 +162,7 @@
 		49024A6E1B5F8F1900F5FAE3 /* GitHubMilestone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubMilestone.swift; sourceTree = "<group>"; };
 		49024A701B5F8F7D00F5FAE3 /* Milestoneable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Milestoneable.swift; sourceTree = "<group>"; };
 		49024A721B5FAFEF00F5FAE3 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		49025EB11B62F14000D56882 /* JSONError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
 		4911FBBB1B51174400018812 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		4911FBBD1B5118BA00018812 /* libPods-NXOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-NXOAuth2Client.a"; path = "Pods/../build/Debug-iphoneos/libPods-NXOAuth2Client.a"; sourceTree = "<group>"; };
 		4912A4861B621C89002E6F38 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
@@ -239,6 +242,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CFF31C9EDFE395D674FDC22 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -284,6 +288,14 @@
 			name = Skills;
 			sourceTree = "<group>";
 		};
+		49025EB01B62F11B00D56882 /* Errors */ = {
+			isa = PBXGroup;
+			children = (
+				49025EB11B62F14000D56882 /* JSONError.swift */,
+			);
+			name = Errors;
+			sourceTree = "<group>";
+		};
 		4912A48C1B6261DB002E6F38 /* Enum protocols */ = {
 			isa = PBXGroup;
 			children = (
@@ -311,6 +323,7 @@
 			isa = PBXGroup;
 			children = (
 				49CB0BAE1B51410D0030A51A /* ParseController.swift */,
+				49025EB01B62F11B00D56882 /* Errors */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -590,10 +603,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 49CB38381B41F20200809682 /* Build configuration list for PBXNativeTarget "IssueKit" */;
 			buildPhases = (
+				19B2AD5CBEF92F6F788D3C47 /* Check Pods Manifest.lock */,
 				49CB38181B41F20200809682 /* Sources */,
 				49CB38191B41F20200809682 /* Frameworks */,
 				49CB381A1B41F20200809682 /* Headers */,
 				49CB381B1B41F20200809682 /* Resources */,
+				5C13E1561E89E05C2921EE0A /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -776,6 +791,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		19B2AD5CBEF92F6F788D3C47 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		45BBB0A5C3D46847C47C4357 /* Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -789,6 +819,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5C13E1561E89E05C2921EE0A /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		893609C51039FAFD352A213B /* Check Pods Manifest.lock */ = {
@@ -870,6 +915,7 @@
 				49024A611B5F875900F5FAE3 /* Comment.swift in Sources */,
 				499050C31B5FF8B0009DF94B /* EditError.swift in Sources */,
 				4912A48B1B626185002E6F38 /* StringRawPresentable.swift in Sources */,
+				49025EB21B62F14000D56882 /* JSONError.swift in Sources */,
 				49437BFC1B4B072E001C8557 /* User.swift in Sources */,
 				49024A6A1B5F8B3600F5FAE3 /* Repository.swift in Sources */,
 				49CB0BAF1B51410D0030A51A /* ParseController.swift in Sources */,
@@ -1127,6 +1173,7 @@
 		};
 		49CB38341B41F20200809682 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6744CD339ECE58657A6EE1FC /* Pods.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
@@ -1148,6 +1195,7 @@
 		};
 		49CB38351B41F20200809682 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5061E53214CBCAF227195ECE /* Pods.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
