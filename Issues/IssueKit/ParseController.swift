@@ -8,7 +8,11 @@
 
 import Foundation
 
+/// API's base URL.
+public let baseUrl = "https://api.github.com"
+
 public class ParseController {
+  
   public static let sharedInstance = ParseController()
   
   public func parseIssues(json: [String: AnyObject]) -> [Issue] {
