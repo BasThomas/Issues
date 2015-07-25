@@ -331,7 +331,6 @@
 				49CB0BAE1B51410D0030A51A /* ParseController.swift */,
 				49025EB01B62F11B00D56882 /* Errors */,
 				49EFE83D1B635F94007445E8 /* Protocols */,
-				49EFE8441B636510007445E8 /* IssueParameterOptions.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -343,6 +342,7 @@
 				49437BF91B4B0705001C8557 /* State.swift */,
 				49437BFB1B4B072E001C8557 /* User.swift */,
 				49024A641B5F88FC00F5FAE3 /* Label.swift */,
+				49EFE8441B636510007445E8 /* IssueParameterOptions.swift */,
 				499050C01B5FE1FE009DF94B /* Errors */,
 				49437C071B4BD6E7001C8557 /* Protocols */,
 			);

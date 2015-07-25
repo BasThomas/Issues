@@ -72,17 +72,20 @@ extension ParseController: Parseable {
   public func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters {
     var parameters: Parameters = [:]
     
-    let mirror = Mirror(reflecting: parameterOptions)
-    let children = mirror.children.map { $0 }
+    typealias Child = (label: Optional<String>, value: protocol<>)
     
-    // FIXME: Can this be rewritten functionally? Can't seem to return a [String: AnyObject] from map().
-    for child in children {
-      if let key = child.label, let value = child.value as? AnyObject {
-        guard value as? String != "" else { continue }
-        
-        parameters[key] = value
-      }
+    func addToDictionary(child: Child) -> Bool {
+      guard let key = child.label else { return false }
+      guard let value = child.value as? AnyObject else { return false }
+      guard value as? String != "" else { return false }
+      
+      parameters[key] = value as? String
+      
+      return true
     }
+    
+    let mirror = Mirror(reflecting: parameterOptions)
+    mirror.children.map { $0 }.map { parameter in addToDictionary(parameter) }
     
     return parameters
   }

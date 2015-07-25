@@ -23,17 +23,13 @@ extension Assignable {
   ///
   /// - Parameter assignees: the assignees to add.
   public mutating func addAssignees(assignees: Set<Assignee>) {
-    for assignee in assignees {
-      self.addAssignee(assignee)
-    }
+    assignees.map { assignee in self.addAssignee(assignee) }
   }
   
   /// Removes a set of assignees.
   ///
   /// - Parameter assignees: the assignees to remove.
   public mutating func removeAssignees(assignees: Set<Assignee>) {
-    for assignee in assignees {
-      self.removeAssignee(assignee)
-    }
+    assignees.map { assignee in self.removeAssignee(assignee) }
   }
 }

@@ -8,24 +8,11 @@
 
 import Foundation
 
-public enum State: String, LowercaseInitializable {
+public enum State: String, StringRawRepresentable, LowercaseInitializable {
   
   case Open
   case Closed
   
   /// All values of the enum.
   public static let allValues = [Open, Closed]
-}
-
-extension State {
-  
-  public init?(rawValue: String) {
-    let value = State.allValues.filter { $0.rawValue.lowercaseString == rawValue.lowercaseString }
-    
-    if let state = value.first {
-      self = state
-    } else {
-      return nil
-    }
-  }
 }

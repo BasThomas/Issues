@@ -35,17 +35,13 @@ extension Editable {
   ///
   /// - Parameter labels: set of labels to add to the issue.
   public mutating func addLabels(labels: Set<Label>) {
-    for label in labels {
-      self.addLabel(label)
-    }
+    labels.map { label in self.addLabel(label) }
   }
   
   /// Removes the labels to the issue.
   ///
   /// - Parameter labels: set of labels to remove from the issue.
   public mutating func removeLabels(labels: Set<Label>) {
-    for label in labels {
-      self.removeLabel(label)
-    }
+    labels.map { label in self.removeLabel(label) }
   }
 }

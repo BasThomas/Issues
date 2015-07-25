@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StringRawRepresentable {
+public protocol StringRawRepresentable {
   
   var string: String? { get }
   var stringValue: String { get }
@@ -16,11 +16,13 @@ protocol StringRawRepresentable {
 
 extension StringRawRepresentable where Self: RawRepresentable {
   
-  var string: String? {
+  /// Enum case's string; nil if unknown.
+  public var string: String? {
     return (self.rawValue as? String)?.lowercaseString
   }
   
-  var stringValue: String {
+  /// Enum case's stringValue; "" if unknown.
+  public var stringValue: String {
     return self.string ?? ""
   }
 }
