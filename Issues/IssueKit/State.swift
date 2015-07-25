@@ -8,13 +8,16 @@
 
 import Foundation
 
-public enum State: String {
+public enum State: String, LowercaseInitializable {
   
   case Open
   case Closed
   
   /// All values of the enum.
   public static let allValues = [Open, Closed]
+}
+
+extension State {
   
   public init?(rawValue: String) {
     let value = State.allValues.filter { $0.rawValue.lowercaseString == rawValue.lowercaseString }

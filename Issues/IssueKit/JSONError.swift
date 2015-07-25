@@ -11,5 +11,6 @@ import Foundation
 public enum JSONError: ErrorType {
   
   case InvalidData
+  case InvalidObject
   case Unknown
 }

@@ -7,75 +7,110 @@
 //
 
 import Foundation
-import Alamofire
 import SwiftyJSON
 
-/// API's base URL.
-public let BaseURL = "https://api.github.com"
+public protocol ParseDelegate {
+  
+}
 
 public class ParseController {
   
   public static let sharedInstance = ParseController()
   
-  public func requestIssues() {
-    Alamofire.request(.GET, URLString: "\(BaseURL)\(issues)", parameters: [OAuth.AccessToken.string: AccessToken])
-      .responseJSON { _, response, json, error in
-        print("response: \(response)")
-        print("JSON: \(json)")
-        print("Error: \(error)")
-    }
-  }
+//  public func parseIssues(jsonString: String) -> [Issue] {
+//    if let json = self.parseJSON(jsonString) {
+//      if let json = json as? NSArray {
+//        let jsonDict = json[0]
+//        
+//        if let number = jsonDict["number"] as? Int,
+//          let title = jsonDict["title"] as? String,
+//          let body = jsonDict["body"] as? String,
+//          let state = jsonDict["state"] as? String {
+//          
+//          let enumState = State(rawValue: state)
+//          print("num: \(number), title: \(title), body: \(body). state: \(enumState)")
+//        }
+//        
+//      } else if let json = json as? NSDictionary {
+//        print("it's a dict: \(json)")
+//      }
+//    }
+//    
+//    return []
+//  }
+}
+
+// MARK: - Parseable
+extension ParseController: Parseable {
   
-  public func parseIssues(json: [String: AnyObject]) -> [Issue] {
-    print(json)
-    
+  /// Parses all issues across all the authenticated user’s visible repositories including owned repositories, member repositories, and organization repositories
+  ///
+  /// - Parameter json: json to parse.
+  ///
+  /// - Returns: `[Issue]` array of issues, empty if none are found.
+  public func parseIssues(json: JSON) -> [Issue] {
+    print("JSON: \(json)")
     return []
   }
   
-  public func parseIssues(jsonString: String) -> [Issue] {
-    if let json = self.parseJSON(jsonString) {
-      if let json = json as? NSArray {
-        let jsonDict = json[0]
+  /// Parses all issues across owned and member repositories for the authenticated user
+  ///
+  /// - Parameter json: json to parse.
+  ///
+  /// - Returns: `[Issue]` array of issues, empty if none are found.
+  public func parseUserIssues(json: JSON) -> [Issue] {
+    print("JSON: \(json)")
+    return []
+  }
+  
+  /// Parses IssueParameterOptions to Parameters.
+  /// Only non-empty key-value pairs are added.
+  ///
+  /// - Parameter parameterOptions: parameterOptions to evaluate.
+  ///
+  /// - Returns `Parameters`
+  public func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters {
+    var parameters: Parameters = [:]
+    
+    let mirror = Mirror(reflecting: parameterOptions)
+    let children = mirror.children.map { $0 }
+    
+    // FIXME: Can this be rewritten functionally? Can't seem to return a [String: AnyObject] from map().
+    for child in children {
+      if let key = child.label, let value = child.value as? AnyObject {
+        guard value as? String != "" else { continue }
         
-        if let number = jsonDict["number"] as? Int,
-          let title = jsonDict["title"] as? String,
-          let body = jsonDict["body"] as? String,
-          let state = jsonDict["state"] as? String {
-          
-          let enumState = State(rawValue: state)
-          print("num: \(number), title: \(title), body: \(body). state: \(enumState)")
-        }
-        
-      } else if let json = json as? NSDictionary {
-        print("it's a dict: \(json)")
+        parameters[key] = value
       }
     }
     
-    return []
+    return parameters
   }
 }
 
 extension ParseController {
   
-  private func parseJSON(jsonString: String) -> AnyObject? {
-    let data = (jsonString as NSString).dataUsingEncoding(NSUTF8StringEncoding)
+  /// Parses AnyObject? to JSON?
+  ///
+  /// - Parameter anyObject: data to parse.
+  ///
+  /// - Returns `JSON?`
+  public func optionalJSONFromAnyObject(anyObject data: AnyObject?) -> JSON? {
+    guard let data = data else { return nil }
     
-    if let data = data {
-      do {
-        let json = try NSJSONSerialization.JSONObjectWithData(data, options: .MutableContainers)
-        
-        return json
-      } catch {
-        print("error: \(error)")
-      }
-    }
-    
-    return nil
+    return JSON(data)
   }
   
-  private func jsonFromAnyObject(anyObject data: AnyObject?) throws -> JSON {
-    guard let data = data as? NSData else { throw JSONError.InvalidData }
+  /// Parses AnyObject? to JSON.
+  ///
+  /// - Parameter anyObject: data to parse.
+  ///
+  /// - Throws: `InvalidObject` when failing to parse the data.
+  ///
+  /// - Returns `JSON`
+  public func jsonFromAnyObject(anyObject data: AnyObject?) throws -> JSON {
+    guard let data = data else { throw JSONError.InvalidObject }
     
-    return JSON(data: data)
+    return JSON(data)
   }
 }

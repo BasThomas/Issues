@@ -14,7 +14,7 @@ class MainViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    ParseController.sharedInstance.requestIssues()
+    RequestController.sharedInstance.requestIssues(IssueParameterOptions(since: NSDate(), direction: Value.Direction.Ascending))
   }
 
   override func didReceiveMemoryWarning() {

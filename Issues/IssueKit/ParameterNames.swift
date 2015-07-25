@@ -1,5 +1,5 @@
 //
-//  Parameters.swift
+//  ParameterNames.swift
 //  Issues
 //
 //  Created by Bas Broek on 24/07/15.
@@ -9,23 +9,35 @@
 import Foundation
 
 // MARK: - OAuth
-public enum OAuth: String {
+public enum OAuth: String, StringRawRepresentable, LowercaseInitializable {
   
   /// [string] access token of the user.
   case AccessToken = "access_token"
+  
+  /// All values of the enum.
+  public static let allValues = [AccessToken]
 }
 
-// MARK: StringRawPresentable
-extension OAuth: StringRawPresentable {
+// MARK: LowercaseInitializable
+extension OAuth {
   
-  /// The corresponding value of the "raw" type.
-  public var string: String {
-    return self.rawValue.lowercaseString
+  public init?<T: Equatable>(rawValue: T) {
+    // Returns .AccessToken when the rawValue corresponds to the case.
+    // This is needed because of the custom rawValue.
+    guard (rawValue as? String)?.lowercaseString != "AccessToken".lowercaseString else { self = AccessToken; return }
+    
+    let value = OAuth.allValues.filter { ($0.rawValue as String).lowercaseString == (rawValue as? String)?.lowercaseString }
+    
+    if let state = value.first {
+      self = state
+    } else {
+      return nil
+    }
   }
 }
 
-// MARK: Issues
-public enum Issues: String {
+// MARK: - Issues
+public enum Issues: String, StringRawRepresentable, LowercaseInitializable {
   
   /// [string] indicates which sort of issues to return.
   ///
@@ -83,19 +95,13 @@ public enum Issues: String {
   ///
   /// - Note: this is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
   case Since
-}
-
-// MARK: StringRawPresentable
-extension Issues: StringRawPresentable {
   
-  /// The corresponding value of the "raw" type.
-  public var string: String {
-    return self.rawValue.lowercaseString
-  }
+  /// All values of the enum.
+  public static let allValues = [Filter, State, Labels, Sort, Direction, Since]
 }
 
 // MARK: - Comments
-public enum Comments: String {
+public enum Comments: String, StringRawRepresentable, LowercaseInitializable {
   
   /// [string] what to sort results by.
   ///
@@ -123,38 +129,26 @@ public enum Comments: String {
   ///
   /// - Note: this is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
   case Since
-}
-
-// MARK: StringRawPresentable
-extension Comments: StringRawPresentable {
   
-  /// The corresponding value of the "raw" type.
-  public var string: String {
-    return self.rawValue.lowercaseString
-  }
+  /// All values of the enum.
+  public static let allValues = [Sort, Direction, Since]
 }
 
 // MARK: - Labels
-public enum Labels: String {
+public enum Labels: String, LowercaseInitializable {
   
   /// [string] name of the label.
   case Name
   
   /// [string] six character hex code, without the leading `#`, identifying the color.
   case Color
-}
-
-// MARK: StringRawPresentable
-extension Labels: StringRawPresentable {
   
-  /// The corresponding value of the "raw" type.
-  public var string: String {
-    return self.rawValue.lowercaseString
-  }
+  /// All values of the enum.
+  public static let allValues = [Name, Color]
 }
 
 // MARK: - Milestones
-public enum Milestones: String {
+public enum Milestones: String, StringRawRepresentable, LowercaseInitializable {
   
   // Listing
   
@@ -211,19 +205,31 @@ public enum Milestones: String {
   ///
   /// - Note: this is a timestamp in ISO 8601 format: `YYYY-MM-DDTHH:MM:SSZ`.
   case DueOn = "due_on"
+  
+  /// All values of the enum.
+  public static let allValues  = [SortState, Sort, Direction, Title, State, Description, DueOn]
 }
 
-// MARK: StringRawPresentable
-extension Milestones: StringRawPresentable {
+// MARK: LowercaseInitializable
+extension Milestones {
   
-  /// The corresponding value of the "raw" type.
-  public var string: String {
-    return self.rawValue.lowercaseString
+  public init?<T: Equatable>(rawValue: T) {
+    // Returns .DueOn when the rawValue corresponds to the case.
+    // This is needed because of the custom rawValue.
+    guard (rawValue as? String)?.lowercaseString != "due_on".lowercaseString else { self = DueOn; return }
+    
+    let value = Milestones.allValues.filter { ($0.rawValue as String).lowercaseString == (rawValue as? String)?.lowercaseString }
+    
+    if let state = value.first {
+      self = state
+    } else {
+      return nil
+    }
   }
 }
 
 // MARK: - Repositories
-public enum Repositories: String {
+public enum Repositories: String, StringRawRepresentable, LowercaseInitializable {
   
   // Listing
   
@@ -265,7 +271,8 @@ public enum Repositories: String {
   /// `all`
   ///
   /// - Warning: will cause a `422` error if used in the same request as `visibility` or `affiliation`.
-  case Type
+  // _Type because `Type` can't be used.
+  case _Type = "type"
   
   /// [string] what to sort the results by.
   ///
@@ -296,13 +303,25 @@ public enum Repositories: String {
   ///
   /// - Note: must be set to `1` or `true` to include anonymous contributors.
   case Anon
+  
+  /// All values of the enum.
+  public static let allValues = [Visibility, Affiliation, _Type, Sort, Direction, Since, Anon]
 }
 
-// MARK: StringRawPresentable
-extension Repositories: StringRawPresentable {
+// MARK: LowercaseInitializable
+extension Repositories {
   
-  /// The corresponding value of the "raw" type.
-  public var string: String {
-    return self.rawValue.lowercaseString
+  public init?<T: Equatable>(rawValue: T) {
+    // Returns ._Type when the rawValue corresponds to the case.
+    // This is needed because of the custom rawValue.
+    guard (rawValue as? String)?.lowercaseString != "_Type".lowercaseString else { self = _Type; return }
+    
+    let value = Repositories.allValues.filter { ($0.rawValue as String).lowercaseString == (rawValue as? String)?.lowercaseString }
+    
+    if let state = value.first {
+      self = state
+    } else {
+      return nil
+    }
   }
 }
