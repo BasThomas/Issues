@@ -10,9 +10,10 @@ import Foundation
 
 extension NSDate {
   
+  /// NSDate's stringValue.
   public var stringValue: String {
     let formatter = NSDateFormatter()
-    formatter.dateFormat = "YYYY-MM-DDTHH:MM:SSZ"
+    formatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ssZZZZZ" // http://stackoverflow.com/questions/28791771/swift-iso-8601-date-formatting-with-ios7
     
     return formatter.stringFromDate(self)
   }
