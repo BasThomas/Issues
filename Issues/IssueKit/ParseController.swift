@@ -11,83 +11,43 @@ import SwiftyJSON
 
 public protocol ParseDelegate {
   
+  func parsedIssues(issues: [Issue])
 }
 
 public class ParseController {
   
+  /// Returns the shared ParseController.
   public static let sharedInstance = ParseController()
   
-//  public func parseIssues(jsonString: String) -> [Issue] {
-//    if let json = self.parseJSON(jsonString) {
-//      if let json = json as? NSArray {
-//        let jsonDict = json[0]
-//        
-//        if let number = jsonDict["number"] as? Int,
-//          let title = jsonDict["title"] as? String,
-//          let body = jsonDict["body"] as? String,
-//          let state = jsonDict["state"] as? String {
-//          
-//          let enumState = State(rawValue: state)
-//          print("num: \(number), title: \(title), body: \(body). state: \(enumState)")
-//        }
-//        
-//      } else if let json = json as? NSDictionary {
-//        print("it's a dict: \(json)")
-//      }
-//    }
-//    
-//    return []
-//  }
+  /// The delegate of the ParseController.
+  public var delegate: ParseDelegate?
 }
 
 // MARK: - Parseable
 extension ParseController: Parseable {
   
-  /// Parses all issues across all the authenticated user’s visible repositories including owned repositories, member repositories, and organization repositories
+  /// Parses all issues across all the authenticated user’s visible repositories
+  /// including owned repositories, member repositories, and organization repositories
   ///
   /// - Parameter json: json to parse.
   ///
   /// - Returns: `[Issue]` array of issues, empty if none are found.
   public func parseIssues(json: JSON) -> [Issue] {
-    print("JSON: \(json)")
-    return []
-  }
-  
-  /// Parses all issues across owned and member repositories for the authenticated user
-  ///
-  /// - Parameter json: json to parse.
-  ///
-  /// - Returns: `[Issue]` array of issues, empty if none are found.
-  public func parseUserIssues(json: JSON) -> [Issue] {
-    print("JSON: \(json)")
-    return []
-  }
-  
-  /// Parses IssueParameterOptions to Parameters.
-  /// Only non-empty key-value pairs are added.
-  ///
-  /// - Parameter parameterOptions: parameterOptions to evaluate.
-  ///
-  /// - Returns `Parameters`
-  public func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters {
-    var parameters: Parameters = [:]
+    var issues: [Issue] = []
     
-    typealias Child = (label: Optional<String>, value: protocol<>)
-    
-    func addToDictionary(child: Child) -> Bool {
-      guard let key = child.label else { return false }
-      guard let value = child.value as? AnyObject else { return false }
-      guard value as? String != "" else { return false }
+    for issue in json {
+      let issue = issue.1
       
-      parameters[key] = value as? String
-      
-      return true
+      if let title = issue["title"].string,
+         let number = issue["number"].int {
+        
+        let ghIssue = GitHubIssue(number: number, title: title)
+        issues.append(ghIssue)
+      }
     }
     
-    let mirror = Mirror(reflecting: parameterOptions)
-    mirror.children.map { $0 }.map { parameter in addToDictionary(parameter) }
-    
-    return parameters
+    self.delegate?.parsedIssues(issues)
+    return issues
   }
 }
 

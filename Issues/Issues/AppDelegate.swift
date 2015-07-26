@@ -25,7 +25,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       redirectURL: NSURL(string: "nl.basbroek.Issues://callback"),
       forAccountType: "Github")
     
-    oAuthStore.requestAccessToAccountWithType("Github")
+//    oAuthStore.requestAccessToAccountWithType("Github")
     
     return true
   }

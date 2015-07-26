@@ -9,12 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-public typealias Parameters = [String: AnyObject]
-
-public protocol Parseable {
+public protocol Parseable: ParameterParseable {
   
   func parseIssues(json: JSON) -> [Issue]
-  func parseUserIssues(json: JSON) -> [Issue]
-  
-  func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters
 }

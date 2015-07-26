@@ -20,6 +20,7 @@ private let BaseURL = "https://api.github.com"
 
 public class RequestController {
   
+  /// Returns the shared RequestController.
   public static let sharedInstance = RequestController()
 }
 
@@ -34,6 +35,7 @@ extension RequestController: Requestable {
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
+        print("JSON: \(json)")
         
         if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
           Parse.parseIssues(json)
@@ -48,11 +50,12 @@ extension RequestController: Requestable {
     let parameters = Parse.parseIssueParameterOptions(parameterOptions) + Authorization
     
     Alamofire.request(.GET, URLString: "\(BaseURL)\(userIssues)", parameters: parameters)
-      .responseJSON { _, response, json, error in
+      .responseJSON { request, response, json, error in
+        print("request: \(request)")
         print("response: \(response)")
         
         if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
-          Parse.parseUserIssues(json)
+          Parse.parseIssues(json)
         }
         
         print("Error: \(error)")

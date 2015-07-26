@@ -19,3 +19,5 @@ public let userIssues = "/user/issues"
 // TODO:
 
 // GET /orgs/:org/issues
+
+public let repos = "/repos"
