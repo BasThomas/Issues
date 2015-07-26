@@ -31,7 +31,7 @@ extension RequestController: Requestable {
   public func requestIssues(parameterOptions: IssueParameterOptions = IssueParameterOptions()) {
     let parameters = Parse.parseIssueParameterOptions(parameterOptions) + Authorization
     
-    Alamofire.request(.GET, URLString: "\(BaseURL)\(issues)", parameters: parameters)
+    Alamofire.request(.GET, "\(BaseURL)\(issues)", parameters: parameters)
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
@@ -49,7 +49,7 @@ extension RequestController: Requestable {
   public func requestUserIssues(parameterOptions: IssueParameterOptions = IssueParameterOptions()) {
     let parameters = Parse.parseIssueParameterOptions(parameterOptions) + Authorization
     
-    Alamofire.request(.GET, URLString: "\(BaseURL)\(userIssues)", parameters: parameters)
+    Alamofire.request(.GET, "\(BaseURL)\(userIssues)", parameters: parameters)
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
