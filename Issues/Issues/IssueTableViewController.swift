@@ -31,7 +31,7 @@ class IssueTableViewController: UITableViewController {
     
     self.refreshControl = refresh
     
-    
+    Request.delegate = self
     Parse.delegate = self
     
     Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue, filter: Value.Sort.All))
@@ -52,11 +52,13 @@ extension IssueTableViewController: ParseDelegate {
   }
 }
 
+// MARK: - RefreshDelegate
+extension IssueTableViewController: RefreshDelegate { }
+
 // MARK: - Refreshing
 extension IssueTableViewController {
   func refresh() {
     Request.requestUserIssues(IssueParameterOptions(state: Value.State.All.stringValue))
-    self.refreshControl?.endRefreshing()
   }
 }
 
