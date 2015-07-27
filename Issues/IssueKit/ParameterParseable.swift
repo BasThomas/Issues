@@ -26,10 +26,10 @@ extension ParameterParseable {
   func parseIssueParameterOptions(parameterOptions: IssueParameterOptions = IssueParameterOptions()) -> Parameters {
     var parameters: Parameters = [:]
     
-    typealias Child = (label: Optional<String>, value: protocol<>)
+    typealias Child = (key: String?, value: protocol<>)
     
     func add(child: Child) -> Bool {
-      guard let key = child.label else { return false }
+      guard let key = child.key else { return false }
       guard let value = child.value as? AnyObject else { return false }
       guard value as? String != "" else { return false }
       

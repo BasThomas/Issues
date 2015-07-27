@@ -27,18 +27,20 @@ extension HeaderParseable {
   func parseHeaders(headerOptions: HeaderOptions = HeaderOptions()) -> Headers {
     var headers: Headers = [:]
     
-    typealias Child = (label: Optional<String>, value: protocol<>)
+    typealias Child = (key: String?, value: protocol<>)
     
     func add(child: Child) -> Bool {
-      guard let _key = child.label else { return false }
+      guard let _key = child.key else { return false }
       guard let value = child.value as? String else { return false }
       guard value != "" else { return false }
       
       let key: String
       
-      if _key.lowercaseString == "etag" {
+      switch (_key.lowercaseString) {
+      case "etag":
         key = IfNoneMatch
-      } else {
+        
+      default:
         key = _key
       }
       
