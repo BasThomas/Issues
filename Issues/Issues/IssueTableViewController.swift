@@ -42,6 +42,9 @@ class IssueTableViewController: UITableViewController {
   }
 }
 
+// MARK: - RefreshDelegate
+extension IssueTableViewController: RefreshDelegate { }
+
 // MARK: - ParseDelegate
 extension IssueTableViewController: ParseDelegate {
   
