@@ -9,11 +9,6 @@
 import Foundation
 import SwiftyJSON
 
-public protocol ParseDelegate {
-  
-  func parsedIssues(issues: [Issue])
-}
-
 public class ParseController {
   
   /// Returns the shared ParseController.

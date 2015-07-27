@@ -23,6 +23,9 @@ private struct Request {
 
 public class RequestController: ETaggable {
   
+  /// The delegate of the RequestController.
+  public var delegate: RefreshDelegate?
+  
   /// RequestIssues' ETag.
   var requestIssuesETag: String?
   
@@ -45,6 +48,13 @@ extension RequestController: Requestable {
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
+        
+        if response?.statusCode == StatusCode.NotModified.intValue {
+          self.delegate?.endRefreshing()
+          
+          return
+        }
+        
         self.requestIssuesETag = response?.eTag
         
         print("JSON: \(json)")
@@ -54,6 +64,8 @@ extension RequestController: Requestable {
         }
         
         print("Error: \(error)")
+        
+        self.delegate?.endRefreshing()
     }
   }
   
@@ -66,6 +78,13 @@ extension RequestController: Requestable {
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
+        
+        if response?.statusCode == StatusCode.NotModified.intValue {
+          self.delegate?.endRefreshing()
+          
+          return
+        }
+        
         self.requestUserIssuesETag = response?.eTag
         
         print("JSON: \(json)")
@@ -75,6 +94,8 @@ extension RequestController: Requestable {
         }
         
         print("Error: \(error)")
+        
+        self.delegate?.endRefreshing()
     }
   }
 }

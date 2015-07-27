@@ -31,7 +31,7 @@ class IssueTableViewController: UITableViewController {
     
     self.refreshControl = refresh
     
-    
+    Request.delegate = self
     Parse.delegate = self
     
     Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue, filter: Value.Sort.All))
@@ -41,6 +41,9 @@ class IssueTableViewController: UITableViewController {
     super.didReceiveMemoryWarning()
   }
 }
+
+// MARK: - RefreshDelegate
+extension IssueTableViewController: RefreshDelegate { }
 
 // MARK: - ParseDelegate
 extension IssueTableViewController: ParseDelegate {
@@ -56,7 +59,6 @@ extension IssueTableViewController: ParseDelegate {
 extension IssueTableViewController {
   func refresh() {
     Request.requestUserIssues(IssueParameterOptions(state: Value.State.All.stringValue))
-    self.refreshControl?.endRefreshing()
   }
 }
 

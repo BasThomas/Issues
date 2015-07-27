@@ -25,6 +25,10 @@
 		4912A4871B621C89002E6F38 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4861B621C89002E6F38 /* Requests.swift */; };
 		4912A4891B621C9E002E6F38 /* ParameterNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4881B621C9E002E6F38 /* ParameterNames.swift */; };
 		4912A48B1B626185002E6F38 /* StringRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */; };
+		4932F6981B66E0E800B0677F /* ParseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932F6971B66E0E800B0677F /* ParseDelegate.swift */; };
+		4932F69B1B66E10900B0677F /* RefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932F69A1B66E10900B0677F /* RefreshDelegate.swift */; };
+		4932F69D1B66E1AD00B0677F /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932F69C1B66E1AD00B0677F /* StatusCode.swift */; };
+		4932F69F1B66E22C00B0677F /* IntRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932F69E1B66E22C00B0677F /* IntRawRepresentable.swift */; };
 		49437BF41B4B05E0001C8557 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF31B4B05E0001C8557 /* Issue.swift */; };
 		49437BFA1B4B0705001C8557 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF91B4B0705001C8557 /* State.swift */; };
 		49437BFC1B4B072E001C8557 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFB1B4B072E001C8557 /* User.swift */; };
@@ -186,6 +190,10 @@
 		4912A4861B621C89002E6F38 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		4912A4881B621C9E002E6F38 /* ParameterNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterNames.swift; sourceTree = "<group>"; };
 		4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRawRepresentable.swift; sourceTree = "<group>"; };
+		4932F6971B66E0E800B0677F /* ParseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDelegate.swift; sourceTree = "<group>"; };
+		4932F69A1B66E10900B0677F /* RefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshDelegate.swift; sourceTree = "<group>"; };
+		4932F69C1B66E1AD00B0677F /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		4932F69E1B66E22C00B0677F /* IntRawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntRawRepresentable.swift; sourceTree = "<group>"; };
 		49437BF31B4B05E0001C8557 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		49437BF91B4B0705001C8557 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		49437BFB1B4B072E001C8557 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -334,6 +342,15 @@
 			name = Errors;
 			sourceTree = "<group>";
 		};
+		4932F6991B66E0F900B0677F /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				4932F6971B66E0E800B0677F /* ParseDelegate.swift */,
+				4932F69A1B66E10900B0677F /* RefreshDelegate.swift */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
 		49437C041B4BD6B1001C8557 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
@@ -353,6 +370,7 @@
 				49CB0BAE1B51410D0030A51A /* ParseController.swift */,
 				49025EB01B62F11B00D56882 /* Errors */,
 				49EFE83D1B635F94007445E8 /* Protocols */,
+				4932F6991B66E0F900B0677F /* Delegates */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -437,6 +455,7 @@
 				4912A4861B621C89002E6F38 /* Requests.swift */,
 				4912A4881B621C9E002E6F38 /* ParameterNames.swift */,
 				497B98D21B63BF6F004B29DD /* ParameterValues.swift */,
+				4932F69C1B66E1AD00B0677F /* StatusCode.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -608,6 +627,7 @@
 			children = (
 				49EFE8481B63802A007445E8 /* LowercaseInitializable.swift */,
 				4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */,
+				4932F69E1B66E22C00B0677F /* IntRawRepresentable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1029,7 +1049,9 @@
 			files = (
 				4912A4891B621C9E002E6F38 /* ParameterNames.swift in Sources */,
 				49EFE8411B635FB3007445E8 /* Requestable.swift in Sources */,
+				4932F6981B66E0E800B0677F /* ParseDelegate.swift in Sources */,
 				495A5E151B665ECD00B4E32B /* HeaderOptions.swift in Sources */,
+				4932F69B1B66E10900B0677F /* RefreshDelegate.swift in Sources */,
 				499050BF1B5FE1F7009DF94B /* CreationError.swift in Sources */,
 				49024A6D1B5F8E0D00F5FAE3 /* Milestone.swift in Sources */,
 				499050C51B6037E1009DF94B /* GitHubComment.swift in Sources */,
@@ -1045,6 +1067,7 @@
 				49024A581B5F7BCD00F5FAE3 /* Editable.swift in Sources */,
 				49024A651B5F88FC00F5FAE3 /* Label.swift in Sources */,
 				49024A611B5F875900F5FAE3 /* Comment.swift in Sources */,
+				4932F69F1B66E22C00B0677F /* IntRawRepresentable.swift in Sources */,
 				499050C31B5FF8B0009DF94B /* EditError.swift in Sources */,
 				49EFE8451B636510007445E8 /* IssueParameterOptions.swift in Sources */,
 				4912A48B1B626185002E6F38 /* StringRawRepresentable.swift in Sources */,
@@ -1059,6 +1082,7 @@
 				497B98D31B63BF6F004B29DD /* ParameterValues.swift in Sources */,
 				497BA3E41B64E4D800465E6A /* ParameterParseable.swift in Sources */,
 				497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */,
+				4932F69D1B66E1AD00B0677F /* StatusCode.swift in Sources */,
 				497BA3E61B65914E00465E6A /* ETaggable.swift in Sources */,
 				495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */,
 				49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */,
