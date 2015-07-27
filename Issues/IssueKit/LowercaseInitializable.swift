@@ -20,10 +20,8 @@ extension LowercaseInitializable where Self: RawRepresentable {
   public init?<T: Equatable>(rawValue: T) {
     let value = Self.allValues.filter { ($0.rawValue as? String)?.lowercaseString == (rawValue as? String)?.lowercaseString }
     
-    if let state = value.first {
-      self = state
-    } else {
-      return nil
-    }
+    guard let state = value.first else { return nil }
+    
+    self = state
   }
 }

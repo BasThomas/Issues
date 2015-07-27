@@ -30,6 +30,8 @@
 		49437BFC1B4B072E001C8557 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFB1B4B072E001C8557 /* User.swift */; };
 		49437C001B4B0D04001C8557 /* String+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFF1B4B0D04001C8557 /* String+UIColor.swift */; };
 		495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495750D21B51B356007F9EA7 /* GitHubIssue.swift */; };
+		495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */; };
+		495A5E041B6634AA00B4E32B /* AddIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E031B6634AA00B4E32B /* AddIssueTableViewCell.swift */; };
 		497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */; };
 		497B98D31B63BF6F004B29DD /* ParameterValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B98D21B63BF6F004B29DD /* ParameterValues.swift */; };
 		497BA3E41B64E4D800465E6A /* ParameterParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BA3E31B64E4D800465E6A /* ParameterParseable.swift */; };
@@ -183,6 +185,8 @@
 		49437BFB1B4B072E001C8557 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		49437BFF1B4B0D04001C8557 /* String+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UIColor.swift"; sourceTree = "<group>"; };
 		495750D21B51B356007F9EA7 /* GitHubIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubIssue.swift; sourceTree = "<group>"; };
+		495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewController.swift; sourceTree = "<group>"; };
+		495A5E031B6634AA00B4E32B /* AddIssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewCell.swift; sourceTree = "<group>"; };
 		497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 		497B98D21B63BF6F004B29DD /* ParameterValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterValues.swift; sourceTree = "<group>"; };
 		497BA3E31B64E4D800465E6A /* ParameterParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParseable.swift; sourceTree = "<group>"; };
@@ -470,6 +474,8 @@
 				49CB37EE1B41EF3A00809682 /* Main.storyboard */,
 				49E7C11A1B64053300D39322 /* IssueTableViewController.swift */,
 				49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */,
+				495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */,
+				495A5E031B6634AA00B4E32B /* AddIssueTableViewCell.swift */,
 				49437C081B4BD7AE001C8557 /* Supporting Files */,
 			);
 			path = Issues;
@@ -951,7 +957,9 @@
 			files = (
 				49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */,
 				49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */,
+				495A5E041B6634AA00B4E32B /* AddIssueTableViewCell.swift in Sources */,
 				49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */,
+				495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

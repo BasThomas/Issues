@@ -10,7 +10,7 @@ import Foundation
 
 public typealias Parameters = [String: AnyObject]
 
-public protocol ParameterParseable {
+protocol ParameterParseable {
   
   func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters
 }
@@ -23,7 +23,7 @@ extension ParameterParseable {
   /// - Parameter parameterOptions: parameterOptions to evaluate.
   ///
   /// - Returns `Parameters`
-  public func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters {
+  func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters {
     var parameters: Parameters = [:]
     
     typealias Child = (label: Optional<String>, value: protocol<>)

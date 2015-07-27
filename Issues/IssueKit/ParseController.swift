@@ -32,7 +32,7 @@ extension ParseController: Parseable {
   /// - Parameter json: json to parse.
   ///
   /// - Returns: `[Issue]` array of issues, empty if none are found.
-  public func parseIssues(json: JSON) -> [Issue] {
+  func parseIssues(json: JSON) -> [Issue] {
     var issues: [Issue] = []
     
     for issue in json {
@@ -58,7 +58,7 @@ extension ParseController {
   /// - Parameter anyObject: data to parse.
   ///
   /// - Returns `JSON?`
-  public func optionalJSONFromAnyObject(anyObject data: AnyObject?) -> JSON? {
+  func optionalJSONFromAnyObject(anyObject data: AnyObject?) -> JSON? {
     guard let data = data else { return nil }
     
     return JSON(data)
@@ -71,7 +71,7 @@ extension ParseController {
   /// - Throws: `InvalidObject` when failing to parse the data.
   ///
   /// - Returns `JSON`
-  public func jsonFromAnyObject(anyObject data: AnyObject?) throws -> JSON {
+  func jsonFromAnyObject(anyObject data: AnyObject?) throws -> JSON {
     guard let data = data else { throw JSONError.InvalidObject }
     
     return JSON(data)

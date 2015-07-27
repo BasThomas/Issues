@@ -48,11 +48,60 @@
                             <outlet property="delegate" destination="Kjk-px-jds" id="5ny-Ya-Bwl"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Issues" id="Y6i-HD-AGK"/>
+                    <navigationItem key="navigationItem" title="Issues" id="Y6i-HD-AGK">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="OOH-Ni-YyP">
+                            <connections>
+                                <segue destination="N2h-1z-HRP" kind="presentation" id="p6K-pU-NJF"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQi-rK-eZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1466" y="385"/>
+        </scene>
+        <!--Add issue-->
+        <scene sceneID="TjD-yQ-ABk">
+            <objects>
+                <tableViewController id="2NP-U6-mCM" customClass="AddIssueTableViewController" customModule="Issues" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="8NR-cu-320">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Title" id="PPS-Mg-LAA">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="SXS-o3-OVD" customClass="AddIssueTableViewCell" customModule="Issues" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="SXS-o3-OVD" id="CYp-zh-bdT">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="2NP-U6-mCM" id="C47-JE-iuW"/>
+                            <outlet property="delegate" destination="2NP-U6-mCM" id="Rcb-pC-MJm"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Add issue" id="ZX9-2L-DMU">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="02E-qT-ZUG">
+                            <connections>
+                                <action selector="cancelAddIssue:" destination="2NP-U6-mCM" id="WjI-0y-7LD"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="tys-7e-zDN"/>
+                    </navigationItem>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="T2l-z2-lJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2978" y="-72"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TVe-JR-au9">
@@ -71,6 +120,25 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="OYt-op-b8F" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="646" y="385"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="7Fm-A7-Qpa">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="N2h-1z-HRP" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Hma-HN-d7v">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <animations/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="2NP-U6-mCM" kind="relationship" relationship="rootViewController" id="Q77-Qi-fc3"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pj6-uj-v88" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2166" y="-72"/>
         </scene>
     </scenes>
 </document>
