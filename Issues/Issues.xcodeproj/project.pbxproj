@@ -48,6 +48,7 @@
 		499050C51B6037E1009DF94B /* GitHubComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C41B6037E1009DF94B /* GitHubComment.swift */; };
 		499050C81B6051CA009DF94B /* Array+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C71B6051CA009DF94B /* Array+Remove.swift */; };
 		499F76FD1B61A25D00D09B1F /* Array+RemoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */; };
+		49A5E7491B66E53700E1F1B4 /* IntRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5E7481B66E53700E1F1B4 /* IntRawRepresentable.swift */; };
 		49B8D00C1B619094007C4E9C /* String+UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */; };
 		49CB0BAF1B51410D0030A51A /* ParseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB0BAE1B51410D0030A51A /* ParseController.swift */; };
 		49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB37E81B41EF3A00809682 /* AppDelegate.swift */; };
@@ -70,7 +71,6 @@
 		49CB38571B41F24700809682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CB38561B41F24700809682 /* Assets.xcassets */; };
 		49CB385B1B41F24700809682 /* Issues WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 49CB383D1B41F24700809682 /* Issues WatchKit App.app */; };
 		49CF2F7E1B66D92B00760F7E /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F7D1B66D92B00760F7E /* StatusCode.swift */; };
-		49CF2F801B66D9C900760F7E /* IntRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F7F1B66D9C900760F7E /* IntRawRepresentable.swift */; };
 		49CF2F821B66DB3800760F7E /* RefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F811B66DB3800760F7E /* RefreshDelegate.swift */; };
 		49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11A1B64053300D39322 /* IssueTableViewController.swift */; };
 		49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */; };
@@ -213,6 +213,7 @@
 		499050C41B6037E1009DF94B /* GitHubComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubComment.swift; sourceTree = "<group>"; };
 		499050C71B6051CA009DF94B /* Array+Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Remove.swift"; sourceTree = "<group>"; };
 		499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RemoveTests.swift"; sourceTree = "<group>"; };
+		49A5E7481B66E53700E1F1B4 /* IntRawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntRawRepresentable.swift; sourceTree = "<group>"; };
 		49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UIColorTests.swift"; sourceTree = "<group>"; };
 		49CB0BAE1B51410D0030A51A /* ParseController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseController.swift; sourceTree = "<group>"; };
 		49CB37E51B41EF3A00809682 /* Issues.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Issues.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -245,7 +246,6 @@
 		49CB38561B41F24700809682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49CB38581B41F24700809682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49CF2F7D1B66D92B00760F7E /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
-		49CF2F7F1B66D9C900760F7E /* IntRawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntRawRepresentable.swift; sourceTree = "<group>"; };
 		49CF2F811B66DB3800760F7E /* RefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshDelegate.swift; sourceTree = "<group>"; };
 		49E7C11A1B64053300D39322 /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
@@ -627,7 +627,7 @@
 			children = (
 				49EFE8481B63802A007445E8 /* LowercaseInitializable.swift */,
 				4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */,
-				49CF2F7F1B66D9C900760F7E /* IntRawRepresentable.swift */,
+				49A5E7481B66E53700E1F1B4 /* IntRawRepresentable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1067,6 +1067,7 @@
 				49024A651B5F88FC00F5FAE3 /* Label.swift in Sources */,
 				49024A611B5F875900F5FAE3 /* Comment.swift in Sources */,
 				499050C31B5FF8B0009DF94B /* EditError.swift in Sources */,
+				49A5E7491B66E53700E1F1B4 /* IntRawRepresentable.swift in Sources */,
 				49EFE8451B636510007445E8 /* IssueParameterOptions.swift in Sources */,
 				4912A48B1B626185002E6F38 /* StringRawRepresentable.swift in Sources */,
 				49EFE83F1B635FAA007445E8 /* Parseable.swift in Sources */,
@@ -1083,7 +1084,6 @@
 				497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */,
 				497BA3E61B65914E00465E6A /* ETaggable.swift in Sources */,
 				49CF2F821B66DB3800760F7E /* RefreshDelegate.swift in Sources */,
-				49CF2F801B66D9C900760F7E /* IntRawRepresentable.swift in Sources */,
 				495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */,
 				49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */,
 				49437BFA1B4B0705001C8557 /* State.swift in Sources */,
