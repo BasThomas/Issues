@@ -40,6 +40,7 @@
                                 <animations/>
                                 <connections>
                                     <outlet property="issueTitleLabel" destination="Pdi-dr-yA9" id="ggQ-fx-hTW"/>
+                                    <segue destination="tx9-da-QCK" kind="show" identifier="showIssueOverview" id="NSw-cj-E8F"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -59,6 +60,42 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SQi-rK-eZV" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1466" y="385"/>
+        </scene>
+        <!--Issue overview-->
+        <scene sceneID="1MR-ul-aOP">
+            <objects>
+                <tableViewController id="tx9-da-QCK" customClass="IssueOverviewTableViewController" customModule="Issues" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" id="Xhp-Qy-eUJ">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <animations/>
+                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <sections>
+                            <tableViewSection headerTitle="Title" id="zml-lV-nkN">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="cell" id="qE0-ma-jhy" customClass="IssueOverviewTableViewCell" customModule="Issues" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="113.5" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qE0-ma-jhy" id="8lh-xS-XxK">
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <animations/>
+                                        </tableViewCellContentView>
+                                        <animations/>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="tx9-da-QCK" id="bQ6-aK-mM1"/>
+                            <outlet property="delegate" destination="tx9-da-QCK" id="kGH-Uo-QSO"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Issue overview" id="Vo5-ln-ods"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="sQv-M9-UVj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2166" y="762"/>
         </scene>
         <!--Add issue-->
         <scene sceneID="TjD-yQ-ABk">
@@ -101,7 +138,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="T2l-z2-lJB" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2978" y="-72"/>
+            <point key="canvasLocation" x="2978" y="42"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="TVe-JR-au9">
@@ -138,7 +175,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pj6-uj-v88" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2166" y="-72"/>
+            <point key="canvasLocation" x="2166" y="42"/>
         </scene>
     </scenes>
 </document>

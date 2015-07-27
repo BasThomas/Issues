@@ -39,9 +39,9 @@ extension ParseController: Parseable {
       let issue = issue.1
       
       if let title = issue["title"].string,
-         let number = issue["number"].int {
+         let number = issue["number"].int, let creationDate = issue["created_at"].string?.date {
         
-        let ghIssue = GitHubIssue(number: number, title: title)
+        let ghIssue = GitHubIssue(number: number, title: title, creationDate: creationDate)
         issues.append(ghIssue)
       }
     }

@@ -45,7 +45,7 @@ public struct GitHubIssue: Issue {
   /// The closing date of the issue, if any.
   public var closingDate: NSDate?
   
-  public init(number: Int, title: String, body: String? = nil, state: State = .Open, locked: Bool = false, comments: [GitHubComment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate = Now, closingDate: NSDate? = nil) {
+  public init(number: Int, title: String, body: String? = nil, state: State = .Open, locked: Bool = false, comments: [GitHubComment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
     self.number = number
     self.title = title
     self.body = body

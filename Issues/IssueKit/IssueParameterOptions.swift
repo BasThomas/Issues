@@ -32,3 +32,24 @@ public struct IssueParameterOptions {
     self.since = since?.stringValue ?? ""
   }
 }
+
+// MARK: - Hashable
+extension IssueParameterOptions: Hashable {
+  
+  /// The hash value.
+  public var hashValue: Int {
+    return self.filter.hashValue ^ self.state.hashValue ^ self.labels.hashValue ^ self.sort.hashValue ^ self.direction.hashValue ^ self.since.hashValue
+  }
+}
+
+// MARK: - Equatable
+extension IssueParameterOptions: Equatable {}
+
+public func ==(lhs: IssueParameterOptions, rhs: IssueParameterOptions) -> Bool {
+  return lhs.filter == rhs.filter &&
+    lhs.state == rhs.state &&
+    lhs.labels == rhs.labels &&
+    lhs.sort == rhs.sort &&
+    lhs.direction == rhs.direction &&
+    lhs.since == rhs.since
+}

@@ -31,7 +31,13 @@
 		49437C001B4B0D04001C8557 /* String+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFF1B4B0D04001C8557 /* String+UIColor.swift */; };
 		495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495750D21B51B356007F9EA7 /* GitHubIssue.swift */; };
 		495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */; };
-		495A5E041B6634AA00B4E32B /* AddIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E031B6634AA00B4E32B /* AddIssueTableViewCell.swift */; };
+		495A5E081B6641EE00B4E32B /* IssueOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E071B6641EE00B4E32B /* IssueOverviewTableViewCell.swift */; };
+		495A5E0B1B66428E00B4E32B /* AddIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0A1B66428E00B4E32B /* AddIssueTableViewCell.swift */; };
+		495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */; };
+		495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0E1B66471C00B4E32B /* String+NSDate.swift */; };
+		495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */; };
+		495A5E131B665DBC00B4E32B /* HeaderParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E121B665DBC00B4E32B /* HeaderParseable.swift */; };
+		495A5E151B665ECD00B4E32B /* HeaderOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E141B665ECD00B4E32B /* HeaderOptions.swift */; };
 		497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */; };
 		497B98D31B63BF6F004B29DD /* ParameterValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B98D21B63BF6F004B29DD /* ParameterValues.swift */; };
 		497BA3E41B64E4D800465E6A /* ParameterParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BA3E31B64E4D800465E6A /* ParameterParseable.swift */; };
@@ -186,7 +192,13 @@
 		49437BFF1B4B0D04001C8557 /* String+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UIColor.swift"; sourceTree = "<group>"; };
 		495750D21B51B356007F9EA7 /* GitHubIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubIssue.swift; sourceTree = "<group>"; };
 		495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewController.swift; sourceTree = "<group>"; };
-		495A5E031B6634AA00B4E32B /* AddIssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewCell.swift; sourceTree = "<group>"; };
+		495A5E071B6641EE00B4E32B /* IssueOverviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueOverviewTableViewCell.swift; sourceTree = "<group>"; };
+		495A5E0A1B66428E00B4E32B /* AddIssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewCell.swift; sourceTree = "<group>"; };
+		495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueOverviewTableViewController.swift; sourceTree = "<group>"; };
+		495A5E0E1B66471C00B4E32B /* String+NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+NSDate.swift"; sourceTree = "<group>"; };
+		495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSHTTPURLResponse+ETag.swift"; sourceTree = "<group>"; };
+		495A5E121B665DBC00B4E32B /* HeaderParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderParseable.swift; sourceTree = "<group>"; };
+		495A5E141B665ECD00B4E32B /* HeaderOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderOptions.swift; sourceTree = "<group>"; };
 		497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 		497B98D21B63BF6F004B29DD /* ParameterValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterValues.swift; sourceTree = "<group>"; };
 		497BA3E31B64E4D800465E6A /* ParameterParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParseable.swift; sourceTree = "<group>"; };
@@ -353,6 +365,7 @@
 				49437BFB1B4B072E001C8557 /* User.swift */,
 				49024A641B5F88FC00F5FAE3 /* Label.swift */,
 				49EFE8441B636510007445E8 /* IssueParameterOptions.swift */,
+				495A5E141B665ECD00B4E32B /* HeaderOptions.swift */,
 				499050C01B5FE1FE009DF94B /* Errors */,
 				49437C071B4BD6E7001C8557 /* Protocols */,
 			);
@@ -391,6 +404,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		495A5E051B66414F00B4E32B /* IssueTableView */ = {
+			isa = PBXGroup;
+			children = (
+				49E7C11A1B64053300D39322 /* IssueTableViewController.swift */,
+				49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */,
+			);
+			name = IssueTableView;
+			sourceTree = "<group>";
+		};
+		495A5E061B66415800B4E32B /* AddIssueTableView */ = {
+			isa = PBXGroup;
+			children = (
+				495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */,
+				495A5E0A1B66428E00B4E32B /* AddIssueTableViewCell.swift */,
+			);
+			name = AddIssueTableView;
+			sourceTree = "<group>";
+		};
+		495A5E091B6641F900B4E32B /* IssueOverviewTableView */ = {
+			isa = PBXGroup;
+			children = (
+				495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */,
+				495A5E071B6641EE00B4E32B /* IssueOverviewTableViewCell.swift */,
+			);
+			name = IssueOverviewTableView;
+			sourceTree = "<group>";
+		};
 		497B98D41B63BF84004B29DD /* Networking */ = {
 			isa = PBXGroup;
 			children = (
@@ -407,7 +447,9 @@
 				49437BFF1B4B0D04001C8557 /* String+UIColor.swift */,
 				499050C71B6051CA009DF94B /* Array+Remove.swift */,
 				49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */,
+				495A5E0E1B66471C00B4E32B /* String+NSDate.swift */,
 				497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */,
+				495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */,
 			);
 			name = Extensions;
 			sourceTree = "<group>";
@@ -472,10 +514,9 @@
 			isa = PBXGroup;
 			children = (
 				49CB37EE1B41EF3A00809682 /* Main.storyboard */,
-				49E7C11A1B64053300D39322 /* IssueTableViewController.swift */,
-				49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */,
-				495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */,
-				495A5E031B6634AA00B4E32B /* AddIssueTableViewCell.swift */,
+				495A5E051B66414F00B4E32B /* IssueTableView */,
+				495A5E061B66415800B4E32B /* AddIssueTableView */,
+				495A5E091B6641F900B4E32B /* IssueOverviewTableView */,
 				49437C081B4BD7AE001C8557 /* Supporting Files */,
 			);
 			path = Issues;
@@ -555,6 +596,7 @@
 			children = (
 				49EFE83E1B635FAA007445E8 /* Parseable.swift */,
 				497BA3E31B64E4D800465E6A /* ParameterParseable.swift */,
+				495A5E121B665DBC00B4E32B /* HeaderParseable.swift */,
 				49EFE8401B635FB3007445E8 /* Requestable.swift */,
 				497BA3E51B65914E00465E6A /* ETaggable.swift */,
 			);
@@ -957,7 +999,9 @@
 			files = (
 				49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */,
 				49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */,
-				495A5E041B6634AA00B4E32B /* AddIssueTableViewCell.swift in Sources */,
+				495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */,
+				495A5E081B6641EE00B4E32B /* IssueOverviewTableViewCell.swift in Sources */,
+				495A5E0B1B66428E00B4E32B /* AddIssueTableViewCell.swift in Sources */,
 				49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */,
 				495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */,
 			);
@@ -985,6 +1029,7 @@
 			files = (
 				4912A4891B621C9E002E6F38 /* ParameterNames.swift in Sources */,
 				49EFE8411B635FB3007445E8 /* Requestable.swift in Sources */,
+				495A5E151B665ECD00B4E32B /* HeaderOptions.swift in Sources */,
 				499050BF1B5FE1F7009DF94B /* CreationError.swift in Sources */,
 				49024A6D1B5F8E0D00F5FAE3 /* Milestone.swift in Sources */,
 				499050C51B6037E1009DF94B /* GitHubComment.swift in Sources */,
@@ -1006,6 +1051,8 @@
 				49EFE83F1B635FAA007445E8 /* Parseable.swift in Sources */,
 				49025EB21B62F14000D56882 /* JSONError.swift in Sources */,
 				49437BFC1B4B072E001C8557 /* User.swift in Sources */,
+				495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */,
+				495A5E131B665DBC00B4E32B /* HeaderParseable.swift in Sources */,
 				49EFE8431B63602A007445E8 /* RequestController.swift in Sources */,
 				49024A6A1B5F8B3600F5FAE3 /* Repository.swift in Sources */,
 				49CB0BAF1B51410D0030A51A /* ParseController.swift in Sources */,
@@ -1013,6 +1060,7 @@
 				497BA3E41B64E4D800465E6A /* ParameterParseable.swift in Sources */,
 				497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */,
 				497BA3E61B65914E00465E6A /* ETaggable.swift in Sources */,
+				495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */,
 				49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */,
 				49437BFA1B4B0705001C8557 /* State.swift in Sources */,
 				499050C81B6051CA009DF94B /* Array+Remove.swift in Sources */,

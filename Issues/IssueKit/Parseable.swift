@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-protocol Parseable: ParameterParseable {
+protocol Parseable: ParameterParseable, HeaderParseable {
   
   func parseIssues(json: JSON) -> [Issue]
 }

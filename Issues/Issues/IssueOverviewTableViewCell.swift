@@ -1,5 +1,5 @@
 //
-//  AddIssueTableViewCell.swift
+//  IssueOverviewTableViewCell.swift
 //  Issues
 //
 //  Created by Bas Broek on 27/07/15.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class AddIssueTableViewCell: UITableViewCell {
+class IssueOverviewTableViewCell: UITableViewCell {
   
 }

@@ -1,5 +1,5 @@
 //
-//  AddIssueTableViewController.swift
+//  IssueOverviewTableViewController.swift
 //  Issues
 //
 //  Created by Bas Broek on 27/07/15.
@@ -18,12 +18,16 @@ private let CellIdentifier = "cell"
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
-class AddIssueTableViewController: UITableViewController {
+class IssueOverviewTableViewController: UITableViewController {
+  
+  var issue: Issue!
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.tableView.registerClass(AddIssueTableViewCell.self, forCellReuseIdentifier: "cell")
+    print(issue)
+    
+    self.tableView.registerClass(IssueOverviewTableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   override func didReceiveMemoryWarning() {
@@ -32,7 +36,7 @@ class AddIssueTableViewController: UITableViewController {
 }
 
 // MARK: - UITableView data source
-extension AddIssueTableViewController {
+extension IssueOverviewTableViewController {
   
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     return 1
@@ -43,14 +47,14 @@ extension AddIssueTableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! AddIssueTableViewCell
+    let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! IssueOverviewTableViewCell
     
     return cell
   }
 }
 
 // MARK: - UITableView delegate
-extension AddIssueTableViewController {
+extension IssueOverviewTableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -58,15 +62,10 @@ extension AddIssueTableViewController {
 }
 
 // MARK: - Actions
-extension AddIssueTableViewController {
-  
-  @IBAction func cancelAddIssue(sender: AnyObject) {
-    self.dismissViewControllerAnimated(true, completion: nil)
-  }
-}
+extension IssueOverviewTableViewController { }
 
 // MARK: - Navigation
-extension AddIssueTableViewController {
+extension IssueOverviewTableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Get the new view controller using segue.destinationViewController.

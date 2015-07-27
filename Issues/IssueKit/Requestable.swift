@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol Requestable {
+protocol Requestable: ETaggable {
   
   func requestIssues(parameterOptions: IssueParameterOptions)
   func requestUserIssues(parameterOptions: IssueParameterOptions)

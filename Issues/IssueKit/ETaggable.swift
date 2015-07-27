@@ -8,7 +8,8 @@
 
 import Foundation
 
-public protocol ETaggable {
+protocol ETaggable {
   
-  var eTag: String { get set }
+  var requestIssuesETag: String? { get set }
+  var requestUserIssuesETag: String? { get set }
 }

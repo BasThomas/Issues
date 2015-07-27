@@ -23,23 +23,23 @@ extension ParameterParseable {
   /// - Parameter parameterOptions: parameterOptions to evaluate.
   ///
   /// - Returns `Parameters`
-  func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters {
+  func parseIssueParameterOptions(parameterOptions: IssueParameterOptions = IssueParameterOptions()) -> Parameters {
     var parameters: Parameters = [:]
     
     typealias Child = (label: Optional<String>, value: protocol<>)
     
-    func addToDictionary(child: Child) -> Bool {
+    func add(child: Child) -> Bool {
       guard let key = child.label else { return false }
       guard let value = child.value as? AnyObject else { return false }
       guard value as? String != "" else { return false }
       
-      parameters[key] = value as? String
+      parameters[key] = value
       
       return true
     }
     
     let mirror = Mirror(reflecting: parameterOptions)
-    mirror.children.map { $0 }.map { parameter in addToDictionary(parameter) }
+    mirror.children.map { $0 }.map { parameter in add(parameter) }
     
     return parameters
   }

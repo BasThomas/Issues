@@ -9,6 +9,13 @@
 import UIKit
 import IssueKit
 
+// MARK: CellIdentifiers
+private let IssueCellIdentifier = "issue"
+
+// MARK: SegueIdentifiers
+private let ShowIssueOverview = "showIssueOverview"
+
+// MARK: Request + Parse instances
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
@@ -19,9 +26,15 @@ class IssueTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
+    
+    self.refreshControl = refresh
+    
+    
     Parse.delegate = self
     
-    Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue))
+    Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue, filter: Value.Sort.All))
   }
 
   override func didReceiveMemoryWarning() {
@@ -39,6 +52,14 @@ extension IssueTableViewController: ParseDelegate {
   }
 }
 
+// MARK: - Refreshing
+extension IssueTableViewController {
+  func refresh() {
+    Request.requestUserIssues(IssueParameterOptions(state: Value.State.All.stringValue))
+    self.refreshControl?.endRefreshing()
+  }
+}
+
 // MARK: - UITableView data source
 extension IssueTableViewController {
   
@@ -51,9 +72,11 @@ extension IssueTableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = self.tableView.dequeueReusableCellWithIdentifier("issue", forIndexPath: indexPath) as! IssueTableViewCell
+    let cell = self.tableView.dequeueReusableCellWithIdentifier(IssueCellIdentifier, forIndexPath: indexPath) as! IssueTableViewCell
     
-    cell.issueTitleLabel.text = self.issues[indexPath.row].title
+    cell.issue = self.issues[indexPath.row]
+    
+    cell.issueTitleLabel.text = cell.issue?.title
     
     return cell
   }
@@ -67,11 +90,18 @@ extension IssueTableViewController {
   }
 }
 
+// MARK: - Actions
+extension IssueTableViewController { }
+
 // MARK: - Navigation
 extension IssueTableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    guard segue.identifier == ShowIssueOverview else { return }
+    
+    if let dvc = segue.destinationViewController as? IssueOverviewTableViewController,
+       let cell = sender as? IssueTableViewCell, let issue = cell.issue {
+      dvc.issue = issue
+    }
   }
 }

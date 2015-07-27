@@ -12,7 +12,7 @@ import Foundation
 public enum OAuth: String, StringRawRepresentable, LowercaseInitializable {
   
   /// [string] access token of the user.
-  case AccessToken = "access_token"
+  case AccessToken = "Authorization"
   
   /// All values of the enum.
   public static let allValues = [AccessToken]
@@ -24,7 +24,7 @@ extension OAuth {
   public init?<T: Equatable>(rawValue: T) {
     // Returns .AccessToken when the rawValue corresponds to the case.
     // This is needed because of the custom rawValue.
-    guard (rawValue as? String)?.lowercaseString != "AccessToken".lowercaseString else { self = AccessToken; return }
+    guard (rawValue as? String)?.lowercaseString != "Authorization".lowercaseString else { self = AccessToken; return }
     
     let value = OAuth.allValues.filter { ($0.rawValue as String).lowercaseString == (rawValue as? String)?.lowercaseString }
     

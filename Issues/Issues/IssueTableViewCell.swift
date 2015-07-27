@@ -7,16 +7,11 @@
 //
 
 import UIKit
+import IssueKit
 
 class IssueTableViewCell: UITableViewCell {
+  
+  var issue: Issue?
 
   @IBOutlet weak var issueTitleLabel: UILabel!
-  
-  override func awakeFromNib() {
-    super.awakeFromNib()
-  }
-
-  override func setSelected(selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
 }
