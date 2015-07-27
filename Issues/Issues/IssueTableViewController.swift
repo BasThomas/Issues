@@ -55,6 +55,9 @@ extension IssueTableViewController: ParseDelegate {
   }
 }
 
+// MARK: - RefreshDelegate
+extension IssueTableViewController: RefreshDelegate { }
+
 // MARK: - Refreshing
 extension IssueTableViewController {
   func refresh() {

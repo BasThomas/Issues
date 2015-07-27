@@ -72,6 +72,9 @@
 		49CB38551B41F24700809682 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CB38541B41F24700809682 /* NotificationController.swift */; };
 		49CB38571B41F24700809682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CB38561B41F24700809682 /* Assets.xcassets */; };
 		49CB385B1B41F24700809682 /* Issues WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 49CB383D1B41F24700809682 /* Issues WatchKit App.app */; };
+		49CF2F7E1B66D92B00760F7E /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F7D1B66D92B00760F7E /* StatusCode.swift */; };
+		49CF2F801B66D9C900760F7E /* IntRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F7F1B66D9C900760F7E /* IntRawRepresentable.swift */; };
+		49CF2F821B66DB3800760F7E /* RefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F811B66DB3800760F7E /* RefreshDelegate.swift */; };
 		49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11A1B64053300D39322 /* IssueTableViewController.swift */; };
 		49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */; };
 		49EFE83F1B635FAA007445E8 /* Parseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE83E1B635FAA007445E8 /* Parseable.swift */; };
@@ -247,6 +250,9 @@
 		49CB38541B41F24700809682 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		49CB38561B41F24700809682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49CB38581B41F24700809682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		49CF2F7D1B66D92B00760F7E /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
+		49CF2F7F1B66D9C900760F7E /* IntRawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntRawRepresentable.swift; sourceTree = "<group>"; };
+		49CF2F811B66DB3800760F7E /* RefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshDelegate.swift; sourceTree = "<group>"; };
 		49E7C11A1B64053300D39322 /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
 		49EFE83E1B635FAA007445E8 /* Parseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parseable.swift; sourceTree = "<group>"; };
@@ -370,7 +376,7 @@
 				49CB0BAE1B51410D0030A51A /* ParseController.swift */,
 				49025EB01B62F11B00D56882 /* Errors */,
 				49EFE83D1B635F94007445E8 /* Protocols */,
-				4932F6991B66E0F900B0677F /* Delegates */,
+				4932F6941B66DF9500B0677F /* Delegates */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -455,7 +461,7 @@
 				4912A4861B621C89002E6F38 /* Requests.swift */,
 				4912A4881B621C9E002E6F38 /* ParameterNames.swift */,
 				497B98D21B63BF6F004B29DD /* ParameterValues.swift */,
-				4932F69C1B66E1AD00B0677F /* StatusCode.swift */,
+				49CF2F7D1B66D92B00760F7E /* StatusCode.swift */,
 			);
 			name = Networking;
 			sourceTree = "<group>";
@@ -627,7 +633,7 @@
 			children = (
 				49EFE8481B63802A007445E8 /* LowercaseInitializable.swift */,
 				4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */,
-				4932F69E1B66E22C00B0677F /* IntRawRepresentable.swift */,
+				49CF2F7F1B66D9C900760F7E /* IntRawRepresentable.swift */,
 			);
 			name = Protocols;
 			sourceTree = "<group>";
@@ -1063,6 +1069,7 @@
 				49024A711B5F8F7D00F5FAE3 /* Milestoneable.swift in Sources */,
 				495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */,
 				49024A5E1B5F7BF800F5FAE3 /* Assignable.swift in Sources */,
+				49CF2F7E1B66D92B00760F7E /* StatusCode.swift in Sources */,
 				49437BF41B4B05E0001C8557 /* Issue.swift in Sources */,
 				49024A581B5F7BCD00F5FAE3 /* Editable.swift in Sources */,
 				49024A651B5F88FC00F5FAE3 /* Label.swift in Sources */,
@@ -1075,6 +1082,7 @@
 				49025EB21B62F14000D56882 /* JSONError.swift in Sources */,
 				49437BFC1B4B072E001C8557 /* User.swift in Sources */,
 				495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */,
+				4932F6961B66DFAA00B0677F /* ParseDelegate.swift in Sources */,
 				495A5E131B665DBC00B4E32B /* HeaderParseable.swift in Sources */,
 				49EFE8431B63602A007445E8 /* RequestController.swift in Sources */,
 				49024A6A1B5F8B3600F5FAE3 /* Repository.swift in Sources */,
@@ -1084,6 +1092,8 @@
 				497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */,
 				4932F69D1B66E1AD00B0677F /* StatusCode.swift in Sources */,
 				497BA3E61B65914E00465E6A /* ETaggable.swift in Sources */,
+				49CF2F821B66DB3800760F7E /* RefreshDelegate.swift in Sources */,
+				49CF2F801B66D9C900760F7E /* IntRawRepresentable.swift in Sources */,
 				495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */,
 				49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */,
 				49437BFA1B4B0705001C8557 /* State.swift in Sources */,
