@@ -27,6 +27,8 @@ class AddIssueTableViewController: UITableViewController {
     super.viewDidLoad()
     
     self.titleTextField.delegate = self
+    self.bodyTextField.delegate = self
+    
     self.titleTextField.becomeFirstResponder()
   }
   
@@ -47,15 +49,40 @@ extension AddIssueTableViewController {
 extension AddIssueTableViewController: UITextFieldDelegate {
   
   func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
-    var isEmpty: Bool {
-      return string.isEmpty && textField.text?.characters.count <= 1
+    var isTitleTextField: Bool {
+      return textField == self.titleTextField
     }
     
-    if isEmpty {
+    var titleIsEmpty: Bool {
+      let minusOne = isTitleTextField && string.isEmpty
+      let plusOne = isTitleTextField && !string.isEmpty
+      
+      let chars: Int
+      
+      if minusOne {
+        chars = (self.titleTextField.text?.characters.count ?? 0) - 1
+        
+        return chars <= 0
+      } else if plusOne {
+        chars = (self.titleTextField.text?.characters.count ?? 0) + 1
+        
+        return chars <= 0
+      }
+      
+      return true
+    }
+    
+    if titleIsEmpty {
       self.saveButton.enabled = false
     } else {
       self.saveButton.enabled = true
     }
+    
+    return true
+  }
+  
+  func textFieldShouldReturn(textField: UITextField) -> Bool {
+    self.cancelAddIssue(textField)
     
     return true
   }
