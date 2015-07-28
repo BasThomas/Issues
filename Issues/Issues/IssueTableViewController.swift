@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Font_Awesome_Swift
 import IssueKit
 
 // MARK: CellIdentifiers
@@ -29,6 +30,9 @@ class IssueTableViewController: UITableViewController {
     refresh.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
     
     self.refreshControl = refresh
+    
+    self.tableView.estimatedRowHeight = 44
+    self.tableView.rowHeight = UITableViewAutomaticDimension
     
     Request.delegate = self
     
@@ -96,7 +100,18 @@ extension IssueTableViewController {
     
     cell.issue = self.issues[indexPath.row]
     
-    cell.issueTitleLabel.text = cell.issue?.title
+    cell.issueTitleLabel.text = cell.issue.title
+    
+    let issueStateIcon: FAType?
+    
+    switch(cell.issue.state) {
+    case .Open:
+      issueStateIcon = FAType.FACheck
+    case .Closed:
+      issueStateIcon = FAType.FAExclamationCircle
+    }
+    
+    cell.issueStateIconLabel.FAIcon = issueStateIcon
     
     return cell
   }

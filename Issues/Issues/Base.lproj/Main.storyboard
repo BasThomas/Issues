@@ -22,9 +22,20 @@
                                     <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="issue_title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdi-dr-yA9">
-                                            <rect key="frame" x="8" y="11.5" width="551" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="issue_title" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdi-dr-yA9">
+                                            <rect key="frame" x="8" y="12" width="534" height="19.5"/>
                                             <animations/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="O" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baX-jo-R1I">
+                                            <rect key="frame" x="550" y="13.5" width="17" height="17"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="17" id="6LS-KI-kZ3"/>
+                                                <constraint firstAttribute="height" constant="17" id="njv-5n-GRp"/>
+                                            </constraints>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -32,13 +43,17 @@
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstItem="Pdi-dr-yA9" firstAttribute="centerY" secondItem="4Ox-O7-aua" secondAttribute="centerY" id="1Gz-jw-jCD"/>
-                                        <constraint firstAttribute="trailingMargin" secondItem="Pdi-dr-yA9" secondAttribute="trailing" id="byk-t3-bIg"/>
+                                        <constraint firstItem="baX-jo-R1I" firstAttribute="centerY" secondItem="4Ox-O7-aua" secondAttribute="centerY" id="GDm-2N-Nmk"/>
+                                        <constraint firstItem="Pdi-dr-yA9" firstAttribute="top" secondItem="4Ox-O7-aua" secondAttribute="topMargin" constant="4" id="L3Q-7D-wJh"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="baX-jo-R1I" secondAttribute="trailing" constant="-8" id="RaP-uO-Mer"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="Pdi-dr-yA9" secondAttribute="bottom" constant="4" id="yd0-qQ-kVn"/>
+                                        <constraint firstItem="baX-jo-R1I" firstAttribute="leading" secondItem="Pdi-dr-yA9" secondAttribute="trailing" constant="8" id="zcy-vc-Fi3"/>
                                         <constraint firstItem="Pdi-dr-yA9" firstAttribute="leading" secondItem="4Ox-O7-aua" secondAttribute="leadingMargin" id="zkH-iy-u2g"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
+                                    <outlet property="issueStateIconLabel" destination="baX-jo-R1I" id="IBy-ry-ROq"/>
                                     <outlet property="issueTitleLabel" destination="Pdi-dr-yA9" id="ggQ-fx-hTW"/>
                                     <segue destination="tx9-da-QCK" kind="show" identifier="showIssueOverview" id="NSw-cj-E8F"/>
                                 </connections>

@@ -11,7 +11,8 @@ import IssueKit
 
 class IssueTableViewCell: UITableViewCell {
   
-  var issue: Issue?
+  var issue: Issue!
 
   @IBOutlet weak var issueTitleLabel: UILabel!
+  @IBOutlet weak var issueStateIconLabel: UILabel!
 }
