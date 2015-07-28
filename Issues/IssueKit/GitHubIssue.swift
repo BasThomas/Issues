@@ -19,7 +19,7 @@ public struct GitHubIssue: Issue {
   public var title: String
   
   /// Body of the issue, if any.
-  public var body: String?
+  public var body: String
   
   /// State of the issue. Either `Open` or `Closed`
   public var state: State
@@ -45,7 +45,7 @@ public struct GitHubIssue: Issue {
   /// The closing date of the issue, if any.
   public var closingDate: NSDate?
   
-  public init(number: Int, title: String, body: String? = nil, state: State = .Open, locked: Bool = false, comments: [GitHubComment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
+  public init(number: Int, title: String, body: String = "", state: State = .Open, locked: Bool = false, comments: [GitHubComment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
     self.number = number
     self.title = title
     self.body = body

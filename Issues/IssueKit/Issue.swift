@@ -12,7 +12,7 @@ public protocol Issue {
   
   var number: Int { get }
   var title: String { get }
-  var body: String? { get }
+  var body: String { get }
   var state: State { get }
   var locked: Bool { get }
   
