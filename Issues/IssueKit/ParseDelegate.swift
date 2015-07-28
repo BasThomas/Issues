@@ -11,4 +11,6 @@ import Foundation
 protocol ParseDelegate {
   
   func parsedIssues(issues: [Issue])
+  
+  func parsedRepositores(repositories: [Repository])
 }

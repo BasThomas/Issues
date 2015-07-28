@@ -38,6 +38,8 @@
 		495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */; };
 		495A5E131B665DBC00B4E32B /* HeaderParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E121B665DBC00B4E32B /* HeaderParseable.swift */; };
 		495A5E151B665ECD00B4E32B /* HeaderOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E141B665ECD00B4E32B /* HeaderOptions.swift */; };
+		4969A34B1B6820D30084347D /* RepositoryTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969A34A1B6820D30084347D /* RepositoryTableViewController.swift */; };
+		4969A34D1B6820E10084347D /* RepositoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4969A34C1B6820E10084347D /* RepositoryTableViewCell.swift */; };
 		497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */; };
 		497B98D31B63BF6F004B29DD /* ParameterValues.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497B98D21B63BF6F004B29DD /* ParameterValues.swift */; };
 		497BA3E41B64E4D800465E6A /* ParameterParseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497BA3E31B64E4D800465E6A /* ParameterParseable.swift */; };
@@ -202,6 +204,8 @@
 		495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSHTTPURLResponse+ETag.swift"; sourceTree = "<group>"; };
 		495A5E121B665DBC00B4E32B /* HeaderParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderParseable.swift; sourceTree = "<group>"; };
 		495A5E141B665ECD00B4E32B /* HeaderOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderOptions.swift; sourceTree = "<group>"; };
+		4969A34A1B6820D30084347D /* RepositoryTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewController.swift; sourceTree = "<group>"; };
+		4969A34C1B6820E10084347D /* RepositoryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryTableViewCell.swift; sourceTree = "<group>"; };
 		497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Dictionary+Merge.swift"; sourceTree = "<group>"; };
 		497B98D21B63BF6F004B29DD /* ParameterValues.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterValues.swift; sourceTree = "<group>"; };
 		497BA3E31B64E4D800465E6A /* ParameterParseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterParseable.swift; sourceTree = "<group>"; };
@@ -433,6 +437,7 @@
 			isa = PBXGroup;
 			children = (
 				495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */,
+				4969A34E1B6820E40084347D /* RepositoryTableView */,
 			);
 			name = AddIssueTableView;
 			sourceTree = "<group>";
@@ -443,6 +448,15 @@
 				495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */,
 			);
 			name = IssueOverviewTableView;
+			sourceTree = "<group>";
+		};
+		4969A34E1B6820E40084347D /* RepositoryTableView */ = {
+			isa = PBXGroup;
+			children = (
+				4969A34A1B6820D30084347D /* RepositoryTableViewController.swift */,
+				4969A34C1B6820E10084347D /* RepositoryTableViewCell.swift */,
+			);
+			name = RepositoryTableView;
 			sourceTree = "<group>";
 		};
 		497B98D41B63BF84004B29DD /* Networking */ = {
@@ -1016,7 +1030,9 @@
 			files = (
 				49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */,
 				49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */,
+				4969A34D1B6820E10084347D /* RepositoryTableViewCell.swift in Sources */,
 				495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */,
+				4969A34B1B6820D30084347D /* RepositoryTableViewController.swift in Sources */,
 				49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */,
 				495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */,
 			);

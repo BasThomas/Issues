@@ -19,6 +19,7 @@ public class ParseController {
 }
 
 // MARK: - Parseable
+// MARK: - Issues
 extension ParseController: Parseable {
   
   /// Parses all issues across all the authenticated user’s visible repositories
@@ -42,7 +43,7 @@ extension ParseController: Parseable {
          let creationDate = issue["created_at"].string?.date {
           
         let milestone = issue["milestone", "number"].int
-        print("milestone: \(milestone)")
+//        print("milestone: \(milestone)")
         
         let closingDate = issue["closed_at"].string?.date
         
@@ -54,6 +55,10 @@ extension ParseController: Parseable {
     self.delegate?.parsedIssues(issues)
     return issues
   }
+}
+
+// MARK: Repositories
+extension ParseController {
   
   /// Parses all repositories of every public repository, in the order that they were created.
   ///
@@ -66,19 +71,22 @@ extension ParseController: Parseable {
     for repository in json {
       let repository = repository.1
       
-      let fullName = repository["full_name"].string
-      print("fullName: \(fullName)")
-      
-      let commentsURL = repository["comments_url"].string
-      print("commentsURL: \(commentsURL)")
-      let assigneesURL = repository["assignees_url"].string
-      print("assigneesURL: \(assigneesURL)")
-      let labelsURL = repository["labels_url"].string
-      print("labelsURL: \(labelsURL)")
-      let milestonesURL = repository["milestones_url"].string
-      print("milestonesURL: \(milestonesURL)")
+      if let fullName = repository["full_name"].string {
+        let commentsURL = repository["comments_url"].string
+        print("commentsURL: \(commentsURL)")
+        let assigneesURL = repository["assignees_url"].string
+        print("assigneesURL: \(assigneesURL)")
+        let labelsURL = repository["labels_url"].string
+        print("labelsURL: \(labelsURL)")
+        let milestonesURL = repository["milestones_url"].string
+        print("milestonesURL: \(milestonesURL)")
+        
+        let ghRepository = GitHubRepository(name: fullName)
+        repositories.append(ghRepository)
+      }
     }
     
+    self.delegate?.parsedRepositores(repositories)
     return repositories
   }
 }

@@ -18,7 +18,9 @@ private let BaseURL = "https://api.github.com"
 private struct Request {
   
   private static let RequestIssues = "\(BaseURL)\(issues)"
-  private static let RequestUserIssues = "\(BaseURL)\(userIssues)"
+  private static let RequestUserIssues = "\(BaseURL)\(user)\(issues)"
+  
+  private static let RequestUserRepositories = "\(BaseURL)\(user)\(repos)"
 }
 
 public class RequestController: ETaggable {
@@ -32,6 +34,9 @@ public class RequestController: ETaggable {
   /// RequestUserIssues' ETag.
   var requestUserIssuesETag: String?
   
+  /// RequestRepositories' ETag.
+  var requestUserRepositoriesETag: String?
+  
   /// Returns the shared RequestController.
   public static let sharedInstance = RequestController()
   
@@ -43,15 +48,20 @@ public class RequestController: ETaggable {
 // MARK: - ParseDelegate
 extension RequestController: ParseDelegate {
   
-  public func parsedIssues(issues: [Issue]) {
+  func parsedIssues(issues: [Issue]) {
     self.delegate?.refresh(issues)
+  }
+  
+  func parsedRepositores(repositories: [Repository]) {
+    self.delegate?.refresh(repositories)
   }
 }
 
 // MARK: - Requestable
+// MARK: Issues
 extension RequestController: Requestable {
   
-  /// Lists all issues across all the authenticated user’s visible repositories including owned repositories, member repositories, and organization repositories
+  /// Lists all issues across all the authenticated user’s visible repositories including owned repositories, member repositories, and organization repositories.
   public func requestIssues(parameterOptions: IssueParameterOptions = IssueParameterOptions()) {
     let parameters = Parse.parseIssueParameterOptions(parameterOptions)
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestIssuesETag))
@@ -77,7 +87,7 @@ extension RequestController: Requestable {
     }
   }
   
-  /// Lists all issues across owned and member repositories for the authenticated user
+  /// Lists all issues across owned and member repositories for the authenticated user.
   public func requestUserIssues(parameterOptions: IssueParameterOptions = IssueParameterOptions()) {
     let parameters = Parse.parseIssueParameterOptions(parameterOptions)
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserIssuesETag))
@@ -95,6 +105,36 @@ extension RequestController: Requestable {
         
         if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
           Parse.parseIssues(json)
+        }
+        
+        print("Error: \(error)")
+        
+        self.delegate?.endRefreshing()
+    }
+  }
+}
+
+// MARK: Repositories
+extension RequestController {
+  
+  /// Lists repositories that are accessible to the authenticated user.
+  public func requestUserRepositories() {
+    let parameters: Parameters = [:]
+    let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserRepositoriesETag))
+    
+    Alamofire.request(.GET, Request.RequestUserRepositories, parameters: parameters, headers: headers)
+      .responseJSON { request, response, json, error in
+        print("request: \(request)")
+        print("response: \(response)")
+        
+        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
+        
+        self.requestUserRepositoriesETag = response?.eTag
+        
+        print("JSON: \(json)")
+        
+        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
+          Parse.parseRepositories(json)
         }
         
         print("Error: \(error)")

@@ -10,6 +10,7 @@ import Foundation
 
 public protocol Repository {
   
+  var name: String { get }
   var issues: [Issue] { get set }
   var labels: [Label] { get set }
   var milestones: [Milestone] { get set }

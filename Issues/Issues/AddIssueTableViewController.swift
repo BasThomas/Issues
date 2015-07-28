@@ -17,6 +17,7 @@ class AddIssueTableViewController: UITableViewController {
   
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
+  @IBOutlet weak var repositoryLabel: UILabel!
   @IBOutlet weak var titleLabel: UILabel!
   @IBOutlet weak var titleTextField: UITextField!
   
@@ -31,9 +32,13 @@ class AddIssueTableViewController: UITableViewController {
     
     self.titleTextField.becomeFirstResponder()
   }
+}
+
+// MARK: - RepositoryDelegate
+extension AddIssueTableViewController: RepositoryDelegate {
   
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
+  func repositoryChosen(repository: Repository) {
+    self.repositoryLabel.text = repository.name
   }
 }
 
@@ -103,7 +108,10 @@ extension AddIssueTableViewController {
 extension AddIssueTableViewController {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    // Get the new view controller using segue.destinationViewController.
-    // Pass the selected object to the new view controller.
+    let dvc = segue.destinationViewController as? RepositoryTableViewController
+    
+    if let dvc = dvc {
+      dvc.delegate = self
+    }
   }
 }

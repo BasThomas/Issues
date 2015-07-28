@@ -10,6 +10,7 @@ import UIKit
 
 public protocol RequestDelegate {
   
+  func refresh(repositories: [Repository])
   func refresh(issues: [Issue])
   func endRefreshing()
 }

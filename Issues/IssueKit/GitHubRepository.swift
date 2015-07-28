@@ -10,14 +10,24 @@ import Foundation
 
 public struct GitHubRepository: Repository {
   
+  /// Name of the repository.
+  public var name: String
+  
   /// Issues of the repository.
-  public var issues: [Issue] = []
+  public var issues: [Issue]
   
   /// Labels of the repository.
-  public var labels: [Label] = []
+  public var labels: [Label]
   
   /// Milestones of the repository
-  public var milestones: [Milestone] = []
+  public var milestones: [Milestone]
+  
+  public init(name: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
+    self.name = name
+    self.issues = issues
+    self.labels = labels
+    self.milestones = milestones
+  }
   
   /// Adds an issue to the repository.
   ///
@@ -148,4 +158,21 @@ extension GitHubRepository: Milestoneable {
   public mutating func removeMilestone(milestone: Milestone) {
 //    DELETE /repos/:owner/:repo/milestones/:number
   }
+}
+
+// MARK: - Hashable
+extension GitHubRepository: Hashable {
+  
+  /// The hash value.
+  public var hashValue: Int {
+    return self.name.hashValue
+  }
+}
+
+// MARK: - Equatable
+extension GitHubRepository: Equatable { }
+
+public func ==(lhs: GitHubRepository, rhs: GitHubRepository) -> Bool {
+  return lhs.name == rhs.name &&
+    lhs.labels == rhs.labels
 }

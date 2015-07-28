@@ -12,4 +12,6 @@ import SwiftyJSON
 protocol Parseable: ParameterParseable, HeaderParseable {
   
   func parseIssues(json: JSON) -> [Issue]
+  
+  func parseRepositories(json: JSON) -> [Repository]
 }

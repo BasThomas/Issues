@@ -38,14 +38,12 @@ class IssueTableViewController: UITableViewController {
     
     Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue))
   }
-
-  override func didReceiveMemoryWarning() {
-    super.didReceiveMemoryWarning()
-  }
 }
 
-// MARK: - RefreshDelegate
+// MARK: - RequestDelegate
 extension IssueTableViewController: RequestDelegate {
+  
+  func refresh(repositories: [Repository]) { }
   
   /// Refreshes the list of shown issues.
   ///
