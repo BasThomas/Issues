@@ -33,8 +33,6 @@
 		49437C001B4B0D04001C8557 /* String+UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFF1B4B0D04001C8557 /* String+UIColor.swift */; };
 		495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495750D21B51B356007F9EA7 /* GitHubIssue.swift */; };
 		495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */; };
-		495A5E081B6641EE00B4E32B /* IssueOverviewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E071B6641EE00B4E32B /* IssueOverviewTableViewCell.swift */; };
-		495A5E0B1B66428E00B4E32B /* AddIssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0A1B66428E00B4E32B /* AddIssueTableViewCell.swift */; };
 		495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */; };
 		495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0E1B66471C00B4E32B /* String+NSDate.swift */; };
 		495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */; };
@@ -199,8 +197,6 @@
 		49437BFF1B4B0D04001C8557 /* String+UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UIColor.swift"; sourceTree = "<group>"; };
 		495750D21B51B356007F9EA7 /* GitHubIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubIssue.swift; sourceTree = "<group>"; };
 		495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewController.swift; sourceTree = "<group>"; };
-		495A5E071B6641EE00B4E32B /* IssueOverviewTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueOverviewTableViewCell.swift; sourceTree = "<group>"; };
-		495A5E0A1B66428E00B4E32B /* AddIssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewCell.swift; sourceTree = "<group>"; };
 		495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueOverviewTableViewController.swift; sourceTree = "<group>"; };
 		495A5E0E1B66471C00B4E32B /* String+NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+NSDate.swift"; sourceTree = "<group>"; };
 		495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSHTTPURLResponse+ETag.swift"; sourceTree = "<group>"; };
@@ -437,7 +433,6 @@
 			isa = PBXGroup;
 			children = (
 				495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */,
-				495A5E0A1B66428E00B4E32B /* AddIssueTableViewCell.swift */,
 			);
 			name = AddIssueTableView;
 			sourceTree = "<group>";
@@ -446,7 +441,6 @@
 			isa = PBXGroup;
 			children = (
 				495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */,
-				495A5E071B6641EE00B4E32B /* IssueOverviewTableViewCell.swift */,
 			);
 			name = IssueOverviewTableView;
 			sourceTree = "<group>";
@@ -1023,8 +1017,6 @@
 				49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */,
 				49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */,
 				495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */,
-				495A5E081B6641EE00B4E32B /* IssueOverviewTableViewCell.swift in Sources */,
-				495A5E0B1B66428E00B4E32B /* AddIssueTableViewCell.swift in Sources */,
 				49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */,
 				495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */,
 			);

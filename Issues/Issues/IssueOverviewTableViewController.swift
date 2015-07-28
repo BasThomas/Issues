@@ -9,9 +9,6 @@
 import UIKit
 import IssueKit
 
-// MARK: CellIdentifiers
-private let CellIdentifier = "cell"
-
 // MARK: SegueIdentifiers
 
 // MARK: Request + Parse instances
@@ -26,30 +23,10 @@ class IssueOverviewTableViewController: UITableViewController {
     super.viewDidLoad()
     
     print(issue)
-    
-    self.tableView.registerClass(IssueOverviewTableViewCell.self, forCellReuseIdentifier: "cell")
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-  }
-}
-
-// MARK: - UITableView data source
-extension IssueOverviewTableViewController {
-  
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
-  }
-  
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! IssueOverviewTableViewCell
-    
-    return cell
   }
 }
 

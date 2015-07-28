@@ -9,43 +9,29 @@
 import UIKit
 import IssueKit
 
-// MARK: CellIdentifiers
-private let CellIdentifier = "cell"
-
-// MARK: SegueIdentifiers
-
 // MARK: Request + Parse instances
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
 class AddIssueTableViewController: UITableViewController {
   
+  @IBOutlet weak var saveButton: UIBarButtonItem!
+  
+  @IBOutlet weak var titleLabel: UILabel!
+  @IBOutlet weak var titleTextField: UITextField!
+  
+  @IBOutlet weak var bodyLabel: UILabel!
+  @IBOutlet weak var bodyTextField: UITextField!
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    self.tableView.registerClass(AddIssueTableViewCell.self, forCellReuseIdentifier: "cell")
+    self.titleTextField.delegate = self
+    self.titleTextField.becomeFirstResponder()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
-  }
-}
-
-// MARK: - UITableView data source
-extension AddIssueTableViewController {
-  
-  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-    return 1
-  }
-  
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return 1
-  }
-  
-  override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let cell = self.tableView.dequeueReusableCellWithIdentifier(CellIdentifier, forIndexPath: indexPath) as! AddIssueTableViewCell
-    
-    return cell
   }
 }
 
@@ -57,10 +43,31 @@ extension AddIssueTableViewController {
   }
 }
 
+// MARK: - UITextFieldDelegate
+extension AddIssueTableViewController: UITextFieldDelegate {
+  
+  func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    var isEmpty: Bool {
+      return string.isEmpty && textField.text?.characters.count <= 1
+    }
+    
+    if isEmpty {
+      self.saveButton.enabled = false
+    } else {
+      self.saveButton.enabled = true
+    }
+    
+    return true
+  }
+}
+
 // MARK: - Actions
 extension AddIssueTableViewController {
   
   @IBAction func cancelAddIssue(sender: AnyObject) {
+    self.titleTextField.resignFirstResponder()
+    self.bodyTextField.resignFirstResponder()
+    
     self.dismissViewControllerAnimated(true, completion: nil)
   }
 }
