@@ -17,10 +17,14 @@ private let BaseURL = "https://api.github.com"
 
 private struct Request {
   
-  private static let RequestIssues = "\(BaseURL)\(issues)"
-  private static let RequestUserIssues = "\(BaseURL)\(user)\(issues)"
+  private static let GETIssues = "\(BaseURL)\(issues)"
+  private static let GETUserIssues = "\(BaseURL)\(user)\(issues)"
   
-  private static let RequestUserRepositories = "\(BaseURL)\(user)\(repos)"
+  private static let GETUserRepositories = "\(BaseURL)\(user)\(repos)"
+  
+  private static func POSTissue(repository: Repository) -> String {
+    return "\(BaseURL)\(repos)/\(repository.fullName)\(issues)"
+  }
 }
 
 public class RequestController: ETaggable {
@@ -66,7 +70,7 @@ extension RequestController: Requestable {
     let parameters = Parse.parseIssueParameterOptions(parameterOptions)
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestIssuesETag))
     
-    Alamofire.request(.GET, Request.RequestIssues, parameters: parameters, headers: headers)
+    Alamofire.request(.GET, Request.GETIssues, parameters: parameters, headers: headers)
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
@@ -92,7 +96,7 @@ extension RequestController: Requestable {
     let parameters = Parse.parseIssueParameterOptions(parameterOptions)
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserIssuesETag))
     
-    Alamofire.request(.GET, Request.RequestUserIssues, parameters: parameters, headers: headers)
+    Alamofire.request(.GET, Request.GETUserIssues, parameters: parameters, headers: headers)
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
@@ -114,6 +118,35 @@ extension RequestController: Requestable {
   }
 }
 
+extension RequestController {
+  
+  /// Creates an issue for the references repository.
+  public func createIssue(issue: Parameters, repository: Repository) {
+    let parameters = ["foo": "bar"]//issue
+    let headers = Parse.parseHeaders()
+    
+    print(parameters)
+    
+    Alamofire.request(.POST, Request.POSTissue(repository), parameters: parameters, headers: headers)
+      .responseJSON { request, response, json, error in
+        print("request: \(request)")
+        print("response: \(response)")
+        
+//        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
+        
+        print("JSON: \(json)")
+        
+        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
+//          Parse.parseIssues(json)
+        }
+        
+        print("Error: \(error)")
+        
+        self.delegate?.endRefreshing()
+    }
+  }
+}
+
 // MARK: Repositories
 extension RequestController {
   
@@ -122,7 +155,7 @@ extension RequestController {
     let parameters: Parameters = [:]
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserRepositoriesETag))
     
-    Alamofire.request(.GET, Request.RequestUserRepositories, parameters: parameters, headers: headers)
+    Alamofire.request(.GET, Request.GETUserRepositories, parameters: parameters, headers: headers)
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")

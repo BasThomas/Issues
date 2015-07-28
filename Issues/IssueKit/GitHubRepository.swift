@@ -10,8 +10,14 @@ import Foundation
 
 public struct GitHubRepository: Repository {
   
+  /// Owner of the repository
+  public var owner: String
+  
   /// Name of the repository.
   public var name: String
+  
+  /// Full name of the repository (owner+name).
+  public var fullName: String
   
   /// Issues of the repository.
   public var issues: [Issue]
@@ -22,8 +28,11 @@ public struct GitHubRepository: Repository {
   /// Milestones of the repository
   public var milestones: [Milestone]
   
-  public init(name: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
+  public init(owner: String, name: String, fullName: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
+    self.owner = owner
     self.name = name
+    self.fullName = fullName
+    
     self.issues = issues
     self.labels = labels
     self.milestones = milestones
@@ -34,32 +43,6 @@ public struct GitHubRepository: Repository {
   /// - Parameter issue: issue to add to the repository.
   public mutating func addIssue(issue: Issue) {
     self.issues.append(issue)
-  }
-  
-  /// Opens a new issue with a title and, if wanted, a body.
-  ///
-  /// - Parameter title: title of the issue.
-  /// - Parameter body: body of the issue. Defaults to `nil`.
-  ///
-  /// - Throws: `CreationError` if the issue couldn't be created.
-  ///
-  /// - Returns `Issue` the created Issue.
-  public func addIssue(withTitle title: String, body: String? = nil) throws -> Issue {
-//    POST /repos/:owner/:repo/issues
-
-//    {
-//      "title": "Found a bug",
-//      "body": "I'm having a problem with this.",
-//      "assignee": "octocat",
-//      "milestone": 1,
-//      "labels": [
-//      "Label1",
-//      "Label2"
-//      ]
-//    }
-    _ = ImmatureGitHubIssue(title: title, body: body)
-    
-    throw CreationError.Unknown
   }
   
   /// Gets an array of issues with the specific labels.

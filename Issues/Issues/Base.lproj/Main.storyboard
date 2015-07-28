@@ -131,8 +131,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Choose a repository" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk5-nc-JeH">
-                                                    <rect key="frame" x="8" y="11" width="154" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a repository" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk5-nc-JeH">
+                                                    <rect key="frame" x="8" y="11.5" width="551" height="20.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -140,6 +140,11 @@
                                                 </label>
                                             </subviews>
                                             <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="trailingMargin" secondItem="Yk5-nc-JeH" secondAttribute="trailing" id="Gpb-9a-fSU"/>
+                                                <constraint firstItem="Yk5-nc-JeH" firstAttribute="centerY" secondItem="bxw-aa-ETw" secondAttribute="centerY" id="SSX-53-H88"/>
+                                                <constraint firstItem="Yk5-nc-JeH" firstAttribute="leading" secondItem="bxw-aa-ETw" secondAttribute="leadingMargin" id="hIc-4D-GNS"/>
+                                            </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
                                         <connections>
@@ -226,7 +231,11 @@
                                 <action selector="cancelAddIssue:" destination="2NP-U6-mCM" id="WjI-0y-7LD"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="tys-7e-zDN"/>
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" systemItem="save" id="tys-7e-zDN">
+                            <connections>
+                                <action selector="createIssue:" destination="2NP-U6-mCM" id="KW2-rr-MFM"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="bodyLabel" destination="Xdp-v5-gp1" id="4v8-mH-nOW"/>

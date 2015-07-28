@@ -24,6 +24,8 @@ class AddIssueTableViewController: UITableViewController {
   @IBOutlet weak var bodyLabel: UILabel!
   @IBOutlet weak var bodyTextField: UITextField!
   
+  private var repository: Repository?
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -38,7 +40,17 @@ class AddIssueTableViewController: UITableViewController {
 extension AddIssueTableViewController: RepositoryDelegate {
   
   func repositoryChosen(repository: Repository) {
-    self.repositoryLabel.text = repository.name
+    func enableSaveButtonIfNeeded() {
+      guard self.titleTextField.text?.characters.count > 0 else { return }
+      
+      self.saveButton.enabled = true
+    }
+    
+    self.repository = repository
+    
+    self.repositoryLabel.text = self.repository?.fullName
+    
+    enableSaveButtonIfNeeded()
   }
 }
 
@@ -54,6 +66,8 @@ extension AddIssueTableViewController {
 extension AddIssueTableViewController: UITextFieldDelegate {
   
   func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+    guard textField != self.bodyTextField else { return true }
+    
     var isTitleTextField: Bool {
       return textField == self.titleTextField
     }
@@ -77,10 +91,18 @@ extension AddIssueTableViewController: UITextFieldDelegate {
       return true
     }
     
-    if titleIsEmpty {
-      self.saveButton.enabled = false
-    } else {
+    var repositoryIsSelected: Bool {
+      if let _ = self.repository {
+        return true
+      }
+      
+      return false
+    }
+    
+    if !titleIsEmpty && repositoryIsSelected {
       self.saveButton.enabled = true
+    } else {
+      self.saveButton.enabled = false
     }
     
     return true
@@ -101,6 +123,18 @@ extension AddIssueTableViewController {
     self.bodyTextField.resignFirstResponder()
     
     self.dismissViewControllerAnimated(true, completion: nil)
+  }
+  
+  @IBAction func createIssue(sender: AnyObject) {
+    if let repository = self.repository,
+       let title = self.titleTextField.text,
+       let body = self.bodyTextField.text {
+      let parameters: Parameters = ["title": title, "body": body]
+      
+      Request.createIssue(parameters, repository: repository)
+        
+      self.dismissViewControllerAnimated(true, completion: nil)
+    }
   }
 }
 

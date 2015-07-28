@@ -71,7 +71,9 @@ extension ParseController {
     for repository in json {
       let repository = repository.1
       
-      if let fullName = repository["full_name"].string {
+      if let owner = repository["owner", "login"].string,
+         let name = repository["name"].string,
+         let fullName = repository["full_name"].string {
         let commentsURL = repository["comments_url"].string
         print("commentsURL: \(commentsURL)")
         let assigneesURL = repository["assignees_url"].string
@@ -81,7 +83,7 @@ extension ParseController {
         let milestonesURL = repository["milestones_url"].string
         print("milestonesURL: \(milestonesURL)")
         
-        let ghRepository = GitHubRepository(name: fullName)
+        let ghRepository = GitHubRepository(owner: owner, name: name, fullName: fullName)
         repositories.append(ghRepository)
       }
     }

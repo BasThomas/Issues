@@ -86,7 +86,7 @@ extension RepositoryTableViewController {
     
     cell.repository = self.repositories[indexPath.row]
     
-    cell.nameLabel.text = cell.repository.name
+    cell.nameLabel.text = cell.repository.fullName
     
     return cell
   }

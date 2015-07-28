@@ -10,7 +10,10 @@ import Foundation
 
 public protocol Repository {
   
+  var owner: String { get }
   var name: String { get }
+  var fullName: String { get }
+  
   var issues: [Issue] { get set }
   var labels: [Label] { get set }
   var milestones: [Milestone] { get set }
@@ -19,8 +22,6 @@ public protocol Repository {
   var closedIssues: [Issue] { get }
   var lockedIssues: [Issue] { get }
   var unlockedIssues: [Issue] { get }
-  
-  mutating func addIssue(withTitle title: String, body: String?) throws -> Issue
   
   func issuesWithLabel(label: Label) -> [Issue]
   func issuesWithLabels(labels: [Label]) -> [Issue]
