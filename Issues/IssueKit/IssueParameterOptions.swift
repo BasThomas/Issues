@@ -17,7 +17,7 @@ public struct IssueParameterOptions {
   let direction: String
   let since: String
   
-  public init(filter: String = "", state: String = "", labels: [Label]? = nil, sort: String = "", direction: String = "", since: NSDate? = nil) {
+  public init(filter: String = Value.Sort.All, state: String = "", labels: [Label]? = nil, sort: String = "", direction: String = "", since: NSDate? = nil) {
     func labelsToCommaSeperatedString(labels: [Label]?) -> String {
       guard let labels = labels else { return "" }
       

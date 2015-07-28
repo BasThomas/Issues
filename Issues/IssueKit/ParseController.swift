@@ -15,7 +15,7 @@ public class ParseController {
   public static let sharedInstance = ParseController()
   
   /// The delegate of the ParseController.
-  public var delegate: ParseDelegate?
+  var delegate: ParseDelegate?
 }
 
 // MARK: - Parseable

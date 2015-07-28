@@ -25,6 +25,7 @@
 		4912A4871B621C89002E6F38 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4861B621C89002E6F38 /* Requests.swift */; };
 		4912A4891B621C9E002E6F38 /* ParameterNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4881B621C9E002E6F38 /* ParameterNames.swift */; };
 		4912A48B1B626185002E6F38 /* StringRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */; };
+		493055211B6791C2004E946E /* IndexPath+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493055201B6791C2004E946E /* IndexPath+Add.swift */; };
 		4932F6961B66DFAA00B0677F /* ParseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932F6951B66DFAA00B0677F /* ParseDelegate.swift */; };
 		49437BF41B4B05E0001C8557 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF31B4B05E0001C8557 /* Issue.swift */; };
 		49437BFA1B4B0705001C8557 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF91B4B0705001C8557 /* State.swift */; };
@@ -71,7 +72,7 @@
 		49CB38571B41F24700809682 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 49CB38561B41F24700809682 /* Assets.xcassets */; };
 		49CB385B1B41F24700809682 /* Issues WatchKit App.app in Embed Watch Content */ = {isa = PBXBuildFile; fileRef = 49CB383D1B41F24700809682 /* Issues WatchKit App.app */; };
 		49CF2F7E1B66D92B00760F7E /* StatusCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F7D1B66D92B00760F7E /* StatusCode.swift */; };
-		49CF2F821B66DB3800760F7E /* RefreshDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F811B66DB3800760F7E /* RefreshDelegate.swift */; };
+		49CF2F821B66DB3800760F7E /* RequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F811B66DB3800760F7E /* RequestDelegate.swift */; };
 		49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11A1B64053300D39322 /* IssueTableViewController.swift */; };
 		49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */; };
 		49EFE83F1B635FAA007445E8 /* Parseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE83E1B635FAA007445E8 /* Parseable.swift */; };
@@ -190,6 +191,7 @@
 		4912A4861B621C89002E6F38 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		4912A4881B621C9E002E6F38 /* ParameterNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterNames.swift; sourceTree = "<group>"; };
 		4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StringRawRepresentable.swift; sourceTree = "<group>"; };
+		493055201B6791C2004E946E /* IndexPath+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Add.swift"; sourceTree = "<group>"; };
 		4932F6951B66DFAA00B0677F /* ParseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDelegate.swift; sourceTree = "<group>"; };
 		49437BF31B4B05E0001C8557 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		49437BF91B4B0705001C8557 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
@@ -246,7 +248,7 @@
 		49CB38561B41F24700809682 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		49CB38581B41F24700809682 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		49CF2F7D1B66D92B00760F7E /* StatusCode.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusCode.swift; sourceTree = "<group>"; };
-		49CF2F811B66DB3800760F7E /* RefreshDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RefreshDelegate.swift; sourceTree = "<group>"; };
+		49CF2F811B66DB3800760F7E /* RequestDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RequestDelegate.swift; sourceTree = "<group>"; };
 		49E7C11A1B64053300D39322 /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
 		49EFE83E1B635FAA007445E8 /* Parseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parseable.swift; sourceTree = "<group>"; };
@@ -345,7 +347,7 @@
 		4932F6941B66DF9500B0677F /* Delegates */ = {
 			isa = PBXGroup;
 			children = (
-				49CF2F811B66DB3800760F7E /* RefreshDelegate.swift */,
+				49CF2F811B66DB3800760F7E /* RequestDelegate.swift */,
 				4932F6951B66DFAA00B0677F /* ParseDelegate.swift */,
 			);
 			name = Delegates;
@@ -468,6 +470,7 @@
 				49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */,
 				495A5E0E1B66471C00B4E32B /* String+NSDate.swift */,
 				497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */,
+				493055201B6791C2004E946E /* IndexPath+Add.swift */,
 				495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */,
 			);
 			name = Extensions;
@@ -1072,6 +1075,7 @@
 				4912A48B1B626185002E6F38 /* StringRawRepresentable.swift in Sources */,
 				49EFE83F1B635FAA007445E8 /* Parseable.swift in Sources */,
 				49025EB21B62F14000D56882 /* JSONError.swift in Sources */,
+				493055211B6791C2004E946E /* IndexPath+Add.swift in Sources */,
 				49437BFC1B4B072E001C8557 /* User.swift in Sources */,
 				495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */,
 				4932F6961B66DFAA00B0677F /* ParseDelegate.swift in Sources */,
@@ -1083,7 +1087,7 @@
 				497BA3E41B64E4D800465E6A /* ParameterParseable.swift in Sources */,
 				497B98D11B63BC5E004B29DD /* Dictionary+Merge.swift in Sources */,
 				497BA3E61B65914E00465E6A /* ETaggable.swift in Sources */,
-				49CF2F821B66DB3800760F7E /* RefreshDelegate.swift in Sources */,
+				49CF2F821B66DB3800760F7E /* RequestDelegate.swift in Sources */,
 				495A5E111B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift in Sources */,
 				49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */,
 				49437BFA1B4B0705001C8557 /* State.swift in Sources */,

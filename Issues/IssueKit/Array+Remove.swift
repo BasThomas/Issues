@@ -24,4 +24,8 @@ extension Array where Element: Equatable {
     
     return false
   }
+  
+  public mutating func removeObjects(objects: [Generator.Element]) {
+    objects.map { self.removeObject($0) }
+  }
 }

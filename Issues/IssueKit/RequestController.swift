@@ -24,7 +24,7 @@ private struct Request {
 public class RequestController: ETaggable {
   
   /// The delegate of the RequestController.
-  public var delegate: RefreshDelegate?
+  public var delegate: RequestDelegate?
   
   /// RequestIssues' ETag.
   var requestIssuesETag: String?
@@ -34,6 +34,18 @@ public class RequestController: ETaggable {
   
   /// Returns the shared RequestController.
   public static let sharedInstance = RequestController()
+  
+  private init() {
+    Parse.delegate = self
+  }
+}
+
+// MARK: - ParseDelegate
+extension RequestController: ParseDelegate {
+  
+  public func parsedIssues(issues: [Issue]) {
+    self.delegate?.refresh(issues)
+  }
 }
 
 // MARK: - Requestable
@@ -49,11 +61,7 @@ extension RequestController: Requestable {
         print("request: \(request)")
         print("response: \(response)")
         
-        if response?.statusCode == StatusCode.NotModified.intValue {
-          self.delegate?.endRefreshing()
-          
-          return
-        }
+        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
         
         self.requestIssuesETag = response?.eTag
         
@@ -79,11 +87,7 @@ extension RequestController: Requestable {
         print("request: \(request)")
         print("response: \(response)")
         
-        if response?.statusCode == StatusCode.NotModified.intValue {
-          self.delegate?.endRefreshing()
-          
-          return
-        }
+        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
         
         self.requestUserIssuesETag = response?.eTag
         

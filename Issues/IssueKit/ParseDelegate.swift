@@ -8,7 +8,7 @@
 
 import Foundation
 
-public protocol ParseDelegate {
+protocol ParseDelegate {
   
   func parsedIssues(issues: [Issue])
 }

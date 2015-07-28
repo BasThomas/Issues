@@ -17,7 +17,6 @@ private let ShowIssueOverview = "showIssueOverview"
 
 // MARK: Request + Parse instances
 private let Request = RequestController.sharedInstance
-private let Parse = ParseController.sharedInstance
 
 class IssueTableViewController: UITableViewController {
   
@@ -32,9 +31,8 @@ class IssueTableViewController: UITableViewController {
     self.refreshControl = refresh
     
     Request.delegate = self
-    Parse.delegate = self
     
-    Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue, filter: Value.Sort.All))
+    Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue))
   }
 
   override func didReceiveMemoryWarning() {
@@ -43,22 +41,42 @@ class IssueTableViewController: UITableViewController {
 }
 
 // MARK: - RefreshDelegate
-extension IssueTableViewController: RefreshDelegate { }
-
-// MARK: - ParseDelegate
-extension IssueTableViewController: ParseDelegate {
+extension IssueTableViewController: RequestDelegate {
   
-  func parsedIssues(issues: [Issue]) {
-    self.issues += issues
-    
-    self.tableView.reloadData()
+  /// Refreshes the list of shown issues.
+  ///
+  /// - Parameter issues: issues to use in refresh
+  func refresh(issues: [Issue]) {
+    if self.issues.isEmpty {
+      self.issues += issues
+      self.tableView.reloadData()
+    } else {
+      let now = self.issues.flatMap { $0 as? GitHubIssue }
+      let new = issues.flatMap { $0 as? GitHubIssue }
+      
+      let newIssues = new.filter { !now.contains($0) }.map { $0 as Issue }
+      let removeIssues = now.filter { !new.contains($0) }.map { $0 as Issue }
+      
+      print("should add \(newIssues)")
+      print("should remove \(removeIssues)")
+      
+      guard removeIssues.count != 0 || newIssues.count != 0 else { return }
+      
+//      self.issues.removeObjects(removeIssues)
+      self.issues.splice(newIssues, atIndex: 0)
+      
+      self.tableView.beginUpdates()
+      let indexPaths = newIndexPaths(now: now.count, add: newIssues.count)
+      self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Middle)
+      self.tableView.endUpdates()
+    }
   }
 }
 
 // MARK: - Refreshing
 extension IssueTableViewController {
   func refresh() {
-    Request.requestUserIssues(IssueParameterOptions(state: Value.State.All.stringValue))
+    Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue))
   }
 }
 
