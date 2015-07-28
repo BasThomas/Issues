@@ -119,8 +119,7 @@ extension AddIssueTableViewController: UITextFieldDelegate {
 extension AddIssueTableViewController {
   
   @IBAction func cancelAddIssue(sender: AnyObject) {
-    self.titleTextField.resignFirstResponder()
-    self.bodyTextField.resignFirstResponder()
+    self.resignFirstResponders()
     
     self.dismissViewControllerAnimated(true, completion: nil)
   }
@@ -132,6 +131,8 @@ extension AddIssueTableViewController {
       let parameters: Parameters = ["title": title, "body": body]
       
       Request.createIssue(parameters, repository: repository)
+        
+      self.resignFirstResponders()
         
       self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -147,5 +148,14 @@ extension AddIssueTableViewController {
     if let dvc = dvc {
       dvc.delegate = self
     }
+  }
+}
+
+// MARK: - Private
+extension AddIssueTableViewController {
+  
+  private func resignFirstResponders() {
+    self.titleTextField.resignFirstResponder()
+    self.bodyTextField.resignFirstResponder()
   }
 }
