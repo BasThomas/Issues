@@ -36,17 +36,17 @@ class RepositoryTableViewController: UITableViewController {
   
   var repositories: [Repository] = []
   var filteredRepositories: [Repository] = []
-  var searchController = UISearchController()
+  var searchController: UISearchController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.setupLocalization()
-    self.setupSearch()
     
     Request.delegate = self
     
     self.filteredRepositories = self.repositories
+    self.setupSearch()
     guard self.repositories.isEmpty else { return }
     
     Request.requestUserRepositories()
@@ -58,12 +58,12 @@ extension RepositoryTableViewController: Setup {
   
   func setupSearch() {
     self.searchController = UISearchController(searchResultsController: nil)
-    self.searchController.searchBar.delegate = self
+    self.searchController?.searchBar.delegate = self
     
-    self.searchController.dimsBackgroundDuringPresentation = false
-    self.searchController.searchBar.scopeButtonTitles = ScopeButtons
+    self.searchController?.dimsBackgroundDuringPresentation = false
+    self.searchController?.searchBar.scopeButtonTitles = ScopeButtons
     
-    self.tableView.tableHeaderView = self.searchController.searchBar
+    self.tableView.tableHeaderView = self.searchController?.searchBar
   }
   
   func setupLocalization() {
@@ -130,7 +130,7 @@ extension RepositoryTableViewController {
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if self.searchController.active {
+    if let searchController = self.searchController where searchController.active {
       return self.filteredRepositories.count
     }
     
@@ -140,7 +140,7 @@ extension RepositoryTableViewController {
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCellWithIdentifier(RepositoryCellIdentifier, forIndexPath: indexPath) as! RepositoryTableViewCell
     
-    if self.searchController.active {
+    if let searchController = self.searchController where searchController.active {
       cell.repository = self.filteredRepositories[indexPath.row]
     } else {
       cell.repository = self.repositories[indexPath.row]
@@ -159,8 +159,8 @@ extension RepositoryTableViewController {
     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     self.tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
     
-    if self.searchController.active {
-      self.searchController.active = false
+    if let searchController = self.searchController where searchController.active {
+      searchController.active = false
       self.delegate?.repositoryChosen(self.filteredRepositories[indexPath.row])
     } else {
       self.delegate?.repositoryChosen(self.repositories[indexPath.row])
