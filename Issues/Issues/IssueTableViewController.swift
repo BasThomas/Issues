@@ -85,6 +85,7 @@ extension IssueTableViewController: RequestDelegate {
 extension IssueTableViewController {
   
   func refresh() {
+    Request.delegate = self
     Request.requestIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
   }
 }

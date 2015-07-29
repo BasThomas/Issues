@@ -176,7 +176,11 @@ extension AddIssueTableViewController: UITextFieldDelegate {
   }
   
   func textFieldShouldReturn(textField: UITextField) -> Bool {
-    self.cancelAddIssue(textField)
+    guard textField == self.bodyTextField else { self.bodyTextField.becomeFirstResponder(); return true }
+    
+    if self.saveButton.enabled {
+      self.createIssue(textField)
+    }
     
     return true
   }
