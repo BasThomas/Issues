@@ -13,6 +13,9 @@ import IssueKit
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
+private let SelectTitle = 1
+private let SelectBody = 2
+
 class AddIssueTableViewController: UITableViewController {
   
   @IBOutlet weak var saveButton: UIBarButtonItem!
@@ -96,6 +99,19 @@ extension AddIssueTableViewController: RepositoryDelegate {
 
 // MARK: - UITableView delegate
 extension AddIssueTableViewController {
+  
+  override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    switch(indexPath.row) {
+    case SelectTitle:
+      self.titleTextField.becomeFirstResponder()
+    case SelectBody:
+      self.bodyTextField.becomeFirstResponder()
+    default:
+      return indexPath
+    }
+    
+    return indexPath
+  }
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
