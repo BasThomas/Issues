@@ -17,7 +17,11 @@ private let Parse = ParseController.sharedInstance
 
 class IssueOverviewTableViewController: UITableViewController {
   
-  @IBOutlet weak var issueTitleLabel: UILabel!
+  @IBOutlet weak var issueTitleLabel: UILabel! {
+    didSet {
+      self.issueTitleLabel.text = issue.title
+    }
+  }
   
   var issue: Issue!
   
@@ -35,10 +39,6 @@ class IssueOverviewTableViewController: UITableViewController {
 
 // MARK: - Setup
 extension IssueOverviewTableViewController: Setup {
-  
-  func setupRows() {
-    self.issueTitleLabel.text = issue.title
-  }
   
   func setupLocalization() {
     let localized = "__ISSUE__".localized

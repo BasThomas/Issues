@@ -21,11 +21,21 @@ class AddIssueTableViewController: UITableViewController {
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
   @IBOutlet weak var repositoryLabel: UILabel!
+  
   @IBOutlet weak var titleLabel: UILabel!
-  @IBOutlet weak var titleTextField: UITextField!
+  @IBOutlet weak var titleTextField: UITextField! {
+    didSet {
+      self.titleTextField.delegate = self
+      self.titleTextField.becomeFirstResponder()
+    }
+  }
   
   @IBOutlet weak var bodyLabel: UILabel!
-  @IBOutlet weak var bodyTextField: UITextField!
+  @IBOutlet weak var bodyTextField: UITextField! {
+    didSet {
+      self.bodyTextField.delegate = self
+    }
+  }
   
   private var repository: Repository?
   private var fetchedRepositories: [Repository] = []
@@ -38,11 +48,6 @@ class AddIssueTableViewController: UITableViewController {
     Request.requestUserRepositories()
     
     self.setupLocalization()
-    
-    self.titleTextField.delegate = self
-    self.bodyTextField.delegate = self
-    
-    self.titleTextField.becomeFirstResponder()
   }
 }
 
