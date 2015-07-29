@@ -50,19 +50,18 @@ class AddIssueTableViewController: UITableViewController {
 extension AddIssueTableViewController: Setup {
   
   func setupLocalization() {
-    self.title = NSLocalizedString("__ADD_AN_ISSUE__", comment: "Add an issue")
+    self.title = "__ADD_AN_ISSUE__".localized
     
-    self.repositoryLabel.text = NSLocalizedString("__CHOOSE_A_REPOSITORY__", comment: "Choose a repository")
+    self.repositoryLabel.text = "__CHOOSE_A_REPOSITORY__".localized
     
-    self.titleLabel.text = NSLocalizedString("__TITLE__", comment: "Title")
-    self.titleTextField.placeholder = NSLocalizedString("__TITLE_PLACEHOLDER__", comment: "Title placeholder")
+    self.titleLabel.text = "__TITLE__".localized
+    self.titleTextField.placeholder = "__TITLE_PLACEHOLDER__".localized
     
-    self.bodyLabel.text = NSLocalizedString("__BODY__", comment: "Body")
-    self.bodyTextField.placeholder = NSLocalizedString("__BODY_PLACEHOLDER__", comment: "Body placeholder")
+    self.bodyLabel.text = "__BODY__".localized
+    self.bodyTextField.placeholder = "__BODY_PLACEHOLDER__".localized
   }
 }
 
-// MARK: - RequestDelegate
 // MARK: - RequestDelegate
 extension AddIssueTableViewController: RequestDelegate {
   
@@ -99,6 +98,15 @@ extension AddIssueTableViewController: RepositoryDelegate {
 
 // MARK: - UITableView delegate
 extension AddIssueTableViewController {
+  
+  // Setup automatic cell resizing. Seems you need to do so per indexPath in a static tableview.
+  override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 44
+  }
+  
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return UITableViewAutomaticDimension
+  }
   
   override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
     switch(indexPath.row) {

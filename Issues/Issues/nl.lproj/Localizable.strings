@@ -6,6 +6,7 @@
   Copyright © 2015 Bas Broek. All rights reserved.
 */
 
+"__ISSUE__"               = "Issue";
 "__ISSUES__"              = "Issues";
 
 /* Adding issue */
@@ -13,9 +14,9 @@
 "__CHOOSE_A_REPOSITORY__" = "Kies een repository";
 
 "__TITLE__"               = "Titel";
-"__TITLE_PLACEHOLDER__"   = "Ondersteunt geen Cocoapods";
+"__TITLE_PLACEHOLDER__"   = "Geef de issue een duidelijke titel";
 "__BODY__"                = "Body";
-"__BODY_PLACEHOLDER__"    = "Maak dit alsjeblieft beschikbaar als een pod; dat zou me enorm helpen.";
+"__BODY_PLACEHOLDER__"    = "(optioneel) Voeg meer informatie toe";
 
 /* Issue overview */
 "__ISSUE_OVERVIEW__"      = "Issue-overzicht";

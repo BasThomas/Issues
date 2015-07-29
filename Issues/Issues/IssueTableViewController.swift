@@ -27,14 +27,12 @@ class IssueTableViewController: UITableViewController {
     super.viewDidLoad()
     
     self.setupLocalization()
+    self.setupAutomaticCellResizing()
     
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
     
     self.refreshControl = refresh
-    
-    self.tableView.estimatedRowHeight = 44
-    self.tableView.rowHeight = UITableViewAutomaticDimension
     
     Request.delegate = self
     
@@ -46,7 +44,7 @@ class IssueTableViewController: UITableViewController {
 extension IssueTableViewController: Setup {
   
   func setupLocalization() {
-    self.title = NSLocalizedString("__ISSUES__", comment: "Issues")
+    self.title = "__ISSUES__".localized
   }
 }
 

@@ -77,6 +77,7 @@
 		49CF2F821B66DB3800760F7E /* RequestDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49CF2F811B66DB3800760F7E /* RequestDelegate.swift */; };
 		49D999EF1B68DA8400801FD9 /* Setup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D999EE1B68DA8400801FD9 /* Setup.swift */; };
 		49D999F61B68E05C00801FD9 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 49D999F81B68E05C00801FD9 /* Localizable.strings */; };
+		49D99A061B68EDBD00801FD9 /* String+Localization.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49D99A051B68EDBD00801FD9 /* String+Localization.swift */; };
 		49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11A1B64053300D39322 /* IssueTableViewController.swift */; };
 		49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */; };
 		49EFE83F1B635FAA007445E8 /* Parseable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE83E1B635FAA007445E8 /* Parseable.swift */; };
@@ -264,6 +265,7 @@
 		49D99A021B68E52500801FD9 /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49D99A031B68E53200801FD9 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = es.lproj/Localizable.strings; sourceTree = "<group>"; };
 		49D99A041B68E54200801FD9 /* it */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = it; path = it.lproj/Localizable.strings; sourceTree = "<group>"; };
+		49D99A051B68EDBD00801FD9 /* String+Localization.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Localization.swift"; sourceTree = "<group>"; };
 		49E7C11A1B64053300D39322 /* IssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewController.swift; sourceTree = "<group>"; };
 		49E7C11C1B64E2E100D39322 /* IssueTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueTableViewCell.swift; sourceTree = "<group>"; };
 		49EFE83E1B635FAA007445E8 /* Parseable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Parseable.swift; sourceTree = "<group>"; };
@@ -494,6 +496,7 @@
 				499050C71B6051CA009DF94B /* Array+Remove.swift */,
 				49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */,
 				495A5E0E1B66471C00B4E32B /* String+NSDate.swift */,
+				49D99A051B68EDBD00801FD9 /* String+Localization.swift */,
 				497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */,
 				493055201B6791C2004E946E /* IndexPath+Add.swift */,
 				495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */,
@@ -1110,6 +1113,7 @@
 				49437BF41B4B05E0001C8557 /* Issue.swift in Sources */,
 				49024A581B5F7BCD00F5FAE3 /* Editable.swift in Sources */,
 				49024A651B5F88FC00F5FAE3 /* Label.swift in Sources */,
+				49D99A061B68EDBD00801FD9 /* String+Localization.swift in Sources */,
 				49D999EF1B68DA8400801FD9 /* Setup.swift in Sources */,
 				49024A611B5F875900F5FAE3 /* Comment.swift in Sources */,
 				499050C31B5FF8B0009DF94B /* EditError.swift in Sources */,

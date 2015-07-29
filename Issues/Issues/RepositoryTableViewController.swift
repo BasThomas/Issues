@@ -34,6 +34,7 @@ class RepositoryTableViewController: UITableViewController {
     super.viewDidLoad()
     
     self.setupLocalization()
+    self.setupAutomaticCellResizing()
     
     Request.delegate = self
     
@@ -47,7 +48,7 @@ class RepositoryTableViewController: UITableViewController {
 extension RepositoryTableViewController: Setup {
   
   func setupLocalization() {
-    self.title = NSLocalizedString("__CHOOSE_A_REPOSITORY__", comment: "Choose a repository")
+    self.title = "__CHOOSE_A_REPOSITORY__".localized
   }
 }
 
