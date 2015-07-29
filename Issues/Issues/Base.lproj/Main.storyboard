@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A226f" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B7Z-qO-23h">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="B7Z-qO-23h">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -23,7 +23,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="issue_title" textAlignment="justified" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pdi-dr-yA9">
-                                            <rect key="frame" x="8" y="12" width="534" height="19.5"/>
+                                            <rect key="frame" x="16" y="12" width="526" height="19.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -46,9 +46,9 @@
                                         <constraint firstItem="baX-jo-R1I" firstAttribute="centerY" secondItem="4Ox-O7-aua" secondAttribute="centerY" id="GDm-2N-Nmk"/>
                                         <constraint firstItem="Pdi-dr-yA9" firstAttribute="top" secondItem="4Ox-O7-aua" secondAttribute="topMargin" constant="4" id="L3Q-7D-wJh"/>
                                         <constraint firstAttribute="trailingMargin" secondItem="baX-jo-R1I" secondAttribute="trailing" constant="-8" id="RaP-uO-Mer"/>
+                                        <constraint firstItem="Pdi-dr-yA9" firstAttribute="leading" secondItem="4Ox-O7-aua" secondAttribute="leadingMargin" constant="8" id="kwX-1r-QvB"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="Pdi-dr-yA9" secondAttribute="bottom" constant="4" id="yd0-qQ-kVn"/>
                                         <constraint firstItem="baX-jo-R1I" firstAttribute="leading" secondItem="Pdi-dr-yA9" secondAttribute="trailing" constant="8" id="zcy-vc-Fi3"/>
-                                        <constraint firstItem="Pdi-dr-yA9" firstAttribute="leading" secondItem="4Ox-O7-aua" secondAttribute="leadingMargin" id="zkH-iy-u2g"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>

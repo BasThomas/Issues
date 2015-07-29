@@ -159,8 +159,13 @@ extension RepositoryTableViewController {
     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
     self.tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
     
-    self.delegate?.repositoryChosen(self.repositories[indexPath.row])
-    self.searchController.active = false
+    if self.searchController.active {
+      self.searchController.active = false
+      self.delegate?.repositoryChosen(self.filteredRepositories[indexPath.row])
+    } else {
+      self.delegate?.repositoryChosen(self.repositories[indexPath.row])
+    }
+    
     self.navigationController?.popViewControllerAnimated(true)
   }
 }

@@ -29,7 +29,6 @@ class IssueOverviewTableViewController: UITableViewController {
     super.viewDidLoad()
     
     self.setupLocalization()
-    self.setupRows()
   }
   
   override func didReceiveMemoryWarning() {
