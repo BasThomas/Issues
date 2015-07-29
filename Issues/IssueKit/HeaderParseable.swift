@@ -16,6 +16,9 @@ protocol HeaderParseable {
 /// If-Non-Match header.
 private let IfNoneMatch = "If-None-Match"
 
+/// Content-Type header.
+private let ContentType = "Content-Type"
+
 extension HeaderParseable {
   
   /// Parses HeaderOptions to Headers.
@@ -39,6 +42,9 @@ extension HeaderParseable {
       switch (_key.lowercaseString) {
       case "etag":
         key = IfNoneMatch
+        
+      case "contenttype":
+        key = ContentType
         
       default:
         key = _key

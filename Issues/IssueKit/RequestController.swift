@@ -122,10 +122,8 @@ extension RequestController {
   
   /// Creates an issue for the references repository.
   public func createIssue(issue: Parameters, repository: Repository) {
-    let parameters = ["foo": "bar"]//issue
+    let parameters = issue
     let headers = Parse.parseHeaders()
-    
-    print(parameters)
     
     Alamofire.request(.POST, Request.POSTissue(repository), parameters: parameters, headers: headers)
       .responseJSON { request, response, json, error in

@@ -15,9 +15,11 @@ public enum StatusCode: Int, IntRawRepresentable {
   
   case NotModified = 304
   
+  case BadRequest = 400
   case UnAuthorized = 401
   case Forbidden = 403
   case NotFound = 404
+  case UnprocessableEntity = 422
   
   case InternalServerError = 500
   case NotImplemented = 501
