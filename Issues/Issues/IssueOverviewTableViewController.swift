@@ -22,11 +22,19 @@ class IssueOverviewTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
-    print(issue)
+    self.setupLocalization()
   }
   
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
+  }
+}
+
+// MARK: - Setup
+extension IssueOverviewTableViewController: Setup {
+  
+  func setupLocalization() {
+    self.title = NSLocalizedString("__ISSUE_OVERVIEW__", comment: "Issue overview")
   }
 }
 

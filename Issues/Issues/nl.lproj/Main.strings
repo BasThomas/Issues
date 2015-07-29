@@ -1,0 +1,36 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "53f-9n-Xk6"; */
+"53f-9n-Xk6.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Please make this available as a pod, as it will help me greatly."; ObjectID = "G8h-XH-54j"; */
+"G8h-XH-54j.placeholder" = "Please make this available as a pod, as it will help me greatly.";
+
+/* Class = "UILabel"; text = "issue_title"; ObjectID = "Pdi-dr-yA9"; */
+"Pdi-dr-yA9.text" = "issue_title";
+
+/* Class = "UILabel"; text = "Title"; ObjectID = "TMX-9D-cjd"; */
+"TMX-9D-cjd.text" = "Title";
+
+/* Class = "UINavigationItem"; title = "Issue overview"; ObjectID = "Vo5-ln-ods"; */
+"Vo5-ln-ods.title" = "Issue overview";
+
+/* Class = "UILabel"; text = "Body"; ObjectID = "Xdp-v5-gp1"; */
+"Xdp-v5-gp1.text" = "Body";
+
+/* Class = "UINavigationItem"; title = "Issues"; ObjectID = "Y6i-HD-AGK"; */
+"Y6i-HD-AGK.title" = "Issues";
+
+/* Class = "UILabel"; text = "Choose a repository"; ObjectID = "Yk5-nc-JeH"; */
+"Yk5-nc-JeH.text" = "Choose a repository";
+
+/* Class = "UINavigationItem"; title = "Add issue"; ObjectID = "ZX9-2L-DMU"; */
+"ZX9-2L-DMU.title" = "Add issue";
+
+/* Class = "UILabel"; text = "O"; ObjectID = "baX-jo-R1I"; */
+"baX-jo-R1I.text" = "O";
+
+/* Class = "UITextField"; placeholder = "Does not support Cocoapods"; ObjectID = "ncB-4B-Amt"; */
+"ncB-4B-Amt.placeholder" = "Does not support Cocoapods";
+
+/* Class = "UITableViewSection"; headerTitle = "Title"; ObjectID = "zml-lV-nkN"; */
+"zml-lV-nkN.headerTitle" = "Title";

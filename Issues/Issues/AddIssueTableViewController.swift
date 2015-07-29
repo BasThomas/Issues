@@ -25,14 +25,50 @@ class AddIssueTableViewController: UITableViewController {
   @IBOutlet weak var bodyTextField: UITextField!
   
   private var repository: Repository?
+  private var fetchedRepositories: [Repository] = []
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    Request.delegate = self
+    
+    Request.requestUserRepositories()
+    
+    self.setupLocalization()
     
     self.titleTextField.delegate = self
     self.bodyTextField.delegate = self
     
     self.titleTextField.becomeFirstResponder()
+  }
+}
+
+// MARK: - Setup
+extension AddIssueTableViewController: Setup {
+  
+  func setupLocalization() {
+    self.title = NSLocalizedString("__ADD_AN_ISSUE__", comment: "Add an issue")
+    
+    self.repositoryLabel.text = NSLocalizedString("__CHOOSE_A_REPOSITORY__", comment: "Choose a repository")
+    
+    self.titleLabel.text = NSLocalizedString("__TITLE__", comment: "Title")
+    self.titleTextField.placeholder = NSLocalizedString("__TITLE_PLACEHOLDER__", comment: "Title placeholder")
+    
+    self.bodyLabel.text = NSLocalizedString("__BODY__", comment: "Body")
+    self.bodyTextField.placeholder = NSLocalizedString("__BODY_PLACEHOLDER__", comment: "Body placeholder")
+  }
+}
+
+// MARK: - RequestDelegate
+// MARK: - RequestDelegate
+extension AddIssueTableViewController: RequestDelegate {
+  
+  func refresh(issues: [Issue]) { }
+  
+  func refresh(repositories: [Repository]) {
+    if self.fetchedRepositories.isEmpty {
+      self.fetchedRepositories += repositories
+    }
   }
 }
 
@@ -51,6 +87,10 @@ extension AddIssueTableViewController: RepositoryDelegate {
     self.repositoryLabel.text = self.repository?.fullName
     
     enableSaveButtonIfNeeded()
+  }
+  
+  func repositoriesFetched(repositories: [Repository]) {
+    self.fetchedRepositories = repositories
   }
 }
 
@@ -147,6 +187,8 @@ extension AddIssueTableViewController {
     
     if let dvc = dvc {
       dvc.delegate = self
+      
+      dvc.repositories = self.fetchedRepositories
     }
   }
 }

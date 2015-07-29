@@ -1,0 +1,21 @@
+/* 
+  Localizable.strings
+  Issues
+
+  Created by Bas Broek on 29/07/15.
+  Copyright © 2015 Bas Broek. All rights reserved.
+*/
+
+"__ISSUES__" = "Issues";
+
+/* Adding issue */
+"__ADD_AN_ISSUE__" = "Add an issue";
+"__CHOOSE_A_REPOSITORY__" = "Choose a repository";
+
+"__TITLE__" = "Title";
+"__TITLE_PLACEHOLDER__" = "Does not support Cocoapods";
+"__BODY__" = "Body";
+"__BODY_PLACEHOLDER__" = "Please make this available as a pod, as it will help me greatly.";
+
+/* Issue overview */
+"__ISSUE_OVERVIEW__" = "Issue overview";

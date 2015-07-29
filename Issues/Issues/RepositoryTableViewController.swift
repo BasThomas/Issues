@@ -21,6 +21,7 @@ private let Parse = ParseController.sharedInstance
 protocol RepositoryDelegate {
   
   func repositoryChosen(repository: Repository)
+  func repositoriesFetched(repositories: [Repository])
 }
 
 class RepositoryTableViewController: UITableViewController {
@@ -32,9 +33,21 @@ class RepositoryTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.setupLocalization()
+    
     Request.delegate = self
     
+    guard self.repositories.isEmpty else { return }
+    
     Request.requestUserRepositories()
+  }
+}
+
+// MARK: - Setup
+extension RepositoryTableViewController: Setup {
+  
+  func setupLocalization() {
+    self.title = NSLocalizedString("__CHOOSE_A_REPOSITORY__", comment: "Choose a repository")
   }
 }
 
@@ -67,6 +80,8 @@ extension RepositoryTableViewController: RequestDelegate {
       self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Middle)
       self.tableView.endUpdates()
     }
+    
+    self.delegate?.repositoriesFetched(self.repositories)
   }
 }
 

@@ -26,6 +26,8 @@ class IssueTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.setupLocalization()
+    
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
     
@@ -36,7 +38,15 @@ class IssueTableViewController: UITableViewController {
     
     Request.delegate = self
     
-    Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue))
+    Request.requestIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
+  }
+}
+
+// MARK: - Setup
+extension IssueTableViewController: Setup {
+  
+  func setupLocalization() {
+    self.title = NSLocalizedString("__ISSUES__", comment: "Issues")
   }
 }
 
@@ -78,7 +88,7 @@ extension IssueTableViewController: RequestDelegate {
 // MARK: - Refreshing
 extension IssueTableViewController {
   func refresh() {
-    Request.requestIssues(IssueParameterOptions(state: Value.State.All.stringValue))
+    Request.requestIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
   }
 }
 
