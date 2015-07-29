@@ -74,8 +74,6 @@ extension RepositoryTableViewController: Setup {
 // MARK: - RequestDelegate
 extension RepositoryTableViewController: RequestDelegate {
   
-  func refresh(issues: [Issue]) { }
-  
   func refresh(repositories: [Repository]) {
     if self.repositories.isEmpty {
       self.repositories += repositories

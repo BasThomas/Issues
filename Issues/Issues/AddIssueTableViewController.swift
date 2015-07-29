@@ -70,8 +70,6 @@ extension AddIssueTableViewController: Setup {
 // MARK: - RequestDelegate
 extension AddIssueTableViewController: RequestDelegate {
   
-  func refresh(issues: [Issue]) { }
-  
   func refresh(repositories: [Repository]) {
     if self.fetchedRepositories.isEmpty {
       self.fetchedRepositories += repositories

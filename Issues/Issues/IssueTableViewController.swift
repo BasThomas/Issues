@@ -51,8 +51,6 @@ extension IssueTableViewController: Setup {
 // MARK: - RequestDelegate
 extension IssueTableViewController: RequestDelegate {
   
-  func refresh(repositories: [Repository]) { }
-  
   /// Refreshes the list of shown issues.
   ///
   /// - Parameter issues: issues to use in refresh
@@ -85,6 +83,7 @@ extension IssueTableViewController: RequestDelegate {
 
 // MARK: - Refreshing
 extension IssueTableViewController {
+  
   func refresh() {
     Request.requestIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
   }

@@ -17,6 +17,9 @@ public protocol RequestDelegate {
 
 extension RequestDelegate where Self: UITableViewController {
   
+  public func refresh(repositories: [Repository]) { }
+  public func refresh(issues: [Issue]) { }
+  
   /// Tells the control that a refresh operation has ended.
   public func endRefreshing() {
     self.refreshControl?.endRefreshing()
