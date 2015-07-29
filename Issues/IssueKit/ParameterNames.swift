@@ -39,6 +39,13 @@ extension OAuth {
 // MARK: - Issues
 public enum Issues: String, StringRawRepresentable, LowercaseInitializable {
   
+  /// [integer] or [string] indicates issues with specific milestone.
+  /// if an `integer` is passed, it should refer to a milestone number.
+  /// if a `string` is passed, issues with any milestone are accepted.
+  ///
+  /// - `none`: issues without milestones.
+  case Milestone
+  
   /// [string] indicates which sort of issues to return.
   ///
   /// - `assigned`  : issues assigned to you.
@@ -97,7 +104,7 @@ public enum Issues: String, StringRawRepresentable, LowercaseInitializable {
   case Since
   
   /// All values of the enum.
-  public static let allValues = [Filter, State, Labels, Sort, Direction, Since]
+  public static let allValues = [Milestone, Filter, State, Labels, Sort, Direction, Since]
 }
 
 // MARK: - Comments

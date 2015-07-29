@@ -105,8 +105,10 @@ extension IssueTableViewController {
     switch(cell.issue.state) {
     case .Open:
       issueStateIcon = FAType.FACheck
+      cell.issueStateIconLabel.textColor = .gitHubRedColor()
     case .Closed:
       issueStateIcon = FAType.FAExclamationCircle
+      cell.issueStateIconLabel.textColor = .gitHubGreenColor()
     }
     
     cell.issueStateIconLabel.FAIcon = issueStateIcon
