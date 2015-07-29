@@ -288,7 +288,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53f-9n-Xk6">
-                                            <rect key="frame" x="8" y="11.5" width="537" height="20.5"/>
+                                            <rect key="frame" x="16" y="11.5" width="529" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
@@ -299,7 +299,7 @@
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="53f-9n-Xk6" secondAttribute="trailing" constant="47" id="Cs2-nV-jg2"/>
                                         <constraint firstItem="53f-9n-Xk6" firstAttribute="centerY" secondItem="FtE-CI-WLa" secondAttribute="centerY" id="Jeh-RQ-VXS"/>
-                                        <constraint firstItem="53f-9n-Xk6" firstAttribute="leading" secondItem="FtE-CI-WLa" secondAttribute="leadingMargin" id="ePe-cn-U2s"/>
+                                        <constraint firstItem="53f-9n-Xk6" firstAttribute="leading" secondItem="FtE-CI-WLa" secondAttribute="leadingMargin" constant="8" id="YzA-Bs-nYw"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>

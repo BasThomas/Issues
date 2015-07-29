@@ -18,6 +18,12 @@ private let RepositoryCellIdentifier = "repository"
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
+private let ScopeButtons = ["Full name", "Repository", "Owner"]
+
+private let FullNameSearch = 0
+private let RepositorySearch = 1
+private let OwnerSearch = 2
+
 protocol RepositoryDelegate {
   
   func repositoryChosen(repository: Repository)
@@ -29,15 +35,18 @@ class RepositoryTableViewController: UITableViewController {
   var delegate: RepositoryDelegate?
   
   var repositories: [Repository] = []
+  var filteredRepositories: [Repository] = []
+  var searchController = UISearchController()
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.setupLocalization()
-    self.setupAutomaticCellResizing()
+    self.setupSearch()
     
     Request.delegate = self
     
+    self.filteredRepositories = self.repositories
     guard self.repositories.isEmpty else { return }
     
     Request.requestUserRepositories()
@@ -46,6 +55,16 @@ class RepositoryTableViewController: UITableViewController {
 
 // MARK: - Setup
 extension RepositoryTableViewController: Setup {
+  
+  func setupSearch() {
+    self.searchController = UISearchController(searchResultsController: nil)
+    self.searchController.searchBar.delegate = self
+    
+    self.searchController.dimsBackgroundDuringPresentation = false
+    self.searchController.searchBar.scopeButtonTitles = ScopeButtons
+    
+    self.tableView.tableHeaderView = self.searchController.searchBar
+  }
   
   func setupLocalization() {
     self.title = "__CHOOSE_A_REPOSITORY__".localized
@@ -60,6 +79,7 @@ extension RepositoryTableViewController: RequestDelegate {
   func refresh(repositories: [Repository]) {
     if self.repositories.isEmpty {
       self.repositories += repositories
+      self.filteredRepositories = self.repositories
       self.tableView.reloadData()
     } else {
       let now = self.repositories.flatMap { $0 as? GitHubRepository }
@@ -86,6 +106,22 @@ extension RepositoryTableViewController: RequestDelegate {
   }
 }
 
+// MARK: - UISearchBarDelegate
+extension RepositoryTableViewController: UISearchBarDelegate {
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    let selectedScope = searchBar.selectedScopeButtonIndex
+    
+    self.search(selectedScope, text: searchText)
+  }
+  
+  func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    guard let text = searchBar.text else { return }
+
+    self.search(selectedScope, text: text)
+  }
+}
+
 // MARK: - UITableView data source
 extension RepositoryTableViewController {
   
@@ -94,13 +130,21 @@ extension RepositoryTableViewController {
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if self.searchController.active {
+      return self.filteredRepositories.count
+    }
+    
     return self.repositories.count
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCellWithIdentifier(RepositoryCellIdentifier, forIndexPath: indexPath) as! RepositoryTableViewCell
     
-    cell.repository = self.repositories[indexPath.row]
+    if self.searchController.active {
+      cell.repository = self.filteredRepositories[indexPath.row]
+    } else {
+      cell.repository = self.repositories[indexPath.row]
+    }
     
     cell.nameLabel.text = cell.repository.fullName
     
@@ -113,11 +157,39 @@ extension RepositoryTableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+    self.tableView.cellForRowAtIndexPath(indexPath)?.accessoryType = .Checkmark
     
     self.delegate?.repositoryChosen(self.repositories[indexPath.row])
+    self.searchController.active = false
     self.navigationController?.popViewControllerAnimated(true)
   }
 }
 
 // MARK: - Actions
 extension RepositoryTableViewController { }
+
+// MARK: - Private
+extension RepositoryTableViewController {
+  
+  private func search(searchType: Int, text: String) {
+    func resetSearch() {
+      self.filteredRepositories = self.repositories
+      self.tableView.reloadData()
+    }
+    
+    guard !text.isEmpty else { resetSearch(); return }
+    
+    switch(searchType) {
+    case FullNameSearch:
+      self.filteredRepositories = self.repositories.filter { $0.fullName.contains(text) }
+    case RepositorySearch:
+      self.filteredRepositories = self.repositories.filter { $0.name.contains(text) }
+    case OwnerSearch:
+      self.filteredRepositories = self.repositories.filter { $0.owner.contains(text) }
+    default:
+      return
+    }
+    
+    self.tableView.reloadData()
+  }
+}

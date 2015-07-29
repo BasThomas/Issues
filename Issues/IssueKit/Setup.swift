@@ -13,6 +13,7 @@ public protocol Setup {
   func setupLocalization()
   func setupRows()
   func setupAutomaticCellResizing()
+  func setupSearch()
 }
 
 extension Setup where Self: UITableViewController {
@@ -23,4 +24,6 @@ extension Setup where Self: UITableViewController {
   }
   
   public func setupRows() { }
+  
+  public func setupSearch() { }
 }

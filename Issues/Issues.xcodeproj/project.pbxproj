@@ -50,6 +50,7 @@
 		499050C31B5FF8B0009DF94B /* EditError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C21B5FF8B0009DF94B /* EditError.swift */; };
 		499050C51B6037E1009DF94B /* GitHubComment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C41B6037E1009DF94B /* GitHubComment.swift */; };
 		499050C81B6051CA009DF94B /* Array+Remove.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499050C71B6051CA009DF94B /* Array+Remove.swift */; };
+		499254F31B68FD4C00A0BD25 /* String+Contains.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499254F21B68FD4C00A0BD25 /* String+Contains.swift */; };
 		499F76FD1B61A25D00D09B1F /* Array+RemoveTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */; };
 		49A5E7491B66E53700E1F1B4 /* IntRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49A5E7481B66E53700E1F1B4 /* IntRawRepresentable.swift */; };
 		49B8D00C1B619094007C4E9C /* String+UIColorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */; };
@@ -221,6 +222,7 @@
 		499050C21B5FF8B0009DF94B /* EditError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditError.swift; sourceTree = "<group>"; };
 		499050C41B6037E1009DF94B /* GitHubComment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubComment.swift; sourceTree = "<group>"; };
 		499050C71B6051CA009DF94B /* Array+Remove.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+Remove.swift"; sourceTree = "<group>"; };
+		499254F21B68FD4C00A0BD25 /* String+Contains.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Contains.swift"; sourceTree = "<group>"; };
 		499F76FC1B61A25D00D09B1F /* Array+RemoveTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Array+RemoveTests.swift"; sourceTree = "<group>"; };
 		49A5E7481B66E53700E1F1B4 /* IntRawRepresentable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IntRawRepresentable.swift; sourceTree = "<group>"; };
 		49B8D00B1B619094007C4E9C /* String+UIColorTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+UIColorTests.swift"; sourceTree = "<group>"; };
@@ -497,6 +499,7 @@
 				49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */,
 				495A5E0E1B66471C00B4E32B /* String+NSDate.swift */,
 				49D99A051B68EDBD00801FD9 /* String+Localization.swift */,
+				499254F21B68FD4C00A0BD25 /* String+Contains.swift */,
 				497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */,
 				493055201B6791C2004E946E /* IndexPath+Add.swift */,
 				495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */,
@@ -1124,6 +1127,7 @@
 				49025EB21B62F14000D56882 /* JSONError.swift in Sources */,
 				493055211B6791C2004E946E /* IndexPath+Add.swift in Sources */,
 				49437BFC1B4B072E001C8557 /* User.swift in Sources */,
+				499254F31B68FD4C00A0BD25 /* String+Contains.swift in Sources */,
 				495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */,
 				4932F6961B66DFAA00B0677F /* ParseDelegate.swift in Sources */,
 				495A5E131B665DBC00B4E32B /* HeaderParseable.swift in Sources */,
