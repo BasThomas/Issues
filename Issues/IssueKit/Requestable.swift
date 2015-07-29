@@ -15,5 +15,5 @@ protocol Requestable: ETaggable {
   
   func createIssue(issue: Parameters, repository: Repository)
   
-  func requestUserRepositories()
+  func requestUserRepositories(parameterOptions: RepositoryParameterOptions)
 }

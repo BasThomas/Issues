@@ -28,6 +28,7 @@
 		493055211B6791C2004E946E /* IndexPath+Add.swift in Sources */ = {isa = PBXBuildFile; fileRef = 493055201B6791C2004E946E /* IndexPath+Add.swift */; };
 		4932F6961B66DFAA00B0677F /* ParseDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4932F6951B66DFAA00B0677F /* ParseDelegate.swift */; };
 		4937BCA51B68C93400815A19 /* UIColor+Custom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4937BCA41B68C93400815A19 /* UIColor+Custom.swift */; };
+		4937BCA71B68D1BA00815A19 /* RepositoryParameterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4937BCA61B68D1BA00815A19 /* RepositoryParameterOptions.swift */; };
 		49437BF41B4B05E0001C8557 /* Issue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF31B4B05E0001C8557 /* Issue.swift */; };
 		49437BFA1B4B0705001C8557 /* State.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BF91B4B0705001C8557 /* State.swift */; };
 		49437BFC1B4B072E001C8557 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFB1B4B072E001C8557 /* User.swift */; };
@@ -195,6 +196,7 @@
 		493055201B6791C2004E946E /* IndexPath+Add.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "IndexPath+Add.swift"; sourceTree = "<group>"; };
 		4932F6951B66DFAA00B0677F /* ParseDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseDelegate.swift; sourceTree = "<group>"; };
 		4937BCA41B68C93400815A19 /* UIColor+Custom.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Custom.swift"; sourceTree = "<group>"; };
+		4937BCA61B68D1BA00815A19 /* RepositoryParameterOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RepositoryParameterOptions.swift; sourceTree = "<group>"; };
 		49437BF31B4B05E0001C8557 /* Issue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Issue.swift; sourceTree = "<group>"; };
 		49437BF91B4B0705001C8557 /* State.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = State.swift; sourceTree = "<group>"; };
 		49437BFB1B4B072E001C8557 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
@@ -387,6 +389,7 @@
 				49437BFB1B4B072E001C8557 /* User.swift */,
 				49024A641B5F88FC00F5FAE3 /* Label.swift */,
 				49EFE8441B636510007445E8 /* IssueParameterOptions.swift */,
+				4937BCA61B68D1BA00815A19 /* RepositoryParameterOptions.swift */,
 				495A5E141B665ECD00B4E32B /* HeaderOptions.swift */,
 				499050C01B5FE1FE009DF94B /* Errors */,
 				49437C071B4BD6E7001C8557 /* Protocols */,
@@ -1093,6 +1096,7 @@
 				4932F6961B66DFAA00B0677F /* ParseDelegate.swift in Sources */,
 				495A5E131B665DBC00B4E32B /* HeaderParseable.swift in Sources */,
 				49EFE8431B63602A007445E8 /* RequestController.swift in Sources */,
+				4937BCA71B68D1BA00815A19 /* RepositoryParameterOptions.swift in Sources */,
 				49024A6A1B5F8B3600F5FAE3 /* Repository.swift in Sources */,
 				49CB0BAF1B51410D0030A51A /* ParseController.swift in Sources */,
 				497B98D31B63BF6F004B29DD /* ParameterValues.swift in Sources */,

@@ -10,20 +10,22 @@ import Foundation
 
 public typealias Parameters = [String: AnyObject]
 
+protocol ParameterOptions { }
+
 protocol ParameterParseable {
   
-  func parseIssueParameterOptions(parameterOptions: IssueParameterOptions) -> Parameters
+  func parseParameterOptions(parameterOptions: ParameterOptions) -> Parameters
 }
 
 extension ParameterParseable {
   
-  /// Parses IssueParameterOptions to Parameters.
+  /// Parses ParameterOptions to Parameters.
   /// Only non-empty key-value pairs are added.
   ///
   /// - Parameter parameterOptions: parameterOptions to evaluate.
   ///
   /// - Returns `Parameters`
-  func parseIssueParameterOptions(parameterOptions: IssueParameterOptions = IssueParameterOptions()) -> Parameters {
+  func parseParameterOptions(parameterOptions: ParameterOptions) -> Parameters {
     var parameters: Parameters = [:]
     
     typealias Child = (key: String?, value: protocol<>)
@@ -39,7 +41,7 @@ extension ParameterParseable {
     }
     
     let mirror = Mirror(reflecting: parameterOptions)
-    mirror.children.map { $0 }.map { parameter in add(parameter) }
+    mirror.children.map { $0 }.map { add($0) }
     
     return parameters
   }

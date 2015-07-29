@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct IssueParameterOptions {
+public struct IssueParameterOptions: ParameterOptions {
   
   let filter: String
   let state: String

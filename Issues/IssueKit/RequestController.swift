@@ -67,7 +67,7 @@ extension RequestController: Requestable {
   
   /// Lists all issues across all the authenticated user’s visible repositories including owned repositories, member repositories, and organization repositories.
   public func requestIssues(parameterOptions: IssueParameterOptions = IssueParameterOptions()) {
-    let parameters = Parse.parseIssueParameterOptions(parameterOptions)
+    let parameters = Parse.parseParameterOptions(parameterOptions)
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestIssuesETag))
     
     Alamofire.request(.GET, Request.GETIssues, parameters: parameters, headers: headers)
@@ -93,7 +93,7 @@ extension RequestController: Requestable {
   
   /// Lists all issues across owned and member repositories for the authenticated user.
   public func requestUserIssues(parameterOptions: IssueParameterOptions = IssueParameterOptions()) {
-    let parameters = Parse.parseIssueParameterOptions(parameterOptions)
+    let parameters = Parse.parseParameterOptions(parameterOptions)
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserIssuesETag))
     
     Alamofire.request(.GET, Request.GETUserIssues, parameters: parameters, headers: headers)
@@ -149,8 +149,8 @@ extension RequestController {
 extension RequestController {
   
   /// Lists repositories that are accessible to the authenticated user.
-  public func requestUserRepositories() {
-    let parameters: Parameters = [:]
+  public func requestUserRepositories(parameterOptions: RepositoryParameterOptions = RepositoryParameterOptions()) {
+    let parameters = Parse.parseParameterOptions(parameterOptions)
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserRepositoriesETag))
     
     Alamofire.request(.GET, Request.GETUserRepositories, parameters: parameters, headers: headers)
