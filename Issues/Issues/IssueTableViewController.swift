@@ -31,6 +31,8 @@ class IssueTableViewController: UITableViewController {
   private var issues: [Issue] = []
   private var filteredIssues: [Issue] = []
   private var searchController: UISearchController?
+  
+  private var destionationViewController: UIViewController?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -45,6 +47,7 @@ class IssueTableViewController: UITableViewController {
     self.refreshControl = refresh
     
     Request.delegate = self
+    self.navigationController?.delegate = self
     
     Request.requestUserIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
   }
@@ -202,14 +205,27 @@ extension IssueTableViewController {
 extension IssueTableViewController { }
 
 // MARK: - Navigation
-extension IssueTableViewController {
+extension IssueTableViewController: UINavigationControllerDelegate {
   
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     guard segue.identifier == ShowIssueOverview else { return }
     
     if let dvc = segue.destinationViewController as? IssueOverviewTableViewController,
        let cell = sender as? IssueTableViewCell, let issue = cell.issue {
+        
+      if let searchController = self.searchController where searchController.active {
+        searchController.active = false
+      }
+      
+      self.destionationViewController = dvc
       dvc.issue = issue
     }
+  }
+  
+  func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
+    guard viewController == self.destionationViewController else { return }
+    
+    self.filteredIssues = self.issues
+    self.tableView.reloadData()
   }
 }
