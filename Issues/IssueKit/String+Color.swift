@@ -1,5 +1,5 @@
 //
-//  String+UIColor.swift
+//  String+Color.swift
 //  Issues
 //
 //  Created by Bas on 06/07/2015.
@@ -10,8 +10,8 @@ import Foundation
 
 extension String {
   
-  /// Creates a UIColor from the Hex-string.
-  public var color: UIColor? {
+  /// Creates a Color from the Hex-string.
+  public var color: Color? {
     var red:   CGFloat = 0.0
     var green: CGFloat = 0.0
     var blue:  CGFloat = 0.0
@@ -47,7 +47,7 @@ extension String {
         return nil
       }
       
-      return UIColor(red: red, green: green, blue: blue, alpha: alpha)
+      return Color(red: red, green: green, blue: blue, alpha: alpha)
     }
     
     return nil

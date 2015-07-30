@@ -8,8 +8,6 @@
 
 import Foundation
 
-public typealias Assignee = User
-
 public struct User {
   
   /// Name of the user.

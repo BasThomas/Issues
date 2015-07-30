@@ -8,9 +8,6 @@
 
 import Foundation
 
-public typealias ETag = String
-public typealias Headers = [String: String]
-
 /// Authorization key-value pair.
 private let Authorization = "token \(Value.OAuth.AccessToken)"
 

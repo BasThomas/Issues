@@ -8,8 +8,6 @@
 
 import Foundation
 
-public typealias Hex = String
-
 public struct Label {
   
   /// Name of the label.

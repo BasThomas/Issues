@@ -1,5 +1,5 @@
 //
-//  String+UIColorTests.swift
+//  String+ColorTests.swift
 //  Issues
 //
 //  Created by Bas Broek on 23/07/15.
@@ -12,7 +12,7 @@ import IssueKit
 private let InvalidHex = "The Hex was invalid."
 private let InvalidColor = "The color was invalid."
 
-class String_UIColorTests: XCTestCase {
+class String_ColorTests: XCTestCase {
   
   override func setUp() {
     super.setUp()
@@ -30,19 +30,19 @@ class String_UIColorTests: XCTestCase {
     XCTAssertNotNil(red.color, InvalidHex)
     
     if let red = red.color {
-      XCTAssertEqual(red, UIColor.redColor(), InvalidColor)
+      XCTAssertEqual(red, Color.redColor(), InvalidColor)
     }
     
     XCTAssertNotNil(green.color, InvalidHex)
     
     if let green = green.color {
-      XCTAssertEqual(green, UIColor.greenColor(), InvalidColor)
+      XCTAssertEqual(green, Color.greenColor(), InvalidColor)
     }
     
     XCTAssertNotNil(blue.color, InvalidHex)
     
     if let blue = blue.color {
-      XCTAssertEqual(blue, UIColor.blueColor(), InvalidColor)
+      XCTAssertEqual(blue, Color.blueColor(), InvalidColor)
     }
   }
   
@@ -54,19 +54,19 @@ class String_UIColorTests: XCTestCase {
     XCTAssertNotNil(yellow.color, InvalidHex)
     
     if let yellow = yellow.color {
-      XCTAssertEqual(yellow, UIColor.yellowColor(), InvalidColor)
+      XCTAssertEqual(yellow, Color.yellowColor(), InvalidColor)
     }
     
     XCTAssertNotNil(cyan.color, InvalidHex)
     
     if let cyan = cyan.color {
-      XCTAssertEqual(cyan, UIColor.cyanColor(), InvalidColor)
+      XCTAssertEqual(cyan, Color.cyanColor(), InvalidColor)
     }
     
     XCTAssertNotNil(magenta.color, InvalidHex)
     
     if let magenta = magenta.color {
-      XCTAssertEqual(magenta, UIColor.magentaColor(), InvalidColor)
+      XCTAssertEqual(magenta, Color.magentaColor(), InvalidColor)
     }
   }
   
@@ -78,19 +78,19 @@ class String_UIColorTests: XCTestCase {
     XCTAssertNotNil(red.color, InvalidHex)
     
     if let red = red.color {
-      XCTAssertEqual(red, UIColor.redColor(), InvalidColor)
+      XCTAssertEqual(red, Color.redColor(), InvalidColor)
     }
     
     XCTAssertNotNil(green.color, InvalidHex)
     
     if let green = green.color {
-      XCTAssertEqual(green, UIColor.greenColor(), InvalidColor)
+      XCTAssertEqual(green, Color.greenColor(), InvalidColor)
     }
     
     XCTAssertNotNil(blue.color, InvalidHex)
     
     if let blue = blue.color {
-      XCTAssertEqual(blue, UIColor.blueColor(), InvalidColor)
+      XCTAssertEqual(blue, Color.blueColor(), InvalidColor)
     }
   }
   
@@ -102,19 +102,19 @@ class String_UIColorTests: XCTestCase {
     XCTAssertNotNil(yellow.color, InvalidHex)
     
     if let yellow = yellow.color {
-      XCTAssertEqual(yellow, UIColor.yellowColor(), InvalidColor)
+      XCTAssertEqual(yellow, Color.yellowColor(), InvalidColor)
     }
     
     XCTAssertNotNil(cyan.color, InvalidHex)
     
     if let cyan = cyan.color {
-      XCTAssertEqual(cyan, UIColor.cyanColor(), InvalidColor)
+      XCTAssertEqual(cyan, Color.cyanColor(), InvalidColor)
     }
     
     XCTAssertNotNil(magenta.color, InvalidHex)
     
     if let magenta = magenta.color {
-      XCTAssertEqual(magenta, UIColor.magentaColor(), InvalidColor)
+      XCTAssertEqual(magenta, Color.magentaColor(), InvalidColor)
     }
   }
   
@@ -126,19 +126,19 @@ class String_UIColorTests: XCTestCase {
     XCTAssertNotNil(transparentRed.color, InvalidHex)
     
     if let transparentRed = transparentRed.color {
-      XCTAssertEqual(transparentRed, UIColor.transparentRedColor(), InvalidColor)
+      XCTAssertEqual(transparentRed, Color.transparentRedColor(), InvalidColor)
     }
     
     XCTAssertNotNil(transparentGreen.color, InvalidHex)
     
     if let transparentGreen = transparentGreen.color {
-      XCTAssertEqual(transparentGreen, UIColor.transparentGreenColor(), InvalidColor)
+      XCTAssertEqual(transparentGreen, Color.transparentGreenColor(), InvalidColor)
     }
     
     XCTAssertNotNil(transparentBlue.color, InvalidHex)
     
     if let transparentBlue = transparentBlue.color {
-      XCTAssertEqual(transparentBlue, UIColor.transparentBlueColor(), InvalidColor)
+      XCTAssertEqual(transparentBlue, Color.transparentBlueColor(), InvalidColor)
     }
   }
   
@@ -150,19 +150,19 @@ class String_UIColorTests: XCTestCase {
     XCTAssertNotNil(transparentYellow.color, InvalidHex)
     
     if let transparentYellow = transparentYellow.color {
-      XCTAssertEqual(transparentYellow, UIColor.transparentYellowColor(), InvalidColor)
+      XCTAssertEqual(transparentYellow, Color.transparentYellowColor(), InvalidColor)
     }
     
     XCTAssertNotNil(transparentCyan.color, InvalidHex)
     
     if let transparentCyan = transparentCyan.color {
-      XCTAssertEqual(transparentCyan, UIColor.transparentCyanColor(), InvalidColor)
+      XCTAssertEqual(transparentCyan, Color.transparentCyanColor(), InvalidColor)
     }
     
     XCTAssertNotNil(transparentMagenta.color, InvalidHex)
     
     if let transparentMagenta = transparentMagenta.color {
-      XCTAssertEqual(transparentMagenta, UIColor.transparentMagentaColor(), InvalidColor)
+      XCTAssertEqual(transparentMagenta, Color.transparentMagentaColor(), InvalidColor)
     }
   }
   
@@ -183,47 +183,47 @@ class String_UIColorTests: XCTestCase {
   }
 }
 
-extension UIColor {
+extension Color {
   
   /// Returns a color object whose RGB values are 1.0, 0.0, and 0.0 and whose alpha value is 0.4.
   ///
-  /// The `UIColor` object.
-  class func transparentRedColor() -> UIColor {
-    return UIColor(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.4)
+  /// The `Color` object.
+  class func transparentRedColor() -> Color {
+    return Color(red: 1.0, green: 0.0, blue: 0.0, alpha: 0.4)
   }
   
   /// Returns a color object whose RGB values are 0.0, 1.0, and 0.0 and whose alpha value is 0.4.
   ///
-  /// The `UIColor` object.
-  class func transparentGreenColor() -> UIColor {
-    return UIColor(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.4)
+  /// The `Color` object.
+  class func transparentGreenColor() -> Color {
+    return Color(red: 0.0, green: 1.0, blue: 0.0, alpha: 0.4)
   }
   
   /// Returns a color object whose RGB values are 0.0, 0.0, and 1.0 and whose alpha value is 0.4.
   ///
-  /// The `UIColor` object.
-  class func transparentBlueColor() -> UIColor {
-    return UIColor(red: 0.0, green: 0.0, blue: 1.0, alpha: 0.4)
+  /// The `Color` object.
+  class func transparentBlueColor() -> Color {
+    return Color(red: 0.0, green: 0.0, blue: 1.0, alpha: 0.4)
   }
   
   /// Returns a color object whose RGB values are 1.0, 1.0, and 0.0 and whose alpha value is 0.4.
   ///
-  /// The `UIColor` object.
-  class func transparentYellowColor() -> UIColor {
-    return UIColor(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.4)
+  /// The `Color` object.
+  class func transparentYellowColor() -> Color {
+    return Color(red: 1.0, green: 1.0, blue: 0.0, alpha: 0.4)
   }
   
   /// Returns a color object whose RGB values are 0.0, 1.0, and 1.0 and whose alpha value is 0.4.
   ///
-  /// The `UIColor` object.
-  class func transparentCyanColor() -> UIColor {
-    return UIColor(red: 0.0, green: 1.0, blue: 1.0, alpha: 0.4)
+  /// The `Color` object.
+  class func transparentCyanColor() -> Color {
+    return Color(red: 0.0, green: 1.0, blue: 1.0, alpha: 0.4)
   }
   
   /// Returns a color object whose RGB values are 1.0, 0.0, and 1.0 and whose alpha value is 0.4.
   ///
-  /// The `UIColor` object.
-  class func transparentMagentaColor() -> UIColor {
-    return UIColor(red: 1.0, green: 0.0, blue: 1.0, alpha: 0.4)
+  /// The `Color` object.
+  class func transparentMagentaColor() -> Color {
+    return Color(red: 1.0, green: 0.0, blue: 1.0, alpha: 0.4)
   }
 }
