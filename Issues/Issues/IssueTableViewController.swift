@@ -214,31 +214,22 @@ extension IssueTableViewController { }
 // MARK: - Navigation
 extension IssueTableViewController: UINavigationControllerDelegate {
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    guard segue.identifier == ShowIssueOverview else { return }
-    
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {    
     if segue.identifier == ShowIssueOverview,
-       let dvc = segue.destinationViewController as? IssueOverviewTableViewController,
-       let cell = sender as? IssueTableViewCell, let issue = cell.issue {
-        
+     let dvc = segue.destinationViewController as? IssueOverviewTableViewController,
+     let cell = sender as? IssueTableViewCell, let issue = cell.issue {
+      
       if let searchController = self.searchController where searchController.active {
         searchController.active = false
       }
       
       self.destionationViewController = dvc
       dvc.issue = issue
-    } else if segue.identifier == ShowAddIssue,
-       let dvc = segue.destinationViewController as? AddIssueTableViewController {
-      self.destionationViewController = dvc
     }
   }
   
   func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
     guard viewController == self.destionationViewController else { return }
-    
-    if let viewController = viewController as? AddIssueTableViewController {
-      viewController.titleTextField.becomeFirstResponder()
-    }
     
     self.filteredIssues = self.issues
     self.tableView.reloadData()

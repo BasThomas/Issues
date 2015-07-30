@@ -136,13 +136,13 @@ extension ParseController {
        let fullName = repository["full_name"].string {
       
         let commentsURL = repository["comments_url"].string
-        print("commentsURL: \(commentsURL)")
+//        print("commentsURL: \(commentsURL)")
         let assigneesURL = repository["assignees_url"].string
-        print("assigneesURL: \(assigneesURL)")
+//        print("assigneesURL: \(assigneesURL)")
         let labelsURL = repository["labels_url"].string
-        print("labelsURL: \(labelsURL)")
+//        print("labelsURL: \(labelsURL)")
         let milestonesURL = repository["milestones_url"].string
-        print("milestonesURL: \(milestonesURL)")
+//        print("milestonesURL: \(milestonesURL)")
         
         let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName)
         repositories.append(ghRepository)

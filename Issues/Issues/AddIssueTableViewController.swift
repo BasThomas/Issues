@@ -72,6 +72,7 @@ extension AddIssueTableViewController: RequestDelegate {
   func refresh(repositories: [Repository]) {
     if self.fetchedRepositories.isEmpty {
       self.fetchedRepositories += repositories
+      self.titleTextField.becomeFirstResponder()
     }
   }
 }
@@ -100,15 +101,6 @@ extension AddIssueTableViewController: RepositoryDelegate {
 
 // MARK: - UITableView delegate
 extension AddIssueTableViewController {
-  
-  // Setup automatic cell resizing. Seems you need to do so per indexPath in a static tableview.
-  override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return 44
-  }
-  
-  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    return UITableViewAutomaticDimension
-  }
   
   override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
     switch(indexPath.row) {
