@@ -15,10 +15,14 @@ public protocol RequestDelegate {
   func endRefreshing()
 }
 
-extension RequestDelegate where Self: UITableViewController {
+extension RequestDelegate {
   
   public func refresh(repositories: [Repository]) { }
   public func refresh(issues: [Issue]) { }
+  public func endRefreshing() { }
+}
+
+extension RequestDelegate where Self: UITableViewController {
   
   /// Tells the control that a refresh operation has ended.
   public func endRefreshing() {
