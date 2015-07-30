@@ -88,6 +88,7 @@
 		49EFE8451B636510007445E8 /* IssueParameterOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE8441B636510007445E8 /* IssueParameterOptions.swift */; };
 		49EFE8491B63802A007445E8 /* LowercaseInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE8481B63802A007445E8 /* LowercaseInitializable.swift */; };
 		49EFE84B1B63AC1A007445E8 /* NSDate+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */; };
+		49FB1FDB1B6A0B6B00648E97 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB1FDA1B6A0B6B00648E97 /* Searchable.swift */; };
 		B64229DEA7E85C4E91DBF7FD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21696A3FB18FFADF5185AD1 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -278,6 +279,7 @@
 		49EFE8441B636510007445E8 /* IssueParameterOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueParameterOptions.swift; sourceTree = "<group>"; };
 		49EFE8481B63802A007445E8 /* LowercaseInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowercaseInitializable.swift; sourceTree = "<group>"; };
 		49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+String.swift"; sourceTree = "<group>"; };
+		49FB1FDA1B6A0B6B00648E97 /* Searchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
 		5061E53214CBCAF227195ECE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6744CD339ECE58657A6EE1FC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A21696A3FB18FFADF5185AD1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -353,6 +355,7 @@
 				49024A701B5F8F7D00F5FAE3 /* Milestoneable.swift */,
 				49024A5B1B5F7BEA00F5FAE3 /* Lockable.swift */,
 				49024A5D1B5F7BF800F5FAE3 /* Assignable.swift */,
+				49FB1FDA1B6A0B6B00648E97 /* Searchable.swift */,
 			);
 			name = Skills;
 			sourceTree = "<group>";
@@ -1110,6 +1113,7 @@
 				49437C001B4B0D04001C8557 /* String+Color.swift in Sources */,
 				49024A5A1B5F7BDC00F5FAE3 /* Labelable.swift in Sources */,
 				49EFE84B1B63AC1A007445E8 /* NSDate+String.swift in Sources */,
+				49FB1FDB1B6A0B6B00648E97 /* Searchable.swift in Sources */,
 				4911FBBC1B51174400018812 /* Environment.swift in Sources */,
 				49024A671B5F8B0800F5FAE3 /* GitHubRepository.swift in Sources */,
 				49024A711B5F8F7D00F5FAE3 /* Milestoneable.swift in Sources */,

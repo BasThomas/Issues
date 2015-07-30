@@ -225,9 +225,9 @@ extension AddIssueTableViewController {
 }
 
 // MARK: - Private
-extension AddIssueTableViewController {
+private extension AddIssueTableViewController {
   
-  private func resignFirstResponders() {
+  func resignFirstResponders() {
     self.titleTextField.resignFirstResponder()
     self.bodyTextField.resignFirstResponder()
   }

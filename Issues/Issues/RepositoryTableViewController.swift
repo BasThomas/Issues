@@ -18,6 +18,7 @@ private let RepositoryCellIdentifier = "repository"
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
+// MARK: UISearchController
 private let ScopeButtons = ["Full name", "Repository", "Owner"]
 
 private let FullNameSearch = 0
@@ -35,8 +36,8 @@ class RepositoryTableViewController: UITableViewController {
   var delegate: RepositoryDelegate?
   
   var repositories: [Repository] = []
-  var filteredRepositories: [Repository] = []
-  var searchController: UISearchController?
+  private var filteredRepositories: [Repository] = []
+  private var searchController: UISearchController?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -120,6 +121,44 @@ extension RepositoryTableViewController: UISearchBarDelegate {
   }
 }
 
+// MARK: - Searchable
+extension RepositoryTableViewController: Searchable {
+  
+  func search(searchType: Int, text: String) {
+    func resetSearch() {
+      //      let now = self.filteredRepositories.flatMap { $0 as? GitHubRepository }
+      //      print("now: \(now.count)")
+      self.filteredRepositories = self.repositories
+      //      let new = self.filteredRepositories.flatMap { $0 as? GitHubRepository }
+      //      print("new: \(new.count)")
+      //
+      //      let newRepositories = new.filter { !now.contains($0) }.map { $0 as Repository }
+      //      print("#new: \(newRepositories.count)")
+      //
+      //      self.tableView.beginUpdates()
+      //      let indexPaths = newIndexPaths(now: now.count, add: newRepositories.count)
+      //      self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Middle)
+      //      self.tableView.endUpdates()
+      self.tableView.reloadData()
+    }
+    
+    guard !text.isEmpty else { resetSearch(); return }
+    
+    switch(searchType) {
+    case FullNameSearch:
+      self.filteredRepositories = self.repositories.filter { $0.fullName.contains(text) }
+    case RepositorySearch:
+      self.filteredRepositories = self.repositories.filter { $0.name.contains(text) }
+    case OwnerSearch:
+      self.filteredRepositories = self.repositories.filter { $0.owner.contains(text) }
+    default:
+      return
+    }
+    
+    self.tableView.reloadData()
+  }
+}
+
 // MARK: - UITableView data source
 extension RepositoryTableViewController {
   
@@ -170,29 +209,3 @@ extension RepositoryTableViewController {
 
 // MARK: - Actions
 extension RepositoryTableViewController { }
-
-// MARK: - Private
-extension RepositoryTableViewController {
-  
-  private func search(searchType: Int, text: String) {
-    func resetSearch() {
-      self.filteredRepositories = self.repositories
-      self.tableView.reloadData()
-    }
-    
-    guard !text.isEmpty else { resetSearch(); return }
-    
-    switch(searchType) {
-    case FullNameSearch:
-      self.filteredRepositories = self.repositories.filter { $0.fullName.contains(text) }
-    case RepositorySearch:
-      self.filteredRepositories = self.repositories.filter { $0.name.contains(text) }
-    case OwnerSearch:
-      self.filteredRepositories = self.repositories.filter { $0.owner.contains(text) }
-    default:
-      return
-    }
-    
-    self.tableView.reloadData()
-  }
-}

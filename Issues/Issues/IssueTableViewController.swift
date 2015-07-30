@@ -19,15 +19,25 @@ private let ShowIssueOverview = "showIssueOverview"
 // MARK: Request + Parse instances
 private let Request = RequestController.sharedInstance
 
+// MARK: UISearchController
+private let ScopeButtons = ["Title", "Label", "Milestone"]
+
+private let TitleSearch = 0
+private let LabelSearch = 1
+private let MilestoneSearch = 2
+
 class IssueTableViewController: UITableViewController {
   
   private var issues: [Issue] = []
+  private var filteredIssues: [Issue] = []
+  private var searchController: UISearchController?
 
   override func viewDidLoad() {
     super.viewDidLoad()
     
     self.setupLocalization()
     self.setupAutomaticCellResizing()
+    self.setupSearch()
     
     let refresh = UIRefreshControl()
     refresh.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
@@ -43,6 +53,16 @@ class IssueTableViewController: UITableViewController {
 // MARK: - Setup
 extension IssueTableViewController: Setup {
   
+  func setupSearch() {
+    self.searchController = UISearchController(searchResultsController: nil)
+    self.searchController?.searchBar.delegate = self
+    
+    self.searchController?.dimsBackgroundDuringPresentation = false
+    self.searchController?.searchBar.scopeButtonTitles = [] //ScopeButtons
+    
+    self.tableView.tableHeaderView = self.searchController?.searchBar
+  }
+  
   func setupLocalization() {
     self.title = "__ISSUES__".localized
   }
@@ -57,6 +77,7 @@ extension IssueTableViewController: RequestDelegate {
   func refresh(issues: [Issue]) {
     if self.issues.isEmpty {
       self.issues += issues
+      self.filteredIssues = self.issues
       self.tableView.reloadData()
     } else {
       let now = self.issues.flatMap { $0 as? GitHubIssue }
@@ -90,6 +111,42 @@ extension IssueTableViewController {
   }
 }
 
+// MARK: - UISearchBarDelegate
+extension IssueTableViewController: UISearchBarDelegate {
+  
+  func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    let selectedScope = searchBar.selectedScopeButtonIndex
+    
+    self.search(selectedScope, text: searchText)
+  }
+  
+  func searchBar(searchBar: UISearchBar, selectedScopeButtonIndexDidChange selectedScope: Int) {
+    guard let text = searchBar.text else { return }
+    
+    self.search(selectedScope, text: text)
+  }
+}
+
+// MARK: - Searchable
+extension IssueTableViewController: Searchable {
+  
+  func search(searchType: Int, text: String) {
+    func resetSearch() {
+      self.filteredIssues = self.issues
+      self.tableView.reloadData()
+    }
+    
+    guard !text.isEmpty else { resetSearch(); return }
+    
+    switch(searchType) {
+    default:
+      self.filteredIssues = self.issues.filter { $0.title.contains(text) }
+    }
+    
+    self.tableView.reloadData()
+  }
+}
+
 // MARK: - UITableView data source
 extension IssueTableViewController {
   
@@ -98,13 +155,21 @@ extension IssueTableViewController {
   }
   
   override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if let searchController = self.searchController where searchController.active {
+      return self.filteredIssues.count
+    }
+    
     return self.issues.count
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let cell = self.tableView.dequeueReusableCellWithIdentifier(IssueCellIdentifier, forIndexPath: indexPath) as! IssueTableViewCell
     
-    cell.issue = self.issues[indexPath.row]
+    if let searchController = self.searchController where searchController.active {
+      cell.issue = self.filteredIssues[indexPath.row]
+    } else {
+      cell.issue = self.issues[indexPath.row]
+    }
     
     cell.issueTitleLabel.text = cell.issue.title
     
