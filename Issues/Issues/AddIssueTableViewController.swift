@@ -48,12 +48,6 @@ class AddIssueTableViewController: UITableViewController {
     
     self.setupLocalization()
   }
-  
-  override func viewDidAppear(animated: Bool) {
-    super.viewDidAppear(animated)
-    
-    self.titleTextField.becomeFirstResponder()
-  }
 }
 
 // MARK: - Setup

@@ -15,6 +15,7 @@ private let IssueCellIdentifier = "issue"
 
 // MARK: SegueIdentifiers
 private let ShowIssueOverview = "showIssueOverview"
+private let ShowAddIssue = "showAddIssue"
 
 // MARK: Request + Parse instances
 private let Request = RequestController.sharedInstance
@@ -210,7 +211,8 @@ extension IssueTableViewController: UINavigationControllerDelegate {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     guard segue.identifier == ShowIssueOverview else { return }
     
-    if let dvc = segue.destinationViewController as? IssueOverviewTableViewController,
+    if segue.identifier == ShowIssueOverview,
+       let dvc = segue.destinationViewController as? IssueOverviewTableViewController,
        let cell = sender as? IssueTableViewCell, let issue = cell.issue {
         
       if let searchController = self.searchController where searchController.active {
@@ -219,11 +221,18 @@ extension IssueTableViewController: UINavigationControllerDelegate {
       
       self.destionationViewController = dvc
       dvc.issue = issue
+    } else if segue.identifier == ShowAddIssue,
+       let dvc = segue.destinationViewController as? AddIssueTableViewController {
+      self.destionationViewController = dvc
     }
   }
   
   func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
     guard viewController == self.destionationViewController else { return }
+    
+    if let viewController = viewController as? AddIssueTableViewController {
+      viewController.titleTextField.becomeFirstResponder()
+    }
     
     self.filteredIssues = self.issues
     self.tableView.reloadData()

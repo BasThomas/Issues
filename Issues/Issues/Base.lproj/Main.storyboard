@@ -67,7 +67,7 @@
                     <navigationItem key="navigationItem" title="Issues" id="Y6i-HD-AGK">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="OOH-Ni-YyP">
                             <connections>
-                                <segue destination="N2h-1z-HRP" kind="presentation" id="p6K-pU-NJF"/>
+                                <segue destination="N2h-1z-HRP" kind="presentation" identifier="showAddIssue" id="p6K-pU-NJF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
