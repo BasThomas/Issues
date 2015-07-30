@@ -36,7 +36,7 @@ class IssueTableViewController: UITableViewController {
     
     Request.delegate = self
     
-    Request.requestIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
+    Request.requestUserIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
   }
 }
 
@@ -86,7 +86,7 @@ extension IssueTableViewController {
   
   func refresh() {
     Request.delegate = self
-    Request.requestIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
+    Request.requestUserIssues(IssueParameterOptions(state: Value.State.Open.stringValue))
   }
 }
 

@@ -34,6 +34,9 @@ extension ParseController: Parseable {
     for issue in json {
       let issue = issue.1
       
+      // Skips any pull requests.
+      guard issue["pull_request"].dictionary == nil else { continue }
+      
       if let number = issue["number"].int,
          let title = issue["title"].string,
          let body = issue["body"].string,
