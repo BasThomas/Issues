@@ -16,7 +16,7 @@
 "__TITLE__"               = "Title";
 "__TITLE_PLACEHOLDER__"   = "Give the issue a clear title";
 "__BODY__"                = "Body";
-"__BODY_PLACEHOLDER__"    = "(optional) Add more information";
+"__BODY_PLACEHOLDER__"    = "Add more information (optional)";
 
 /* Issue overview */
 "__ISSUE_OVERVIEW__"      = "Issue overview";

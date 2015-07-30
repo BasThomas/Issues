@@ -8,24 +8,11 @@
 
 import UIKit
 
-public enum Location {
-  
-  case Top
-  case Bottom
-}
-
-public func newIndexPaths(now now: Int, add new: Int, location: Location = .Top) -> [NSIndexPath] {
+public func newIndexPaths(now now: Int, add new: Int) -> [NSIndexPath] {
   var indexPaths: [NSIndexPath] = []
   
-  switch(location) {
-  case .Top:
-    for _ in 0..<new {
-      indexPaths.append(NSIndexPath(forRow: 0, inSection: 0))
-    }
-  case .Bottom:
-    for i in 0..<new {
-      indexPaths.append(NSIndexPath(forRow: now + i, inSection: 0))
-    }
+  for i in 0..<new {
+    indexPaths.append(NSIndexPath(forRow: now + i, inSection: 0))
   }
   
   return indexPaths

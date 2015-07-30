@@ -15,6 +15,20 @@ public struct Label {
   
   /// Hex(color) of the label.
   public var color: Hex
+  
+  public init(name: String, color: Hex) {
+    self.name = name
+    self.color = color
+  }
+}
+
+// MARK: - CustomStringConvertible
+extension Label: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): name = \(self.name), color = \(self.color)"
+  }
 }
 
 // MARK: - Hashable

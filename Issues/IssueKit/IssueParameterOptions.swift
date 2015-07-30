@@ -33,6 +33,15 @@ public struct IssueParameterOptions: ParameterOptions {
   }
 }
 
+// MARK: - CustomStringConvertible
+extension IssueParameterOptions: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): filter: \(self.filter), state: \(self.state), labels: \(self.labels), sort: \(self.sort), direction: \(self.direction), since: \(self.since)"
+  }
+}
+
 // MARK: - Hashable
 extension IssueParameterOptions: Hashable {
   

@@ -28,6 +28,8 @@ class IssueOverviewTableViewController: UITableViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    print(issue)
+    
     self.setupLocalization()
   }
   
@@ -42,7 +44,7 @@ extension IssueOverviewTableViewController: Setup {
   func setupLocalization() {
     let localized = "__ISSUE__".localized
     
-    let localizedTitle = "\(localized) #\(issue.number) (__REPOSITORY__)"
+    let localizedTitle = "\(localized) #\(issue.number) (\(self.issue.repository.name))"
     
     self.title = localizedTitle
   }

@@ -10,6 +10,9 @@ import Foundation
 
 public struct GitHubRepository: Repository {
   
+  /// Unique id.
+  public var id: Int
+  
   /// Owner of the repository
   public var owner: String
   
@@ -28,7 +31,8 @@ public struct GitHubRepository: Repository {
   /// Milestones of the repository
   public var milestones: [Milestone]
   
-  public init(owner: String, name: String, fullName: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
+  public init(id: Int, owner: String, name: String, fullName: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
+    self.id = id
     self.owner = owner
     self.name = name
     self.fullName = fullName
@@ -63,31 +67,6 @@ public struct GitHubRepository: Repository {
     return []
   }
 }
-
-// MARK: - ImmatureGitHubIssue
-extension GitHubRepository {
-  
-  private struct ImmatureGitHubIssue {
-    
-    var title: String
-    var body: String?
-    var assignee: String?
-    var milestone: Int?
-    var labels: [String]?
-    
-    init(title: String, body: String? = nil, assignee: Assignee? = nil, milestone: Milestone? = nil, labels: [Label]? = nil) {
-      self.title = title
-      self.body = body
-      self.assignee = assignee?.name
-      self.milestone = milestone?.id
-      
-      if let stringLabels = labels {
-        self.labels = stringLabels.map { $0.name }
-      }
-    }
-  }
-}
-
 
 // MARK: - Labelable
 extension GitHubRepository: Labelable {
@@ -140,6 +119,15 @@ extension GitHubRepository: Milestoneable {
   /// - Parameter milestone: milestone to remove.
   public mutating func removeMilestone(milestone: Milestone) {
 //    DELETE /repos/:owner/:repo/milestones/:number
+  }
+}
+
+// MARK: - CustomStringConvertible
+extension GitHubRepository: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): [\(self.id)] \(self.fullName)"
   }
 }
 

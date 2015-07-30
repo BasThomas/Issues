@@ -82,27 +82,33 @@ extension IssueTableViewController: RequestDelegate {
     if self.issues.isEmpty {
       self.issues += issues
       self.filteredIssues = self.issues
+      
       self.tableView.reloadData()
     } else {
       let now = self.issues.flatMap { $0 as? GitHubIssue }
       let new = issues.flatMap { $0 as? GitHubIssue }
       
-      let newIssues = new.filter { !now.contains($0) }.map { $0 as Issue }
+      let addIssues = new.filter { !now.contains($0) }.map { $0 as Issue }
       let removeIssues = now.filter { !new.contains($0) }.map { $0 as Issue }
       
-      print("should add \(newIssues)")
-      print("should remove \(removeIssues)")
+      guard removeIssues.count != 0 || addIssues.count != 0 else { return }
       
-      guard removeIssues.count != 0 || newIssues.count != 0 else { return }
+      let ids = self.issues.map { $0.id }
       
-//      self.issues.removeObjects(removeIssues)
-      self.issues.splice(newIssues, atIndex: 0)
+      for i in removeIssues {
+        if let idx = ids.indexOf(i.id) {
+          self.issues.removeAtIndex(idx)
+        }
+      }
       
-      self.tableView.beginUpdates()
-      let indexPaths = newIndexPaths(now: now.count, add: newIssues.count)
-      self.tableView.insertRowsAtIndexPaths(indexPaths, withRowAnimation: .Middle)
-      self.tableView.endUpdates()
+      self.issues.splice(addIssues, atIndex: 0)
+      
+      self.tableView.reloadData()
     }
+  }
+  
+  func refresh(issue: Issue, labels: Set<Label>) {
+    print("refreshed \(issue) w/ labels \(labels)")
   }
 }
 

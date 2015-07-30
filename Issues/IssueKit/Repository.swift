@@ -8,8 +8,9 @@
 
 import Foundation
 
-public protocol Repository {
+public protocol Repository: CustomStringConvertible {
   
+  var id: Int { get }
   var owner: String { get }
   var name: String { get }
   var fullName: String { get }

@@ -89,6 +89,8 @@
 		49EFE8491B63802A007445E8 /* LowercaseInitializable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE8481B63802A007445E8 /* LowercaseInitializable.swift */; };
 		49EFE84B1B63AC1A007445E8 /* NSDate+String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */; };
 		49FB1FDB1B6A0B6B00648E97 /* Searchable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB1FDA1B6A0B6B00648E97 /* Searchable.swift */; };
+		49FB1FDF1B6ABDEB00648E97 /* Printable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB1FDE1B6ABDEB00648E97 /* Printable.swift */; };
+		49FB1FE11B6AD12700648E97 /* ParseError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49FB1FE01B6AD12700648E97 /* ParseError.swift */; };
 		B64229DEA7E85C4E91DBF7FD /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21696A3FB18FFADF5185AD1 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -280,6 +282,8 @@
 		49EFE8481B63802A007445E8 /* LowercaseInitializable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LowercaseInitializable.swift; sourceTree = "<group>"; };
 		49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSDate+String.swift"; sourceTree = "<group>"; };
 		49FB1FDA1B6A0B6B00648E97 /* Searchable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Searchable.swift; sourceTree = "<group>"; };
+		49FB1FDE1B6ABDEB00648E97 /* Printable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Printable.swift; sourceTree = "<group>"; };
+		49FB1FE01B6AD12700648E97 /* ParseError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParseError.swift; sourceTree = "<group>"; };
 		5061E53214CBCAF227195ECE /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		6744CD339ECE58657A6EE1FC /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		A21696A3FB18FFADF5185AD1 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -356,6 +360,7 @@
 				49024A5B1B5F7BEA00F5FAE3 /* Lockable.swift */,
 				49024A5D1B5F7BF800F5FAE3 /* Assignable.swift */,
 				49FB1FDA1B6A0B6B00648E97 /* Searchable.swift */,
+				49FB1FDE1B6ABDEB00648E97 /* Printable.swift */,
 			);
 			name = Skills;
 			sourceTree = "<group>";
@@ -364,6 +369,7 @@
 			isa = PBXGroup;
 			children = (
 				49025EB11B62F14000D56882 /* JSONError.swift */,
+				49FB1FE01B6AD12700648E97 /* ParseError.swift */,
 			);
 			name = Errors;
 			sourceTree = "<group>";
@@ -501,11 +507,11 @@
 			isa = PBXGroup;
 			children = (
 				49437BFF1B4B0D04001C8557 /* String+Color.swift */,
-				499050C71B6051CA009DF94B /* Array+Remove.swift */,
-				49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */,
 				495A5E0E1B66471C00B4E32B /* String+NSDate.swift */,
 				49D99A051B68EDBD00801FD9 /* String+Localization.swift */,
 				499254F21B68FD4C00A0BD25 /* String+Contains.swift */,
+				499050C71B6051CA009DF94B /* Array+Remove.swift */,
+				49EFE84A1B63AC1A007445E8 /* NSDate+String.swift */,
 				497B98D01B63BC5E004B29DD /* Dictionary+Merge.swift */,
 				493055201B6791C2004E946E /* IndexPath+Add.swift */,
 				495A5E101B664B0900B4E32B /* NSHTTPURLResponse+ETag.swift */,
@@ -1122,6 +1128,7 @@
 				49CF2F7E1B66D92B00760F7E /* StatusCode.swift in Sources */,
 				49437BF41B4B05E0001C8557 /* Issue.swift in Sources */,
 				49024A581B5F7BCD00F5FAE3 /* Editable.swift in Sources */,
+				49FB1FE11B6AD12700648E97 /* ParseError.swift in Sources */,
 				49024A651B5F88FC00F5FAE3 /* Label.swift in Sources */,
 				49D99A061B68EDBD00801FD9 /* String+Localization.swift in Sources */,
 				49D999EF1B68DA8400801FD9 /* Setup.swift in Sources */,
@@ -1156,6 +1163,7 @@
 				49EFE8491B63802A007445E8 /* LowercaseInitializable.swift in Sources */,
 				49024A631B5F87A000F5FAE3 /* Commentable.swift in Sources */,
 				49024A6F1B5F8F1900F5FAE3 /* GitHubMilestone.swift in Sources */,
+				49FB1FDF1B6ABDEB00648E97 /* Printable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

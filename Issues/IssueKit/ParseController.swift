@@ -11,6 +11,8 @@ import SwiftyJSON
 
 public class ParseController {
   
+  private var parsedRepositories: [Repository] = []
+  
   /// Returns the shared ParseController.
   public static let sharedInstance = ParseController()
   
@@ -37,33 +39,87 @@ extension ParseController: Parseable {
       // Skips any pull requests.
       guard issue["pull_request"].dictionary == nil else { continue }
       
-      if let number = issue["number"].int,
-         let title = issue["title"].string,
-         let body = issue["body"].string,
-         let _state = issue["state"].string,
-         let state = State(rawValue: _state),
-         let locked = issue["locked"].bool,
-         let creationDate = issue["created_at"].string?.date {
+      if let id = issue["id"].int,
+       let repository = issue["repository"].dictionary,
+       let number = issue["number"].int,
+       let title = issue["title"].string,
+       let body = issue["body"].string,
+       let _state = issue["state"].string,
+       let state = State(rawValue: _state),
+       let locked = issue["locked"].bool,
+       let creationDate = issue["created_at"].string?.date {
+        
+        do {
+          let repository = try self.parseRepository(repository)
           
-        let milestone = issue["milestone", "number"].int
-//        print("milestone: \(milestone)")
-        
-        let closingDate = issue["closed_at"].string?.date
-        
-        let ghIssue = GitHubIssue(number: number, title: title, body: body, state: state, locked: locked, creationDate: creationDate, closingDate: closingDate)
-        issues.append(ghIssue)
+          guard !self.parsedRepositories.isEmpty else { self.parsedRepositories.append(repository); continue }
+          
+          let milestone = issue["milestone", "number"].int
+//          print("milestone: \(milestone)")
+          
+          let closingDate = issue["closed_at"].string?.date
+          
+          let ghIssue = GitHubIssue(id: id, repository: repository, number: number, title: title, body: body, state: state, locked: locked, creationDate: creationDate, closingDate: closingDate)
+          
+//          if let labels = issue["labels"].array where !labels.isEmpty {
+//            self.parseLabelsForIssue(ghIssue, json: labels)
+//          }
+          
+          issues.append(ghIssue)
+        } catch (ParseError.InvalidParse) {
+          print("Invalid parsing of repository.")
+        } catch {
+          print("Something happened. Please Swift team, let me be able to tell which Errors I want to throw. :-(")
+        }
       }
     }
     
     self.delegate?.parsedIssues(issues)
     return issues
   }
+  
+  func parseLabelsForIssue(issue: Issue, json: [JSON]) -> Set<Label> {
+    var labels: Set<Label> = []
+    
+    for label in json {
+      if let name = label["name"].string,
+       let color = label["color"].string {
+        
+        let label = Label(name: name, color: color)
+        labels.insert(label)
+      }
+    }
+    
+    self.delegate?.parsedLabelsForIssue(issue, labels: labels)
+    return labels
+  }
 }
 
 // MARK: Repositories
 extension ParseController {
   
-  /// Parses all repositories of every public repository, in the order that they were created.
+  func parseRepository(json: [String: JSON]) throws -> Repository {
+    if let id = json["id"]?.int,
+     let owner = json["owner"]?.dictionary,
+     let ownerName = owner["login"]?.string,
+     let name = json["name"]?.string,
+     let fullName = json["full_name"]?.string {
+      
+      let alreadyAddedRepository = self.parsedRepositories.filter { $0.id == id }.first
+      
+      if let repository = alreadyAddedRepository {
+        return repository
+      }
+      
+      let newRepository = GitHubRepository(id: id, owner: ownerName, name: name, fullName: fullName)
+      
+      return newRepository
+    }
+    
+    throw ParseError.InvalidParse
+  }
+  
+  /// Parses all repositories of every public repository.
   ///
   /// - Parameter json: json to parse.
   ///
@@ -74,9 +130,11 @@ extension ParseController {
     for repository in json {
       let repository = repository.1
       
-      if let owner = repository["owner", "login"].string,
-         let name = repository["name"].string,
-         let fullName = repository["full_name"].string {
+      if let id = repository["id"].int,
+       let owner = repository["owner", "login"].string,
+       let name = repository["name"].string,
+       let fullName = repository["full_name"].string {
+      
         let commentsURL = repository["comments_url"].string
         print("commentsURL: \(commentsURL)")
         let assigneesURL = repository["assignees_url"].string
@@ -86,7 +144,7 @@ extension ParseController {
         let milestonesURL = repository["milestones_url"].string
         print("milestonesURL: \(milestonesURL)")
         
-        let ghRepository = GitHubRepository(owner: owner, name: name, fullName: fullName)
+        let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName)
         repositories.append(ghRepository)
       }
     }

@@ -20,10 +20,19 @@ public struct GitHubMilestone: Milestone {
   public var state: State
   
   /// Description of the milestone.
-  public var description: String?
+  public var _description: String?
   
   /// Due date of the milestone.
   public var dueDate: NSDate?
+}
+
+// MARK: - CustomStringConvertible
+extension GitHubMilestone: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): [\(self.id)] \(self.title), state: \(self.state), description: \(self._description), dueDate: \(self.dueDate)"
+  }
 }
 
 // MARK: - Hashable

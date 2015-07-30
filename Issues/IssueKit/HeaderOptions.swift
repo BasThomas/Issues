@@ -33,6 +33,15 @@ public struct HeaderOptions {
   }
 }
 
+// MARK: - CustomStringConvertible
+extension HeaderOptions: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): ETag: \(self.eTag)"
+  }
+}
+
 // MARK: - Hashable
 extension HeaderOptions: Hashable {
   

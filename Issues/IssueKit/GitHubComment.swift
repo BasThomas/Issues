@@ -18,6 +18,15 @@ public struct GitHubComment: Comment {
   }
 }
 
+// MARK: - CustomStringConvertible
+extension GitHubComment: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): \(self.body)"
+  }
+}
+
 // MARK: - Hashable
 extension GitHubComment: Hashable {
   

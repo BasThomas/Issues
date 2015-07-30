@@ -12,5 +12,7 @@ protocol ParseDelegate {
   
   func parsedIssues(issues: [Issue])
   
+  func parsedLabelsForIssue(issue: Issue, labels: Set<Label>)
+  
   func parsedRepositores(repositories: [Repository])
 }

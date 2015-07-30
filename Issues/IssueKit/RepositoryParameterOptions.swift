@@ -25,6 +25,15 @@ public struct RepositoryParameterOptions: ParameterOptions {
   }
 }
 
+// MARK: - CustomStringConvertible
+extension RepositoryParameterOptions: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): visibility: \(self.visibility), affiliation: \(self.affiliation), type: \(self.type), direction: \(self.direction)"
+  }
+}
+
 // MARK: - Hashable
 extension RepositoryParameterOptions: Hashable {
   

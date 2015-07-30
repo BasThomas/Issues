@@ -12,7 +12,13 @@ private let Now = NSDate()
 
 public struct GitHubIssue: Issue {
   
-  /// Unique number to identify the issue in a repository.
+  /// Unique id.
+  public var id: Int
+  
+  /// Associated repository.
+  public var repository: Repository
+  
+  /// Number to identify the issue in a repository.
   public var number: Int
   
   /// Title of the issue.
@@ -45,7 +51,9 @@ public struct GitHubIssue: Issue {
   /// The closing date of the issue, if any.
   public var closingDate: NSDate?
   
-  public init(number: Int, title: String, body: String = "", state: State = .Open, locked: Bool = false, comments: [GitHubComment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
+  public init(id: Int, repository: Repository, number: Int, title: String, body: String = "", state: State = .Open, locked: Bool = false, comments: [GitHubComment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
+    self.id = id
+    self.repository = repository
     self.number = number
     self.title = title
     self.body = body
@@ -261,12 +269,21 @@ extension GitHubIssue: Assignable {
   }
 }
 
+// MARK: - CustomStringConvertible
+extension GitHubIssue: CustomStringConvertible, Printable {
+  
+  /// A textual representation of `self`.
+  public var description: String {
+    return "\(self.file): [\(self.id)] \(self.title) (#\(self.number) in \(self.repository.name))"
+  }
+}
+
 // MARK: - Hashable
 extension GitHubIssue: Hashable {
   
   /// The hash value.
   public var hashValue: Int {
-    return self.number.hashValue ^ self.title.hashValue ^ self.state.hashValue ^ self.locked.hashValue ^ self.creationDate.hashValue
+    return self.id.hashValue
   }
 }
 
@@ -274,13 +291,5 @@ extension GitHubIssue: Hashable {
 extension GitHubIssue: Equatable { }
 
 public func ==(lhs: GitHubIssue, rhs: GitHubIssue) -> Bool {
-  return lhs.number == rhs.number &&
-    lhs.title == rhs.title &&
-    lhs.body == rhs.body &&
-    lhs.state == rhs.state &&
-    lhs.locked == rhs.locked &&
-    lhs.assignees == rhs.assignees &&
-    lhs.labels == rhs.labels &&
-    lhs.creationDate == rhs.creationDate &&
-    lhs.closingDate == rhs.closingDate
+  return lhs.id == rhs.id
 }
