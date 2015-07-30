@@ -125,7 +125,7 @@ extension RequestController {
     let parameters = issue
     let headers = Parse.parseHeaders()
     
-    Alamofire.request(.POST, Request.POSTissue(repository), parameters: parameters, headers: headers)
+    Alamofire.request(.POST, Request.POSTissue(repository), parameters: parameters, encoding: .JSON, headers: headers)
       .responseJSON { request, response, json, error in
         print("request: \(request)")
         print("response: \(response)")
