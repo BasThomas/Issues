@@ -26,7 +26,6 @@ class AddIssueTableViewController: UITableViewController {
   @IBOutlet weak var titleTextField: UITextField! {
     didSet {
       self.titleTextField.delegate = self
-      self.titleTextField.becomeFirstResponder()
     }
   }
   
@@ -48,6 +47,12 @@ class AddIssueTableViewController: UITableViewController {
     Request.requestUserRepositories()
     
     self.setupLocalization()
+  }
+  
+  override func viewDidAppear(animated: Bool) {
+    super.viewDidAppear(animated)
+    
+    self.titleTextField.becomeFirstResponder()
   }
 }
 
