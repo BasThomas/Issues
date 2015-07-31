@@ -33,11 +33,14 @@ public struct GitHubIssue: Issue {
   /// Tracks if the issue is locked or not.
   public var locked: Bool
   
+  /// Comments' URL.
+  public var commentsURL: String
+  
   /// Comment(s) accompanying the issue.
   public var comments: [Comment]
   
-  /// Assigignee(s) assigned to the issue.
-  public var assignees: Set<Assignee>
+  /// Assigignee assigned to the issue.
+  public var assignee: Assignee?
   
   /// Label(s) accompanying the issue.
   public var labels: Set<Label>
@@ -51,7 +54,7 @@ public struct GitHubIssue: Issue {
   /// The closing date of the issue, if any.
   public var closingDate: NSDate?
   
-  public init(id: Int, repository: Repository, number: Int, title: String, body: String = "", state: State = .Open, locked: Bool = false, comments: [GitHubComment] = [], assignees: Set<Assignee> = [], labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
+  public init(id: Int, repository: Repository, number: Int, title: String, body: String = "", state: State = .Open, locked: Bool = false, commentsURL: String, comments: [GitHubComment] = [], assignee: Assignee? = nil, labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
     self.id = id
     self.repository = repository
     self.number = number
@@ -62,8 +65,9 @@ public struct GitHubIssue: Issue {
     
     let _comments: [Comment] = comments.map { $0 } // Workaround, as [GitHubComment] != [Comment], apparently.
     
+    self.commentsURL = commentsURL
     self.comments = _comments
-    self.assignees = assignees
+    self.assignee = assignee
     self.labels = labels
     self.milestone = milestone
     
@@ -252,20 +256,17 @@ extension GitHubIssue: Lockable {
 // MARK: - Assignable
 extension GitHubIssue: Assignable {
   
-  /// Adds an assignee to the issue.
-  ///
-  /// - Parameter assignee: assignee to add.
-  public mutating func addAssignee(assignee: Assignee) {
-    self.assignees.insert(assignee)
-  }
-  
-  /// Removes an assignee to the issue.
+  /// Removes the assignee to the issue.
   ///
   /// - Parameter assignee: assignee to remove.
   ///
   /// - Returns `Bool` true if the assignee could be removed, else false.
-  public mutating func removeAssignee(assignee: Assignee) -> Bool {
-    return self.assignees.remove(assignee) != nil
+  public mutating func removeAssignee() {
+    return self.assignee = nil
+  }
+  
+  public mutating func replaceAssignee(assignee: Assignee) {
+    self.assignee = assignee
   }
 }
 

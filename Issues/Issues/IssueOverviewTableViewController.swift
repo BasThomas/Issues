@@ -23,6 +23,24 @@ class IssueOverviewTableViewController: UITableViewController {
     }
   }
   
+  @IBOutlet weak var issueAssigneeLabel: UILabel! {
+    didSet {
+      self.issueAssigneeLabel.text = issue.assignee?.name ?? "no assignee set"
+    }
+  }
+  
+  @IBOutlet weak var issueLabelsLabel: UILabel! {
+    didSet {
+      self.issueLabelsLabel.text = "labels: \(issue.labels.count)"
+    }
+  }
+  
+  @IBOutlet weak var issueMilestoneLabel: UILabel! {
+    didSet {
+      self.issueMilestoneLabel.text = issue.milestone?.title ?? "no milestone set"
+    }
+  }
+  
   var issue: Issue!
   
   override func viewDidLoad() {

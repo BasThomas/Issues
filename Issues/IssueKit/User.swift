@@ -10,10 +10,16 @@ import Foundation
 
 public struct User {
   
+  public var id: Int
+  
+  public var avatarURL: String
+  
   /// Name of the user.
   public var name: String
   
-  public init(name: String) {
+  public init(id: Int, avatarURL: String, name: String) {
+    self.id = id
+    self.avatarURL = avatarURL
     self.name = name
   }
 }

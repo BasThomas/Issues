@@ -13,7 +13,9 @@ protocol Parseable: ParameterParseable, HeaderParseable {
   
   func parseIssues(json: JSON) -> [Issue]
   
-  func parseLabelsForIssue(issue: Issue, json: [JSON]) -> Set<Label>
-  
   func parseRepositories(json: JSON) -> [Repository]
+  
+  func parseRepository(json: [String: JSON]) throws -> Repository
+  func parseLabels(json: [JSON]) -> Set<Label>
+  func parseMilestone(json: [String: JSON]) throws -> Milestone
 }

@@ -18,8 +18,9 @@ public protocol Issue: CustomStringConvertible {
   var state: State { get }
   var locked: Bool { get }
   
+  var commentsURL: String { get }
   var comments: [Comment] { get set }
-  var assignees: Set<Assignee> { get set }
+  var assignee: Assignee? { get }
   var labels: Set<Label> { get set }
   var milestone: Milestone? { get set }
   

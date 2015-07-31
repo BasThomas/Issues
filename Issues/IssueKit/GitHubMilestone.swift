@@ -24,6 +24,14 @@ public struct GitHubMilestone: Milestone {
   
   /// Due date of the milestone.
   public var dueDate: NSDate?
+  
+  public init(id: Int, title: String, state: State, description: String?, dueDate: NSDate?) {
+    self.id = id
+    self.title = title
+    self.state = state
+    self._description = description
+    self.dueDate = dueDate
+  }
 }
 
 // MARK: - CustomStringConvertible
