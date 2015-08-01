@@ -161,15 +161,16 @@ extension ParseController {
     var labels: Set<Label> = []
     
     for label in json {
-      if let name = label["name"].string, let color = label["color"].string {
+      if let name = label["name"].string,
+       let hex = label["color"].string {
         
-        let alreadyAddedLabel = self.parsedLabels.filter { $0.name == name && $0.color == color }.first
+        let alreadyAddedLabel = self.parsedLabels.filter { $0.name == name && $0.hex == hex }.first
         
         if let label = alreadyAddedLabel {
           return Set(arrayLiteral: label)
         }
         
-        let newLabel = Label(name: name, color: color)
+        let newLabel = Label(name: name, hex: hex)
         self.parsedLabels.insert(newLabel)
         labels.insert(newLabel)
       }

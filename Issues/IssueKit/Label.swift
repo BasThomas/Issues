@@ -14,11 +14,11 @@ public struct Label {
   public var name: String
   
   /// Hex(color) of the label.
-  public var color: Hex
+  public var hex: Hex
   
-  public init(name: String, color: Hex) {
+  public init(name: String, hex: Hex) {
     self.name = name
-    self.color = color
+    self.hex = hex
   }
 }
 
@@ -27,7 +27,7 @@ extension Label: CustomStringConvertible, Printable {
   
   /// A textual representation of `self`.
   public var description: String {
-    return "\(self.file): name = \(self.name), color = \(self.color)"
+    return "\(self.file): name = \(self.name), color = \(self.hex)"
   }
 }
 
@@ -36,7 +36,7 @@ extension Label: Hashable {
   
   /// The hash value.
   public var hashValue: Int {
-    return name.hashValue ^ color.hashValue
+    return name.hashValue ^ hex.hashValue
   }
 }
 
@@ -45,5 +45,5 @@ extension Label: Equatable {}
 
 public func ==(lhs: Label, rhs: Label) -> Bool {
   return lhs.name == rhs.name &&
-    lhs.color == rhs.color
+    lhs.hex == rhs.hex
 }

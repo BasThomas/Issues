@@ -31,7 +31,13 @@ class IssueOverviewTableViewController: UITableViewController {
   
   @IBOutlet weak var issueLabelsLabel: UILabel! {
     didSet {
-      self.issueLabelsLabel.text = "labels: \(issue.labels.count)"
+      let labelText = ",".join(issue.labels.map { $0.name } )
+      let labelTextIsEmpty = labelText.isEmpty
+      
+      self.issueLabelsLabel.text = labelTextIsEmpty ? "no labels" : labelText
+      if let firstIssue = issue.labels.first {
+        self.issueLabelsLabel.textColor = firstIssue.hex.color
+      }
     }
   }
   
