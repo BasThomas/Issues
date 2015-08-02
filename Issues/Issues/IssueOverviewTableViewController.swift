@@ -15,27 +15,34 @@ import IssueKit
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
+private let LastSelectedIssue = "lastSelectedIssue"
+
 class IssueOverviewTableViewController: UITableViewController {
   
   @IBOutlet weak var issueTitleLabel: UILabel! {
     didSet {
-      self.issueTitleLabel.text = issue.title
+      self.issueTitleLabel.text = issue?.title ?? "unknown title"
     }
   }
   
   @IBOutlet weak var issueAssigneeLabel: UILabel! {
     didSet {
-      self.issueAssigneeLabel.text = issue.assignee?.name ?? "no assignee set"
+      self.issueAssigneeLabel.text = issue?.assignee?.name ?? "no assignee set"
     }
   }
   
   @IBOutlet weak var issueLabelsLabel: UILabel! {
     didSet {
-      let labelText = ",".join(issue.labels.map { $0.name } )
+      var labelText = ""
+      
+      if let issue = issue {
+        labelText = ",".join(issue.labels.map { $0.name } )
+      }
+      
       let labelTextIsEmpty = labelText.isEmpty
       
       self.issueLabelsLabel.text = labelTextIsEmpty ? "no labels" : labelText
-      if let firstIssue = issue.labels.first {
+      if let firstIssue = issue?.labels.first {
         self.issueLabelsLabel.textColor = firstIssue.hex.color
       }
     }
@@ -43,16 +50,14 @@ class IssueOverviewTableViewController: UITableViewController {
   
   @IBOutlet weak var issueMilestoneLabel: UILabel! {
     didSet {
-      self.issueMilestoneLabel.text = issue.milestone?.title ?? "no milestone set"
+      self.issueMilestoneLabel.text = issue?.milestone?.title ?? "no milestone set"
     }
   }
   
-  var issue: Issue!
+  var issue: Issue?
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    print(issue)
     
     self.setupLocalization()
   }
@@ -68,14 +73,26 @@ extension IssueOverviewTableViewController: Setup {
   func setupLocalization() {
     let localized = "__ISSUE__".localized
     
-    let localizedTitle = "\(localized) #\(issue.number) (\(self.issue.repository.name))"
-    
-    self.title = localizedTitle
+    if let issue = self.issue {
+      let localizedTitle = "\(localized) #\(issue.number) (\(issue.repository.name))"
+      
+      self.title = localizedTitle
+    } else {
+      self.title = "__SELECT_AN_ISSUE__".localized
+    }
   }
 }
 
 // MARK: - UITableView delegate
 extension IssueOverviewTableViewController {
+  
+  override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    if let _ = self.issue {
+      return 1
+    }
+    
+    return 0
+  }
   
   // Setup automatic cell resizing. Seems you need to do so per indexPath in a static tableview.
   override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {

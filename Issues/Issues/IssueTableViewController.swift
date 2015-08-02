@@ -135,6 +135,10 @@ extension IssueTableViewController: UISearchBarDelegate {
     
     self.search(selectedScope, text: text)
   }
+  
+  func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    self.reloadData()
+  }
 }
 
 // MARK: - Searchable
@@ -201,12 +205,7 @@ extension IssueTableViewController {
 }
 
 // MARK: - UITableView delegate
-extension IssueTableViewController {
-  
-  override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-    self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
-  }
-}
+extension IssueTableViewController { }
 
 // MARK: - Actions
 extension IssueTableViewController { }
@@ -214,23 +213,40 @@ extension IssueTableViewController { }
 // MARK: - Navigation
 extension IssueTableViewController: UINavigationControllerDelegate {
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {    
-    if segue.identifier == ShowIssueOverview,
-     let dvc = segue.destinationViewController as? IssueOverviewTableViewController,
-     let cell = sender as? IssueTableViewCell, let issue = cell.issue {
-      
-      if let searchController = self.searchController where searchController.active {
-        searchController.active = false
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    var issueTableViewController: IssueOverviewTableViewController!
+    
+    if segue.identifier == ShowIssueOverview {
+      if let issueNavigationController = segue.destinationViewController as? UINavigationController {
+        issueTableViewController = issueNavigationController.topViewController as? IssueOverviewTableViewController
+        issueTableViewController.navigationItem.leftBarButtonItem = self.splitViewController?.displayModeButtonItem()
+        issueTableViewController.navigationItem.leftItemsSupplementBackButton = true
+      } else {
+        issueTableViewController = segue.destinationViewController as? IssueOverviewTableViewController
       }
       
-      self.destionationViewController = dvc
-      dvc.issue = issue
+      if let cell = sender as? IssueTableViewCell,
+       let issue = cell.issue {
+        
+        if let searchController = self.searchController where searchController.active {
+          searchController.active = false
+        }
+        
+        issueTableViewController.issue = issue
+      }
     }
   }
   
   func navigationController(navigationController: UINavigationController, didShowViewController viewController: UIViewController, animated: Bool) {
     guard viewController == self.destionationViewController else { return }
     
+    self.reloadData()
+  }
+}
+
+private extension IssueTableViewController {
+  
+  func reloadData() {
     self.filteredIssues = self.issues
     self.tableView.reloadData()
   }
