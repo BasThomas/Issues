@@ -144,6 +144,5 @@ extension GitHubRepository: Hashable {
 extension GitHubRepository: Equatable { }
 
 public func ==(lhs: GitHubRepository, rhs: GitHubRepository) -> Bool {
-  return lhs.name == rhs.name &&
-    lhs.labels == rhs.labels
+  return lhs.id == rhs.id
 }
