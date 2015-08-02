@@ -1,12 +1,14 @@
 PODS:
   - Alamofire (1.3.0)
   - Font-Awesome-Swift (1.0.0)
+  - HanekeSwift (0.9.1)
   - NXOAuth2Client (1.2.8)
   - SwiftyJSON (2.2.0)
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
   - Font-Awesome-Swift
+  - HanekeSwift (from `https://github.com/meteochu/HanekeSwift.git`, branch `swift-2.0`)
   - NXOAuth2Client
   - SwiftyJSON (from `https://github.com/SwiftyJSON/SwiftyJSON.git`, branch `xcode7`)
 
@@ -14,6 +16,9 @@ EXTERNAL SOURCES:
   Alamofire:
     :branch: swift-2.0
     :git: https://github.com/Alamofire/Alamofire.git
+  HanekeSwift:
+    :branch: swift-2.0
+    :git: https://github.com/meteochu/HanekeSwift.git
   SwiftyJSON:
     :branch: xcode7
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
@@ -22,6 +27,9 @@ CHECKOUT OPTIONS:
   Alamofire:
     :commit: 5f2c29751b35069ec1452046e24dfba506cbc603
     :git: https://github.com/Alamofire/Alamofire.git
+  HanekeSwift:
+    :commit: 228e72502ab623be998d710669d80c673c7b5046
+    :git: https://github.com/meteochu/HanekeSwift.git
   SwiftyJSON:
     :commit: 999ae8340492d6e9b42f28f332cbd591509de079
     :git: https://github.com/SwiftyJSON/SwiftyJSON.git
@@ -29,6 +37,7 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   Alamofire: e57db85401895fda01783b3b9bda5b32d9f347ff
   Font-Awesome-Swift: 3bddd624badf339b3cad179d477697dbf6d70352
+  HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
   NXOAuth2Client: 98c4d4c594edd2b289cfc34a8928653e1dab7adf
   SwiftyJSON: 0b3e6c07af17ff745e77e8e9984097b55c956e5c
 

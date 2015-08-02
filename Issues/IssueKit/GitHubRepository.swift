@@ -14,7 +14,7 @@ public struct GitHubRepository: Repository {
   public var id: Int
   
   /// Owner of the repository
-  public var owner: String
+  public var owner: User
   
   /// Name of the repository.
   public var name: String
@@ -31,7 +31,7 @@ public struct GitHubRepository: Repository {
   /// Milestones of the repository
   public var milestones: [Milestone]
   
-  public init(id: Int, owner: String, name: String, fullName: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
+  public init(id: Int, owner: User, name: String, fullName: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
     self.id = id
     self.owner = owner
     self.name = name

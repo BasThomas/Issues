@@ -13,5 +13,6 @@ class RepositoryTableViewCell: UITableViewCell {
   
   var repository: Repository!
   
-  @IBOutlet weak var nameLabel: UILabel!
+  @IBOutlet weak var repositoryImageView: UIImageView!
+  @IBOutlet weak var repositoryNameLabel: UILabel!
 }

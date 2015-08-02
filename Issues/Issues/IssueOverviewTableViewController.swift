@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Haneke
 import IssueKit
 
 // MARK: SegueIdentifiers
@@ -25,6 +26,19 @@ class IssueOverviewTableViewController: UITableViewController {
     }
   }
   
+  @IBOutlet weak var issueAssigneeImageView: UIImageView! {
+    didSet {
+      if let avatarURL = issue?.assignee?.avatarURL {
+        self.issueAssigneeImageView.hnk_setImageFromURL(avatarURL)
+      } else if let placeholder = UIImage(named: "GitHub") {
+        self.issueAssigneeImageView.hnk_setImage(placeholder, key: "GitHub")
+      }
+      
+      self.issueAssigneeImageView.layer.cornerRadius = (self.issueAssigneeImageView.frame.size.height / 2)
+      self.issueAssigneeImageView.layer.masksToBounds = true
+    }
+  }
+  
   @IBOutlet weak var issueAssigneeLabel: UILabel! {
     didSet {
       self.issueAssigneeLabel.text = issue?.assignee?.name ?? "no assignee set"
@@ -35,8 +49,8 @@ class IssueOverviewTableViewController: UITableViewController {
     didSet {
       var labelText = ""
       
-      if let issue = issue {
-        labelText = ",".join(issue.labels.map { $0.name } )
+      if let issue = self.issue {
+        labelText = ", ".join(issue.labels.map { $0.name } )
       }
       
       let labelTextIsEmpty = labelText.isEmpty

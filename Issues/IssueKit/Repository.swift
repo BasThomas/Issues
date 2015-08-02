@@ -11,7 +11,7 @@ import Foundation
 public protocol Repository: CustomStringConvertible {
   
   var id: Int { get }
-  var owner: String { get }
+  var owner: User { get }
   var name: String { get }
   var fullName: String { get }
   

@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Haneke
+import Font_Awesome_Swift
 import IssueKit
 
 // MARK: CellIdentifiers
@@ -150,7 +152,7 @@ extension RepositoryTableViewController: Searchable {
     case RepositorySearch:
       self.filteredRepositories = self.repositories.filter { $0.name.contains(text) }
     case OwnerSearch:
-      self.filteredRepositories = self.repositories.filter { $0.owner.contains(text) }
+      self.filteredRepositories = self.repositories.filter { $0.owner.name.contains(text) }
     default:
       return
     }
@@ -183,7 +185,15 @@ extension RepositoryTableViewController {
       cell.repository = self.repositories[indexPath.row]
     }
     
-    cell.nameLabel.text = cell.repository.fullName
+    if let avatarURL = cell.repository.owner.avatarURL {
+      cell.repositoryImageView.hnk_setImageFromURL(avatarURL)
+      cell.repositoryImageView.layer.cornerRadius = (cell.repositoryImageView.frame.size.height / 2)
+      cell.repositoryImageView.layer.masksToBounds = true
+    } else if let placeholder = UIImage(named: "GitHub") {
+      cell.repositoryImageView.hnk_setImage(placeholder, key: "GitHub")
+    }
+    
+    cell.repositoryNameLabel.text = cell.repository.fullName
     
     return cell
   }

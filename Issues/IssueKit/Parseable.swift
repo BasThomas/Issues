@@ -18,4 +18,6 @@ protocol Parseable: ParameterParseable, HeaderParseable {
   func parseRepository(json: [String: JSON]) throws -> Repository
   func parseLabels(json: [JSON]) -> Set<Label>
   func parseMilestone(json: [String: JSON]) throws -> Milestone
+  
+  func parseUser(json: [String: JSON]) -> User?
 }

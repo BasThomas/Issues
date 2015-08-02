@@ -13,3 +13,6 @@ pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branc
 
 # Font Awesome
 pod 'Font-Awesome-Swift'
+
+# Images
+pod 'HanekeSwift', :git => 'https://github.com/meteochu/HanekeSwift.git', :branch => 'swift-2.0'

@@ -123,16 +123,26 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="assignee" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6EU-u0-Lnm">
-                                                    <rect key="frame" x="16" y="12" width="568" height="19.5"/>
+                                                    <rect key="frame" x="54" y="12" width="530" height="19.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OGw-dt-6sn">
+                                                    <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="2Rz-G1-0WD"/>
+                                                        <constraint firstAttribute="width" constant="30" id="jyy-kh-dFx"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
-                                                <constraint firstItem="6EU-u0-Lnm" firstAttribute="leading" secondItem="Qg5-a6-Cdl" secondAttribute="leadingMargin" constant="8" id="BGU-gm-oB2"/>
+                                                <constraint firstItem="6EU-u0-Lnm" firstAttribute="leading" secondItem="OGw-dt-6sn" secondAttribute="trailing" constant="8" id="3jJ-p0-Udt"/>
+                                                <constraint firstItem="OGw-dt-6sn" firstAttribute="leading" secondItem="Qg5-a6-Cdl" secondAttribute="leadingMargin" constant="8" id="TsT-QG-fjR"/>
+                                                <constraint firstItem="OGw-dt-6sn" firstAttribute="centerY" secondItem="Qg5-a6-Cdl" secondAttribute="centerY" id="baO-Yz-fdR"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="6EU-u0-Lnm" secondAttribute="bottom" constant="4" id="bur-IA-ZqQ"/>
                                                 <constraint firstItem="6EU-u0-Lnm" firstAttribute="top" secondItem="Qg5-a6-Cdl" secondAttribute="topMargin" constant="4" id="tKA-q5-nL2"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="6EU-u0-Lnm" secondAttribute="trailing" constant="8" id="vpN-Jm-0IB"/>
@@ -200,6 +210,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Issue overview" id="Vo5-ln-ods"/>
                     <connections>
+                        <outlet property="issueAssigneeImageView" destination="OGw-dt-6sn" id="xpA-7x-Zcj"/>
                         <outlet property="issueAssigneeLabel" destination="6EU-u0-Lnm" id="RBP-Tu-mt7"/>
                         <outlet property="issueLabelsLabel" destination="MK2-O6-CbI" id="krt-vQ-0bN"/>
                         <outlet property="issueMilestoneLabel" destination="aUS-6v-ad0" id="pxb-xB-ZKU"/>
@@ -230,18 +241,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a repository" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk5-nc-JeH">
-                                                    <rect key="frame" x="16" y="11.5" width="543" height="20.5"/>
+                                                    <rect key="frame" x="54" y="11.5" width="505" height="20.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-X6-QSJ">
+                                                    <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                                    <animations/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="02q-Qg-Vut"/>
+                                                        <constraint firstAttribute="width" constant="30" id="Gub-GY-Bom"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <animations/>
                                             <constraints>
+                                                <constraint firstItem="Vhl-X6-QSJ" firstAttribute="leading" secondItem="bxw-aa-ETw" secondAttribute="leadingMargin" constant="8" id="4gn-ac-5Xj"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Yk5-nc-JeH" secondAttribute="bottom" constant="4" id="6M3-wq-YG4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Yk5-nc-JeH" secondAttribute="trailing" id="Gpb-9a-fSU"/>
-                                                <constraint firstItem="Yk5-nc-JeH" firstAttribute="leading" secondItem="bxw-aa-ETw" secondAttribute="leadingMargin" constant="8" id="Icl-wR-kcC"/>
+                                                <constraint firstItem="Vhl-X6-QSJ" firstAttribute="centerY" secondItem="bxw-aa-ETw" secondAttribute="centerY" id="JiG-9a-szy"/>
+                                                <constraint firstItem="Yk5-nc-JeH" firstAttribute="leading" secondItem="Vhl-X6-QSJ" secondAttribute="trailing" constant="8" id="Ttf-Hw-V5B"/>
                                                 <constraint firstItem="Yk5-nc-JeH" firstAttribute="top" secondItem="bxw-aa-ETw" secondAttribute="topMargin" constant="4" id="rgW-Ie-IC2"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -340,6 +361,7 @@
                     <connections>
                         <outlet property="bodyLabel" destination="Xdp-v5-gp1" id="4v8-mH-nOW"/>
                         <outlet property="bodyTextField" destination="G8h-XH-54j" id="nKq-25-OMX"/>
+                        <outlet property="repositoryImageView" destination="Vhl-X6-QSJ" id="9Nh-1a-8sY"/>
                         <outlet property="repositoryLabel" destination="Yk5-nc-JeH" id="B5A-40-P73"/>
                         <outlet property="saveButton" destination="tys-7e-zDN" id="Fre-Ch-srm"/>
                         <outlet property="titleLabel" destination="TMX-9D-cjd" id="UYp-KK-9Dm"/>
@@ -367,24 +389,35 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53f-9n-Xk6">
-                                            <rect key="frame" x="16" y="11.5" width="529" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="repository_fullName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53f-9n-Xk6">
+                                            <rect key="frame" x="54" y="11" width="491" height="20.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-S2-5hz">
+                                            <rect key="frame" x="16" y="7" width="30" height="30"/>
+                                            <animations/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="JcH-mc-LNX"/>
+                                                <constraint firstAttribute="height" constant="30" id="e5a-kL-WgE"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
                                         <constraint firstAttribute="trailingMargin" secondItem="53f-9n-Xk6" secondAttribute="trailing" constant="47" id="Cs2-nV-jg2"/>
                                         <constraint firstItem="53f-9n-Xk6" firstAttribute="centerY" secondItem="FtE-CI-WLa" secondAttribute="centerY" id="Jeh-RQ-VXS"/>
-                                        <constraint firstItem="53f-9n-Xk6" firstAttribute="leading" secondItem="FtE-CI-WLa" secondAttribute="leadingMargin" constant="8" id="YzA-Bs-nYw"/>
+                                        <constraint firstItem="9ge-S2-5hz" firstAttribute="centerY" secondItem="FtE-CI-WLa" secondAttribute="centerY" id="Lgr-c9-lg1"/>
+                                        <constraint firstItem="9ge-S2-5hz" firstAttribute="leading" secondItem="FtE-CI-WLa" secondAttribute="leadingMargin" constant="8" id="aUB-Xd-VwR"/>
+                                        <constraint firstItem="53f-9n-Xk6" firstAttribute="leading" secondItem="9ge-S2-5hz" secondAttribute="trailing" constant="8" id="nHx-Dt-qdh"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
-                                    <outlet property="nameLabel" destination="53f-9n-Xk6" id="Z2w-pm-GHs"/>
+                                    <outlet property="repositoryImageView" destination="9ge-S2-5hz" id="qKu-qe-krL"/>
+                                    <outlet property="repositoryNameLabel" destination="53f-9n-Xk6" id="geP-6w-CPn"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

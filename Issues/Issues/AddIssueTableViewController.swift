@@ -20,6 +20,16 @@ class AddIssueTableViewController: UITableViewController {
   
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
+  @IBOutlet weak var repositoryImageView: UIImageView! {
+    didSet {
+      if let placeholder = UIImage(named: "GitHub") {
+        self.repositoryImageView.hnk_setImage(placeholder, key: "GitHub")
+      }
+      
+      self.repositoryImageView.layer.cornerRadius = (self.repositoryImageView.frame.size.height / 2)
+      self.repositoryImageView.layer.masksToBounds = true
+    }
+  }
   @IBOutlet weak var repositoryLabel: UILabel!
   
   @IBOutlet weak var titleLabel: UILabel!
@@ -90,6 +100,10 @@ extension AddIssueTableViewController: RepositoryDelegate {
     self.repository = repository
     
     self.repositoryLabel.text = self.repository?.fullName
+    
+    if let avatarURL = self.repository?.owner.avatarURL {
+      self.repositoryImageView.hnk_setImageFromURL(avatarURL)
+    }
     
     enableSaveButtonIfNeeded()
   }

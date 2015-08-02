@@ -14,7 +14,7 @@ public class ParseController {
   private var parsedRepositories: [Repository] = []
   private var parsedLabels: Set<Label> = []
   private var parsedMilestones: [Milestone] = []
-  private var parsedAssignees: [Assignee] = []
+  private var parsedUsers: [User] = []
   
   /// Returns the shared ParseController.
   public static let sharedInstance = ParseController()
@@ -42,8 +42,6 @@ extension ParseController: Parseable {
       // Skips any pull requests.
       guard issue["pull_request"].dictionary == nil else { continue }
       
-      print(issue)
-      
       if let id = issue["id"].int,
        let repository = issue["repository"].dictionary,
        let number = issue["number"].int,
@@ -61,7 +59,7 @@ extension ParseController: Parseable {
           var assignee: Assignee?
           
           if let _assignee = issue["assignee"].dictionary {
-            assignee = self.parseAssignee(_assignee)
+            assignee = self.parseUser(_assignee)
           }
           
           var labels: Set<Label> = []
@@ -79,10 +77,6 @@ extension ParseController: Parseable {
           let closingDate = issue["closed_at"].string?.date
           
           let ghIssue = GitHubIssue(id: id, repository: repository, number: number, title: title, body: body, state: state, locked: locked, commentsURL: commentsURL, assignee: assignee, labels: labels, milestone: milestone, creationDate: creationDate, closingDate: closingDate)
-          
-//          if let labels = issue["labels"].array where !labels.isEmpty {
-//            self.parseLabelsForIssue(ghIssue, json: labels)
-//          }
           
           issues.append(ghIssue)
         } catch (ParseError.InvalidParse) {
@@ -103,8 +97,7 @@ extension ParseController {
   
   func parseRepository(json: [String: JSON]) throws -> Repository {
     if let id = json["id"]?.int,
-     let owner = json["owner"]?.dictionary,
-     let ownerName = owner["login"]?.string,
+     let _owner = json["owner"]?.dictionary,
      let name = json["name"]?.string,
      let fullName = json["full_name"]?.string {
       
@@ -114,10 +107,12 @@ extension ParseController {
         return repository
       }
       
-      let newRepository = GitHubRepository(id: id, owner: ownerName, name: name, fullName: fullName)
-      self.parsedRepositories.append(newRepository)
-      
-      return newRepository
+      if let owner = self.parseUser(_owner) {
+        let newRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName)
+        self.parsedRepositories.append(newRepository)
+        
+        return newRepository
+      }
     }
     
     throw ParseError.InvalidParse
@@ -135,7 +130,7 @@ extension ParseController {
       let repository = repository.1
       
       if let id = repository["id"].int,
-       let owner = repository["owner", "login"].string,
+       let _owner = repository["owner"].dictionary,
        let name = repository["name"].string,
        let fullName = repository["full_name"].string {
         
@@ -144,8 +139,10 @@ extension ParseController {
         let milestonesURL = repository["milestones_url"].string
 //        print("milestonesURL: \(milestonesURL)")
         
-        let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName)
-        repositories.append(ghRepository)
+        if let owner = self.parseUser(_owner) {
+          let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName)
+          repositories.append(ghRepository)
+        }
       }
     }
     
@@ -167,7 +164,8 @@ extension ParseController {
         let alreadyAddedLabel = self.parsedLabels.filter { $0.name == name && $0.hex == hex }.first
         
         if let label = alreadyAddedLabel {
-          return Set(arrayLiteral: label)
+          labels.insert(label)
+          continue
         }
         
         let newLabel = Label(name: name, hex: hex)
@@ -205,19 +203,21 @@ extension ParseController {
 // MARK: Assignee
 extension ParseController {
   
-  func parseAssignee(json: [String: JSON]) -> Assignee? {
+  func parseUser(json: [String: JSON]) -> User? {
     if let id = json["id"]?.int,
      let avatarURL = json["avatar_url"]?.string,
      let name = json["login"]?.string {
       
-      let alreadyAddedAssignee = self.parsedAssignees.filter { $0.id == id }.first
+      let alreadyAddedUser = self.parsedUsers.filter { $0.id == id }.first
       
-      if let assignee = alreadyAddedAssignee {
-        return assignee
+      if let user = alreadyAddedUser {
+        return user
       }
       
-      let newAssignee = Assignee(id: id, avatarURL: avatarURL, name: name)
-      self.parsedAssignees.append(newAssignee)
+      let newUser = User(id: id, avatarURL: avatarURL, name: name)
+      self.parsedUsers.append(newUser)
+      
+      return newUser
     }
     
     return nil
