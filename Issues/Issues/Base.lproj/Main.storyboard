@@ -67,7 +67,9 @@
                     <navigationItem key="navigationItem" title="Issues" id="Y6i-HD-AGK">
                         <barButtonItem key="rightBarButtonItem" systemItem="compose" id="OOH-Ni-YyP">
                             <connections>
-                                <segue destination="N2h-1z-HRP" kind="presentation" identifier="showAddIssue" id="p6K-pU-NJF"/>
+                                <segue destination="N2h-1z-HRP" kind="popoverPresentation" identifier="showAddIssue" popoverAnchorBarButtonItem="OOH-Ni-YyP" id="p6K-pU-NJF">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
