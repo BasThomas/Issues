@@ -12,6 +12,7 @@ public protocol Setup {
   
   func setupLocalization()
   func setupAutomaticCellResizing()
+  func setupRefresh()
   func setupSearch()
 }
 
@@ -21,6 +22,8 @@ extension Setup where Self: UITableViewController {
     self.tableView.estimatedRowHeight = 44
     self.tableView.rowHeight = UITableViewAutomaticDimension
   }
+  
+  public func setupRefresh() { }
   
   public func setupSearch() { }
 }

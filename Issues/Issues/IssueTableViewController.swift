@@ -40,12 +40,8 @@ class IssueTableViewController: UITableViewController {
     
     self.setupLocalization()
     self.setupAutomaticCellResizing()
+    self.setupRefresh()
     self.setupSearch()
-    
-    let refresh = UIRefreshControl()
-    refresh.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
-    
-    self.refreshControl = refresh
     
     Request.delegate = self
     self.navigationController?.delegate = self
@@ -56,6 +52,13 @@ class IssueTableViewController: UITableViewController {
 
 // MARK: - Setup
 extension IssueTableViewController: Setup {
+  
+  func setupRefresh() {
+    let refresh = UIRefreshControl()
+    refresh.addTarget(self, action: Selector("refresh"), forControlEvents: .ValueChanged)
+    
+    self.refreshControl = refresh
+  }
   
   func setupSearch() {
     self.searchController = UISearchController(searchResultsController: nil)
@@ -227,12 +230,9 @@ extension IssueTableViewController: UINavigationControllerDelegate {
       
       if let cell = sender as? IssueTableViewCell,
        let issue = cell.issue {
-        
-        if let searchController = self.searchController where searchController.active {
-          searchController.active = false
-        }
-        
         issueTableViewController.issue = issue
+        
+        self.splitViewController?.toggleMasterView(self.searchController)
       }
     }
   }
