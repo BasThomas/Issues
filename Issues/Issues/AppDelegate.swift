@@ -8,7 +8,7 @@
 
 import UIKit
 import IssueKit
-import NXOAuth2Client
+import OAuthSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDelegate {
@@ -16,16 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
   var window: UIWindow?
 
   func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-    let oAuthStore = NXOAuth2AccountStore.sharedStore()
-    
-    oAuthStore.setClientID(ClientID,
-      secret: ClientSecret,
-      authorizationURL: NSURL(string: "https://github.com/login/oauth/authorize"),
-      tokenURL: NSURL(string: "https://github.com/login/oauth/access_token"),
-      redirectURL: NSURL(string: "nl.basbroek.Issues://callback"),
-      forAccountType: "Github")
-    
-//    oAuthStore.requestAccessToAccountWithType("Github")
     
     if let splitViewController = self.window?.rootViewController as? UISplitViewController {
       if let navigationController = splitViewController.viewControllers[splitViewController.viewControllers.count-1] as? UINavigationController {
@@ -38,6 +28,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UISplitViewControllerDele
   }
   
   func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    if url.host == "oauth-callback" {
+      if let path = url.path where path.hasPrefix("/github") {
+        OAuth2Swift.handleOpenURL(url)
+      }
+    }
+    
     return true
   }
 

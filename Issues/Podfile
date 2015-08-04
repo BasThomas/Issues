@@ -5,7 +5,7 @@ link_with 'Issues'
 link_with 'IssueKit'
 
 # OAuth
-pod 'NXOAuth2Client'
+pod 'OAuthSwift', :git => 'https://github.com/mwermuth/OAuthSwift.git', :branch => 'swift2.0'
 
 # Networking
 pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'

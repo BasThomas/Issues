@@ -194,6 +194,8 @@ extension ParseController {
       
       let newMilestone = GitHubMilestone(id: id, title: title, state: state, description: description, dueDate: dueDate)
       self.parsedMilestones.append(newMilestone)
+      
+      return newMilestone
     }
     
     throw ParseError.InvalidParse

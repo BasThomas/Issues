@@ -8,6 +8,7 @@
 
 import UIKit
 import Font_Awesome_Swift
+import OAuthSwift
 import IssueKit
 
 // MARK: CellIdentifiers
@@ -37,6 +38,22 @@ class IssueTableViewController: UITableViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    let oauthswift = OAuth2Swift(
+      consumerKey: ClientID,
+      consumerSecret: ClientSecret,
+      authorizeUrl: "https://github.com/login/oauth/authorize",
+      accessTokenUrl: "https://github.com/login/oauth/access_token",
+      responseType: "code")
+    
+    let state = generateState(20)
+    oauthswift.authorizeWithCallbackURL(NSURL(string: "nl.basbroek.issues:/oauth-callback/github")!, scope: "user,repo", state: state, success: {
+      credential, response, parameters in
+        print("token: \(credential.oauth_token)")
+      }, failure: {
+      error in
+        print("Error auth: \(error.localizedDescription)")
+    })
     
     self.setupLocalization()
     self.setupAutomaticCellResizing()
