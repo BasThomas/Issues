@@ -182,10 +182,10 @@ extension RepositoryTableViewController {
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
     let GitHubSmall = "github_small"
-    let Fork = "fork"
     let PrivateRepository = "private_repository"
     
     let cell = self.tableView.dequeueReusableCellWithIdentifier(RepositoryCellIdentifier, forIndexPath: indexPath) as! RepositoryTableViewCell
+    cell.reset()
     
     if let searchController = self.searchController where searchController.active {
       cell.repository = self.filteredRepositories[indexPath.row]

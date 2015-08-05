@@ -126,14 +126,6 @@ extension IssueOverviewTableViewController {
     return 0
   }
   
-  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    if let _ = self.issue {
-      return 4
-    }
-    
-    return 0
-  }
-  
   // Setup automatic cell resizing. Seems you need to do so per indexPath in a static tableview.
   override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
     return 44

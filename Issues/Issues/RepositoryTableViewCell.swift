@@ -18,3 +18,18 @@ class RepositoryTableViewCell: UITableViewCell {
   @IBOutlet weak var repositoryIsForkImageView: UIImageView!
   @IBOutlet weak var repositoryIsPrivateImageView: UIImageView!
 }
+
+extension RepositoryTableViewCell {
+  
+  /// Resets the cell.
+  /// It seems like this is needed. Images get cached in a weird way or so. Not sure. ¯\_(ツ)_/¯
+  func reset() {
+    let PublicRepository = "public_repository"
+    
+    self.repositoryIsForkImageView.hidden = true
+    
+    if let publicRepository = UIImage(named: PublicRepository) {
+      self.repositoryIsPrivateImageView.image = publicRepository
+    }
+  }
+}

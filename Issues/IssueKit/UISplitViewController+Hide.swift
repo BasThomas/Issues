@@ -11,7 +11,7 @@ import Foundation
 extension UISplitViewController {
   
   public func toggleMasterView(searchController: UISearchController? = nil) {
-    guard UIDevice.currentDevice().userInterfaceIdiom == .Pad else { self.dismissSearchController(searchController); return }
+    guard UIDevice.currentDevice().userInterfaceIdiom == .Pad && !self.collapsed else { self.dismissSearchController(searchController); return }
     
     let barButtonItem = self.displayModeButtonItem()
     UIApplication.sharedApplication().sendAction(barButtonItem.action, to: barButtonItem.target, from: nil, forEvent: nil)
