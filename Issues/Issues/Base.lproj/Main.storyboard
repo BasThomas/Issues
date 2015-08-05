@@ -129,7 +129,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OGw-dt-6sn">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_small" translatesAutoresizingMaskIntoConstraints="NO" id="OGw-dt-6sn">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <animations/>
                                                     <constraints>
@@ -247,7 +247,7 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-X6-QSJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_small" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-X6-QSJ">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <animations/>
                                                     <constraints>
@@ -459,7 +459,7 @@
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-S2-5hz">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github_small" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-S2-5hz">
                                             <rect key="frame" x="16" y="7" width="30" height="30"/>
                                             <animations/>
                                             <constraints>
@@ -474,7 +474,7 @@
                                                 <constraint firstAttribute="height" constant="30" id="CC9-ci-lyn"/>
                                             </constraints>
                                         </imageView>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M7Z-d7-nfz">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="fork" translatesAutoresizingMaskIntoConstraints="NO" id="M7Z-d7-nfz">
                                             <rect key="frame" x="516" y="7" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="PKp-lI-ZH1"/>
@@ -586,7 +586,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="github" width="30" height="30"/>
+        <image name="fork" width="30" height="30"/>
+        <image name="github_small" width="30" height="30"/>
         <image name="public_repository" width="30" height="30"/>
     </resources>
     <inferredMetricsTieBreakers>

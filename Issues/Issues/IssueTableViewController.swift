@@ -234,9 +234,9 @@ extension IssueTableViewController { }
 extension IssueTableViewController: DZNEmptyDataSetSource {
   
   func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-    let GitHub = "github"
+    let GitHubSmall = "github_small"
     
-    return UIImage(named: GitHub)!
+    return UIImage(named: GitHubSmall)!
   }
   
   func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {

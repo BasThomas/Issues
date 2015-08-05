@@ -24,10 +24,10 @@ class AddIssueTableViewController: UITableViewController {
   
   @IBOutlet weak var repositoryImageView: UIImageView! {
     didSet {
-      let GitHub = "github"
+      let GitHubSmall = "github_small"
       
-      if let placeholder = UIImage(named: GitHub) {
-        self.repositoryImageView.hnk_setImage(placeholder, key: GitHub)
+      if let placeholder = UIImage(named: GitHubSmall) {
+        self.repositoryImageView.hnk_setImage(placeholder, key: GitHubSmall)
       }
       
       self.repositoryImageView.layer.cornerRadius = (self.repositoryImageView.frame.size.height / 2)

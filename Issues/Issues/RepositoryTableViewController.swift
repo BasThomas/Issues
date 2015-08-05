@@ -181,7 +181,7 @@ extension RepositoryTableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-    let GitHub = "github"
+    let GitHubSmall = "github_small"
     let Fork = "fork"
     let PrivateRepository = "private_repository"
     
@@ -197,13 +197,12 @@ extension RepositoryTableViewController {
       cell.repositoryImageView.hnk_setImageFromURL(avatarURL)
       cell.repositoryImageView.layer.cornerRadius = (cell.repositoryImageView.frame.size.height / 2)
       cell.repositoryImageView.layer.masksToBounds = true
-    } else if let placeholder = UIImage(named: GitHub) {
-      cell.repositoryImageView.hnk_setImage(placeholder, key: GitHub)
+    } else if let placeholder = UIImage(named: GitHubSmall) {
+      cell.repositoryImageView.hnk_setImage(placeholder, key: GitHubSmall)
     }
     
-    if cell.repository.isFork,
-     let fork = UIImage(named: Fork) {
-      cell.repositoryIsForkImageView.hnk_setImage(fork, key: Fork)
+    if cell.repository.isFork {
+      cell.repositoryIsForkImageView.hidden = false
     }
     
     if cell.repository.isPrivate,
@@ -239,9 +238,9 @@ extension RepositoryTableViewController {
 extension RepositoryTableViewController: DZNEmptyDataSetSource {
   
   func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
-    let GitHub = "github"
+    let GitHubSmall = "github"
     
-    return UIImage(named: GitHub)!
+    return UIImage(named: GitHubSmall)!
   }
   
   func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {

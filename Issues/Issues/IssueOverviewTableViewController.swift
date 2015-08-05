@@ -8,6 +8,7 @@
 
 import UIKit
 import Haneke
+import DZNEmptyDataSet
 import IssueKit
 
 // MARK: SegueIdentifiers
@@ -74,6 +75,7 @@ class IssueOverviewTableViewController: UITableViewController {
     super.viewDidLoad()
     
     self.setupLocalization()
+    self.setupEmptyDataSet()
   }
   
   override func didReceiveMemoryWarning() {
@@ -95,10 +97,21 @@ extension IssueOverviewTableViewController: Setup {
       self.title = "__SELECT_AN_ISSUE__".localized
     }
     
-    self.issueTitleLabel.text ?? "__UNKNOWN_TITLE__".localized
-    self.issueAssigneeLabel.text ?? "__NO_ASSIGNEE_SET__".localized
-    self.issueLabelsLabel.text ?? "__NO_LABELS_SET__".localized
-    self.issueMilestoneLabel.text ?? "__NO_MILESTONE_SET__".localized
+    if self.issueTitleLabel.text == nil {
+      self.issueTitleLabel.text = "__UNKNOWN_TITLE__".localized
+    }
+    
+    if self.issueAssigneeLabel.text == nil {
+      self.issueAssigneeLabel.text = "__NO_ASSIGNEE_SET__".localized
+    }
+    
+    if self.issueLabelsLabel.text == nil {
+      self.issueLabelsLabel.text = "__NO_LABELS_SET__".localized
+    }
+    
+    if self.issueMilestoneLabel.text == nil {
+      self.issueMilestoneLabel.text = "__NO_MILESTONE_SET__".localized
+    }
   }
 }
 
@@ -108,6 +121,14 @@ extension IssueOverviewTableViewController {
   override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
     if let _ = self.issue {
       return 1
+    }
+    
+    return 0
+  }
+  
+  override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    if let _ = self.issue {
+      return 4
     }
     
     return 0
@@ -127,6 +148,23 @@ extension IssueOverviewTableViewController {
   }
 }
 
+// MARK: - DZNEmptyDataSetSource
+extension IssueOverviewTableViewController: DZNEmptyDataSetSource {
+  
+  func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    let GitHubLarge = "github_large"
+    
+    return UIImage(named: GitHubLarge)!
+  }
+  
+  func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    return NSAttributedString(string: "__SELECT_AN_ISSUE__".localized)
+  }
+}
+
+// MARK: - DZNEmptyDataSetDelegate
+extension IssueOverviewTableViewController: DZNEmptyDataSetDelegate { }
+
 // MARK: - Actions
 extension IssueOverviewTableViewController { }
 
@@ -136,5 +174,13 @@ extension IssueOverviewTableViewController {
   override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
     // Get the new view controller using segue.destinationViewController.
     // Pass the selected object to the new view controller.
+  }
+}
+
+private extension IssueOverviewTableViewController {
+  
+  func setupEmptyDataSet() {
+    self.tableView.emptyDataSetSource = self
+    self.tableView.emptyDataSetDelegate = self
   }
 }

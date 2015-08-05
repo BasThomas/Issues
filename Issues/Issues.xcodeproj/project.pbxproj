@@ -587,8 +587,8 @@
 			children = (
 				49CB37EE1B41EF3A00809682 /* Main.storyboard */,
 				495A5E051B66414F00B4E32B /* IssueTableView */,
-				495A5E061B66415800B4E32B /* AddIssueTableView */,
 				495A5E091B6641F900B4E32B /* IssueOverviewTableView */,
+				495A5E061B66415800B4E32B /* AddIssueTableView */,
 				49437C081B4BD7AE001C8557 /* Supporting Files */,
 			);
 			path = Issues;
