@@ -15,4 +15,6 @@ class RepositoryTableViewCell: UITableViewCell {
   
   @IBOutlet weak var repositoryImageView: UIImageView!
   @IBOutlet weak var repositoryNameLabel: UILabel!
+  @IBOutlet weak var repositoryIsForkImageView: UIImageView!
+  @IBOutlet weak var repositoryIsPrivateImageView: UIImageView!
 }

@@ -21,3 +21,8 @@
 /* Issue overview */
 "__ISSUE_OVERVIEW__"      = "Issue overview";
 "__SELECT_AN_ISSUE__"     = "Select an issue";
+
+"__UNKNOWN_TITLE__"       = "Unknown title";
+"__NO_ASSIGNEE_SET__"     = "No assignee set";
+"__NO_LABELS_SET__"       = "No labels added";
+"__NO_MILESTONE_SET__"    = "No milestone set";

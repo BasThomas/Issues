@@ -22,6 +22,12 @@ public struct GitHubRepository: Repository {
   /// Full name of the repository (owner+name).
   public var fullName: String
   
+  /// Boolean stating if the repository is a fork (or not).
+  public var isFork: Bool
+  
+  /// Boolean stating if the repository is private (or not).
+  public var isPrivate: Bool
+  
   /// Issues of the repository.
   public var issues: [Issue]
   
@@ -31,11 +37,14 @@ public struct GitHubRepository: Repository {
   /// Milestones of the repository
   public var milestones: [Milestone]
   
-  public init(id: Int, owner: User, name: String, fullName: String, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
+  public init(id: Int, owner: User, name: String, fullName: String, isFork: Bool, isPrivate: Bool, issues: [Issue] = [], labels: [Label] = [], milestones: [Milestone] = []) {
     self.id = id
     self.owner = owner
     self.name = name
     self.fullName = fullName
+    
+    self.isFork = isFork
+    self.isPrivate = isPrivate
     
     self.issues = issues
     self.labels = labels

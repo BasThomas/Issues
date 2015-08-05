@@ -96,10 +96,14 @@ extension ParseController: Parseable {
 extension ParseController {
   
   func parseRepository(json: [String: JSON]) throws -> Repository {
+    print(json)
+    
     if let id = json["id"]?.int,
      let _owner = json["owner"]?.dictionary,
      let name = json["name"]?.string,
-     let fullName = json["full_name"]?.string {
+     let fullName = json["full_name"]?.string,
+     let isFork = json["fork"]?.bool,
+     let isPrivate = json["private"]?.bool {
       
       let alreadyAddedRepository = self.parsedRepositories.filter { $0.id == id }.first
       
@@ -108,7 +112,7 @@ extension ParseController {
       }
       
       if let owner = self.parseUser(_owner) {
-        let newRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName)
+        let newRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate)
         self.parsedRepositories.append(newRepository)
         
         return newRepository
@@ -132,7 +136,9 @@ extension ParseController {
       if let id = repository["id"].int,
        let _owner = repository["owner"].dictionary,
        let name = repository["name"].string,
-       let fullName = repository["full_name"].string {
+       let fullName = repository["full_name"].string,
+       let isFork = repository["fork"].bool,
+       let isPrivate = repository["private"].bool {
         
         let labelsURL = repository["labels_url"].string
 //        print("labelsURL: \(labelsURL)")
@@ -140,7 +146,7 @@ extension ParseController {
 //        print("milestonesURL: \(milestonesURL)")
         
         if let owner = self.parseUser(_owner) {
-          let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName)
+          let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate)
           repositories.append(ghRepository)
         }
       }

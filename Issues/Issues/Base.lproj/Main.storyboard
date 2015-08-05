@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A178w" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GKZ-Hx-e4i">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="GKZ-Hx-e4i">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -240,14 +240,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="567" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a repository" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk5-nc-JeH">
-                                                    <rect key="frame" x="54" y="11.5" width="505" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Choose a repository" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Yk5-nc-JeH">
+                                                    <rect key="frame" x="54" y="12" width="505" height="19.5"/>
                                                     <animations/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-X6-QSJ">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="Vhl-X6-QSJ">
                                                     <rect key="frame" x="16" y="7" width="30" height="30"/>
                                                     <animations/>
                                                     <constraints>
@@ -261,9 +261,11 @@
                                                 <constraint firstItem="Vhl-X6-QSJ" firstAttribute="leading" secondItem="bxw-aa-ETw" secondAttribute="leadingMargin" constant="8" id="4gn-ac-5Xj"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="Yk5-nc-JeH" secondAttribute="bottom" constant="4" id="6M3-wq-YG4"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="Yk5-nc-JeH" secondAttribute="trailing" id="Gpb-9a-fSU"/>
-                                                <constraint firstItem="Vhl-X6-QSJ" firstAttribute="centerY" secondItem="bxw-aa-ETw" secondAttribute="centerY" id="JiG-9a-szy"/>
                                                 <constraint firstItem="Yk5-nc-JeH" firstAttribute="leading" secondItem="Vhl-X6-QSJ" secondAttribute="trailing" constant="8" id="Ttf-Hw-V5B"/>
+                                                <constraint firstItem="Yk5-nc-JeH" firstAttribute="top" secondItem="bxw-aa-ETw" secondAttribute="topMargin" constant="4" id="g4l-fz-JCY"/>
+                                                <constraint firstItem="Vhl-X6-QSJ" firstAttribute="centerY" secondItem="bxw-aa-ETw" secondAttribute="centerY" id="ixW-zF-C55"/>
                                                 <constraint firstItem="Yk5-nc-JeH" firstAttribute="top" secondItem="bxw-aa-ETw" secondAttribute="topMargin" constant="4" id="rgW-Ie-IC2"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="Yk5-nc-JeH" secondAttribute="bottom" constant="4" id="tbb-jd-NJJ"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <animations/>
@@ -450,14 +452,14 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="43.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="repository_fullName" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53f-9n-Xk6">
-                                            <rect key="frame" x="54" y="11" width="491" height="20.5"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="repository_fullName" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="53f-9n-Xk6">
+                                            <rect key="frame" x="54" y="12" width="454" height="19.5"/>
                                             <animations/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-S2-5hz">
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="github" translatesAutoresizingMaskIntoConstraints="NO" id="9ge-S2-5hz">
                                             <rect key="frame" x="16" y="7" width="30" height="30"/>
                                             <animations/>
                                             <constraints>
@@ -465,19 +467,40 @@
                                                 <constraint firstAttribute="height" constant="30" id="e5a-kL-WgE"/>
                                             </constraints>
                                         </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="public_repository" translatesAutoresizingMaskIntoConstraints="NO" id="IMP-UW-y6a">
+                                            <rect key="frame" x="554" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="30" id="8eK-r0-QKY"/>
+                                                <constraint firstAttribute="height" constant="30" id="CC9-ci-lyn"/>
+                                            </constraints>
+                                        </imageView>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="M7Z-d7-nfz">
+                                            <rect key="frame" x="516" y="7" width="30" height="30"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="30" id="PKp-lI-ZH1"/>
+                                                <constraint firstAttribute="width" constant="30" id="fBh-96-4L3"/>
+                                            </constraints>
+                                        </imageView>
                                     </subviews>
                                     <animations/>
                                     <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="53f-9n-Xk6" secondAttribute="trailing" constant="47" id="Cs2-nV-jg2"/>
-                                        <constraint firstItem="53f-9n-Xk6" firstAttribute="centerY" secondItem="FtE-CI-WLa" secondAttribute="centerY" id="Jeh-RQ-VXS"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="IMP-UW-y6a" secondAttribute="trailing" constant="8" id="CE9-UW-ich"/>
                                         <constraint firstItem="9ge-S2-5hz" firstAttribute="centerY" secondItem="FtE-CI-WLa" secondAttribute="centerY" id="Lgr-c9-lg1"/>
+                                        <constraint firstItem="IMP-UW-y6a" firstAttribute="centerY" secondItem="FtE-CI-WLa" secondAttribute="centerY" id="NIx-gk-5qT"/>
+                                        <constraint firstItem="IMP-UW-y6a" firstAttribute="leading" secondItem="M7Z-d7-nfz" secondAttribute="trailing" constant="8" id="Qwo-H6-V0J"/>
+                                        <constraint firstItem="53f-9n-Xk6" firstAttribute="top" secondItem="FtE-CI-WLa" secondAttribute="topMargin" constant="4" id="SKG-z9-2LH"/>
                                         <constraint firstItem="9ge-S2-5hz" firstAttribute="leading" secondItem="FtE-CI-WLa" secondAttribute="leadingMargin" constant="8" id="aUB-Xd-VwR"/>
+                                        <constraint firstItem="M7Z-d7-nfz" firstAttribute="leading" secondItem="53f-9n-Xk6" secondAttribute="trailing" constant="8" id="lA3-Ks-Upx"/>
+                                        <constraint firstAttribute="bottomMargin" secondItem="53f-9n-Xk6" secondAttribute="bottom" constant="4" id="mFQ-PQ-0Gk"/>
                                         <constraint firstItem="53f-9n-Xk6" firstAttribute="leading" secondItem="9ge-S2-5hz" secondAttribute="trailing" constant="8" id="nHx-Dt-qdh"/>
+                                        <constraint firstItem="M7Z-d7-nfz" firstAttribute="centerY" secondItem="FtE-CI-WLa" secondAttribute="centerY" id="qdK-8A-pnP"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <animations/>
                                 <connections>
                                     <outlet property="repositoryImageView" destination="9ge-S2-5hz" id="qKu-qe-krL"/>
+                                    <outlet property="repositoryIsForkImageView" destination="M7Z-d7-nfz" id="YlH-dU-0e2"/>
+                                    <outlet property="repositoryIsPrivateImageView" destination="IMP-UW-y6a" id="Gke-f1-wPo"/>
                                     <outlet property="repositoryNameLabel" destination="53f-9n-Xk6" id="geP-6w-CPn"/>
                                 </connections>
                             </tableViewCell>
@@ -562,6 +585,10 @@
             <point key="canvasLocation" x="-1231" y="530"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="github" width="30" height="30"/>
+        <image name="public_repository" width="30" height="30"/>
+    </resources>
     <inferredMetricsTieBreakers>
         <segue reference="NSw-cj-E8F"/>
     </inferredMetricsTieBreakers>

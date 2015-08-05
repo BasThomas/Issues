@@ -16,14 +16,18 @@ private let Parse = ParseController.sharedInstance
 private let SelectTitle = 1
 private let SelectBody = 2
 
+private let TopIndexPath = NSIndexPath(forRow: 0, inSection: 0)
+
 class AddIssueTableViewController: UITableViewController {
   
   @IBOutlet weak var saveButton: UIBarButtonItem!
   
   @IBOutlet weak var repositoryImageView: UIImageView! {
     didSet {
-      if let placeholder = UIImage(named: "GitHub") {
-        self.repositoryImageView.hnk_setImage(placeholder, key: "GitHub")
+      let GitHub = "github"
+      
+      if let placeholder = UIImage(named: GitHub) {
+        self.repositoryImageView.hnk_setImage(placeholder, key: GitHub)
       }
       
       self.repositoryImageView.layer.cornerRadius = (self.repositoryImageView.frame.size.height / 2)
@@ -57,6 +61,7 @@ class AddIssueTableViewController: UITableViewController {
     Request.requestUserRepositories()
     
     self.setupLocalization()
+//    self.setupAutomaticCellResizing()
   }
 }
 
@@ -106,6 +111,9 @@ extension AddIssueTableViewController: RepositoryDelegate {
     }
     
     enableSaveButtonIfNeeded()
+    self.tableView.beginUpdates()
+    self.tableView.reloadRowsAtIndexPaths([TopIndexPath], withRowAnimation: .None)
+    self.tableView.endUpdates()
   }
   
   func repositoriesFetched(repositories: [Repository]) {
@@ -115,6 +123,17 @@ extension AddIssueTableViewController: RepositoryDelegate {
 
 // MARK: - UITableView delegate
 extension AddIssueTableViewController {
+  
+  // Setup automatic cell resizing. Seems you need to do so per indexPath in a static tableview.
+  override func tableView(tableView: UITableView, estimatedHeightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    return 44
+  }
+  
+  override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    guard indexPath != TopIndexPath else { return UITableViewAutomaticDimension }
+    
+    return 44
+  }
   
   override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
     switch(indexPath.row) {

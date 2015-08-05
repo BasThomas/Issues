@@ -21,3 +21,8 @@
 /* Issue overview */
 "__ISSUE_OVERVIEW__"      = "Issue-overzicht";
 "__SELECT_AN_ISSUE__"     = "Selecteer een issue";
+
+"__UNKNOWN_TITLE__"       = "Onbekende titel";
+"__NO_ASSIGNEE_SET__"     = "Geen aangewezen persoon";
+"__NO_LABELS_SET__"       = "Geen labels toegevoegd";
+"__NO_MILESTONE_SET__"    = "Geen mijlpaal ingesteld";

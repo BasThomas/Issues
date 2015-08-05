@@ -22,7 +22,7 @@ class IssueOverviewTableViewController: UITableViewController {
   
   @IBOutlet weak var issueTitleLabel: UILabel! {
     didSet {
-      self.issueTitleLabel.text = issue?.title ?? "unknown title"
+      self.issueTitleLabel.text = issue?.title
     }
   }
   
@@ -41,7 +41,7 @@ class IssueOverviewTableViewController: UITableViewController {
   
   @IBOutlet weak var issueAssigneeLabel: UILabel! {
     didSet {
-      self.issueAssigneeLabel.text = issue?.assignee?.name ?? "no assignee set"
+      self.issueAssigneeLabel.text = issue?.assignee?.name
     }
   }
   
@@ -53,9 +53,9 @@ class IssueOverviewTableViewController: UITableViewController {
         labelText = ", ".join(issue.labels.map { $0.name } )
       }
       
-      let labelTextIsEmpty = labelText.isEmpty
+      guard !labelText.isEmpty else { return }
       
-      self.issueLabelsLabel.text = labelTextIsEmpty ? "no labels" : labelText
+      self.issueLabelsLabel.text = labelText
       if let firstIssue = issue?.labels.first {
         self.issueLabelsLabel.textColor = firstIssue.hex.color
       }
@@ -64,7 +64,7 @@ class IssueOverviewTableViewController: UITableViewController {
   
   @IBOutlet weak var issueMilestoneLabel: UILabel! {
     didSet {
-      self.issueMilestoneLabel.text = issue?.milestone?.title ?? "no milestone set"
+      self.issueMilestoneLabel.text = issue?.milestone?.title
     }
   }
   
@@ -94,6 +94,11 @@ extension IssueOverviewTableViewController: Setup {
     } else {
       self.title = "__SELECT_AN_ISSUE__".localized
     }
+    
+    self.issueTitleLabel.text ?? "__UNKNOWN_TITLE__".localized
+    self.issueAssigneeLabel.text ?? "__NO_ASSIGNEE_SET__".localized
+    self.issueLabelsLabel.text ?? "__NO_LABELS_SET__".localized
+    self.issueMilestoneLabel.text ?? "__NO_MILESTONE_SET__".localized
   }
 }
 

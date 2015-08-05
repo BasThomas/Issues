@@ -15,6 +15,9 @@ public protocol Repository: CustomStringConvertible {
   var name: String { get }
   var fullName: String { get }
   
+  var isFork: Bool { get }
+  var isPrivate: Bool { get }
+  
   var issues: [Issue] { get set }
   var labels: [Label] { get set }
   var milestones: [Milestone] { get set }

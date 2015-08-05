@@ -45,6 +45,7 @@ class RepositoryTableViewController: UITableViewController {
     super.viewDidLoad()
     
     self.setupLocalization()
+    self.setupAutomaticCellResizing()
     
     Request.delegate = self
     
@@ -177,6 +178,10 @@ extension RepositoryTableViewController {
   }
   
   override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    let GitHub = "github"
+    let Fork = "fork"
+    let PrivateRepository = "private_repository"
+    
     let cell = self.tableView.dequeueReusableCellWithIdentifier(RepositoryCellIdentifier, forIndexPath: indexPath) as! RepositoryTableViewCell
     
     if let searchController = self.searchController where searchController.active {
@@ -189,8 +194,18 @@ extension RepositoryTableViewController {
       cell.repositoryImageView.hnk_setImageFromURL(avatarURL)
       cell.repositoryImageView.layer.cornerRadius = (cell.repositoryImageView.frame.size.height / 2)
       cell.repositoryImageView.layer.masksToBounds = true
-    } else if let placeholder = UIImage(named: "GitHub") {
-      cell.repositoryImageView.hnk_setImage(placeholder, key: "GitHub")
+    } else if let placeholder = UIImage(named: GitHub) {
+      cell.repositoryImageView.hnk_setImage(placeholder, key: GitHub)
+    }
+    
+    if cell.repository.isFork,
+     let fork = UIImage(named: Fork) {
+      cell.repositoryIsForkImageView.hnk_setImage(fork, key: Fork)
+    }
+    
+    if cell.repository.isPrivate,
+     let privateRepository = UIImage(named: PrivateRepository) {
+      cell.repositoryIsPrivateImageView.hnk_setImage(privateRepository, key: PrivateRepository)
     }
     
     cell.repositoryNameLabel.text = cell.repository.fullName
