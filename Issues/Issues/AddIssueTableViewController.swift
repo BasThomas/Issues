@@ -61,7 +61,6 @@ class AddIssueTableViewController: UITableViewController {
     Request.requestUserRepositories()
     
     self.setupLocalization()
-//    self.setupAutomaticCellResizing()
   }
 }
 

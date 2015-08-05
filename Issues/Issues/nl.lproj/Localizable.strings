@@ -6,23 +6,28 @@
   Copyright © 2015 Bas Broek. All rights reserved.
 */
 
-"__ISSUE__"               = "Issue";
-"__ISSUES__"              = "Issues";
+/* General */
+"__ISSUE__"                    = "Issue";
+"__ISSUES__"                   = "Issues";
 
 /* Adding issue */
-"__ADD_AN_ISSUE__"        = "Voeg een issue toe";
-"__CHOOSE_A_REPOSITORY__" = "Kies een repository";
+"__ADD_AN_ISSUE__"             = "Voeg een issue toe";
+"__CHOOSE_A_REPOSITORY__"      = "Kies een repository";
 
-"__TITLE__"               = "Titel";
-"__TITLE_PLACEHOLDER__"   = "Geef de issue een duidelijke titel";
-"__BODY__"                = "Body";
-"__BODY_PLACEHOLDER__"    = "Voeg meer informatie toe (optioneel)";
+"__TITLE__"                    = "Titel";
+"__TITLE_PLACEHOLDER__"        = "Geef de issue een duidelijke titel";
+"__BODY__"                     = "Body";
+"__BODY_PLACEHOLDER__"         = "Voeg meer informatie toe (optioneel)";
 
 /* Issue overview */
-"__ISSUE_OVERVIEW__"      = "Issue-overzicht";
-"__SELECT_AN_ISSUE__"     = "Selecteer een issue";
+"__ISSUE_OVERVIEW__"           = "Issue-overzicht";
+"__SELECT_AN_ISSUE__"          = "Selecteer een issue";
 
-"__UNKNOWN_TITLE__"       = "Onbekende titel";
-"__NO_ASSIGNEE_SET__"     = "Geen aangewezen persoon";
-"__NO_LABELS_SET__"       = "Geen labels toegevoegd";
-"__NO_MILESTONE_SET__"    = "Geen mijlpaal ingesteld";
+"__UNKNOWN_TITLE__"            = "Onbekende titel";
+"__NO_ASSIGNEE_SET__"          = "Geen aangewezen persoon";
+"__NO_LABELS_SET__"            = "Geen labels toegevoegd";
+"__NO_MILESTONE_SET__"         = "Geen mijlpaal ingesteld";
+
+/* Loading */
+"__ISSUES_ARE_LOADING__"       = "Issues zijn aan het laden...";
+"__REPOSITORIES_ARE_LOADING__" = "Repositories zijn aan het laden...";

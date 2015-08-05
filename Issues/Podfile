@@ -16,3 +16,6 @@ pod 'Font-Awesome-Swift'
 
 # Images
 pod 'HanekeSwift', :git => 'https://github.com/meteochu/HanekeSwift.git', :branch => 'swift-2.0'
+
+# Empty tableviews
+pod 'DZNEmptyDataSet'

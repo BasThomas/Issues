@@ -1,5 +1,6 @@
 PODS:
   - Alamofire (1.3.0)
+  - DZNEmptyDataSet (1.7)
   - Font-Awesome-Swift (1.0.0)
   - HanekeSwift (0.9.1)
   - OAuthSwift (0.3.6)
@@ -7,6 +8,7 @@ PODS:
 
 DEPENDENCIES:
   - Alamofire (from `https://github.com/Alamofire/Alamofire.git`, branch `swift-2.0`)
+  - DZNEmptyDataSet
   - Font-Awesome-Swift
   - HanekeSwift (from `https://github.com/meteochu/HanekeSwift.git`, branch `swift-2.0`)
   - OAuthSwift (from `https://github.com/mwermuth/OAuthSwift.git`, branch `swift2.0`)
@@ -42,6 +44,7 @@ CHECKOUT OPTIONS:
 
 SPEC CHECKSUMS:
   Alamofire: e57db85401895fda01783b3b9bda5b32d9f347ff
+  DZNEmptyDataSet: 896f8efb3b0961c5ccb59d4959ccf9280854aa3d
   Font-Awesome-Swift: 3bddd624badf339b3cad179d477697dbf6d70352
   HanekeSwift: 50d37bfbc4432edc649167e538c259feccb4a2bb
   OAuthSwift: 3517e94380923085dfa7f23421bc3d4a61ce48c0

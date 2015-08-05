@@ -6,23 +6,28 @@
   Copyright © 2015 Bas Broek. All rights reserved.
 */
 
-"__ISSUE__"               = "Issue";
-"__ISSUES__"              = "Issues";
+/* General */
+"__ISSUE__"                    = "Issue";
+"__ISSUES__"                   = "Issues";
 
 /* Adding issue */
-"__ADD_AN_ISSUE__"        = "Add an issue";
-"__CHOOSE_A_REPOSITORY__" = "Choose a repository";
+"__ADD_AN_ISSUE__"             = "Add an issue";
+"__CHOOSE_A_REPOSITORY__"      = "Choose a repository";
 
-"__TITLE__"               = "Title";
-"__TITLE_PLACEHOLDER__"   = "Give the issue a clear title";
-"__BODY__"                = "Body";
-"__BODY_PLACEHOLDER__"    = "Add more information (optional)";
+"__TITLE__"                    = "Title";
+"__TITLE_PLACEHOLDER__"        = "Give the issue a clear title";
+"__BODY__"                     = "Body";
+"__BODY_PLACEHOLDER__"         = "Add more information (optional)";
 
 /* Issue overview */
-"__ISSUE_OVERVIEW__"      = "Issue overview";
-"__SELECT_AN_ISSUE__"     = "Select an issue";
+"__ISSUE_OVERVIEW__"           = "Issue overview";
+"__SELECT_AN_ISSUE__"          = "Select an issue";
 
-"__UNKNOWN_TITLE__"       = "Unknown title";
-"__NO_ASSIGNEE_SET__"     = "No assignee set";
-"__NO_LABELS_SET__"       = "No labels added";
-"__NO_MILESTONE_SET__"    = "No milestone set";
+"__UNKNOWN_TITLE__"            = "Unknown title";
+"__NO_ASSIGNEE_SET__"          = "No assignee set";
+"__NO_LABELS_SET__"            = "No labels added";
+"__NO_MILESTONE_SET__"         = "No milestone set";
+
+/* Loading */
+"__ISSUES_ARE_LOADING__"       = "Issues are loading...";
+"__REPOSITORIES_ARE_LOADING__" = "Repositories are loading...";

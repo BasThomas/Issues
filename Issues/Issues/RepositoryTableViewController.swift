@@ -9,6 +9,7 @@
 import UIKit
 import Haneke
 import Font_Awesome_Swift
+import DZNEmptyDataSet
 import IssueKit
 
 // MARK: CellIdentifiers
@@ -51,6 +52,8 @@ class RepositoryTableViewController: UITableViewController {
     
     self.filteredRepositories = self.repositories
     self.setupSearch()
+    self.setupEmptyDataSet()
+    
     guard self.repositories.isEmpty else { return }
     
     Request.requestUserRepositories()
@@ -232,5 +235,33 @@ extension RepositoryTableViewController {
   }
 }
 
+// MARK: - DZNEmptyDataSetSource
+extension RepositoryTableViewController: DZNEmptyDataSetSource {
+  
+  func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    let GitHub = "github"
+    
+    return UIImage(named: GitHub)!
+  }
+  
+  func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    return NSAttributedString(string: "__REPOSITORIES_ARE_LOADING__".localized)
+  }
+}
+
+// MARK: - DZNEmptyDataSetDelegate
+extension RepositoryTableViewController: DZNEmptyDataSetDelegate { }
+
 // MARK: - Actions
 extension RepositoryTableViewController { }
+
+private extension RepositoryTableViewController {
+  
+  func setupEmptyDataSet() {
+    self.tableView.emptyDataSetSource = self
+    self.tableView.emptyDataSetDelegate = self
+    
+    // Removes cell seperators.
+    self.tableView.tableFooterView = UIView()
+  }
+}

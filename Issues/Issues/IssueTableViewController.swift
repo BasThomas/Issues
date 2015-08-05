@@ -9,6 +9,7 @@
 import UIKit
 import Font_Awesome_Swift
 import OAuthSwift
+import DZNEmptyDataSet
 import IssueKit
 
 // MARK: CellIdentifiers
@@ -59,6 +60,8 @@ class IssueTableViewController: UITableViewController {
     self.setupAutomaticCellResizing()
     self.setupRefresh()
     self.setupSearch()
+    
+    self.setupEmptyDataSet()
     
     Request.delegate = self
     self.navigationController?.delegate = self
@@ -227,6 +230,23 @@ extension IssueTableViewController {
 // MARK: - UITableView delegate
 extension IssueTableViewController { }
 
+// MARK: - DZNEmptyDataSetSource
+extension IssueTableViewController: DZNEmptyDataSetSource {
+  
+  func imageForEmptyDataSet(scrollView: UIScrollView!) -> UIImage! {
+    let GitHub = "github"
+    
+    return UIImage(named: GitHub)!
+  }
+  
+  func titleForEmptyDataSet(scrollView: UIScrollView!) -> NSAttributedString! {
+    return NSAttributedString(string: "__ISSUES_ARE_LOADING__".localized)
+  }
+}
+
+// MARK: - DZNEmptyDataSetDelegate
+extension IssueTableViewController: DZNEmptyDataSetDelegate { }
+
 // MARK: - Actions
 extension IssueTableViewController { }
 
@@ -266,5 +286,13 @@ private extension IssueTableViewController {
   func reloadData() {
     self.filteredIssues = self.issues
     self.tableView.reloadData()
+  }
+  
+  func setupEmptyDataSet() {
+    self.tableView.emptyDataSetSource = self
+    self.tableView.emptyDataSetDelegate = self
+    
+    // Removes cell seperators.
+    self.tableView.tableFooterView = UIView()
   }
 }
