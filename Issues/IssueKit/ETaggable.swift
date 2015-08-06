@@ -14,4 +14,5 @@ protocol ETaggable {
   var requestUserIssuesETag: String? { get set }
   
   var requestUserRepositoriesETag: String? { get set }
+  var requestRepositoryETag: String? { get set }
 }

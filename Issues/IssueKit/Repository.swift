@@ -17,9 +17,11 @@ public protocol Repository: CustomStringConvertible {
   
   var isFork: Bool { get }
   var isPrivate: Bool { get }
+  var canPush: Bool { get }
   
   var issues: [Issue] { get set }
   var labels: [Label] { get set }
+  var assignees: [Assignee] { get set }
   var milestones: [Milestone] { get set }
   
   var openIssues: [Issue] { get }

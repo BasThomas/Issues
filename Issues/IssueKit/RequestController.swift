@@ -25,6 +25,10 @@ private struct Request {
   private static func POSTissue(repository: Repository) -> String {
     return "\(BaseURL)\(repos)/\(repository.fullName)\(issues)"
   }
+  
+  private static func GETRepository(fullName: String) -> String {
+    return "\(BaseURL)\(repos)/\(fullName)"
+  }
 }
 
 public class RequestController: ETaggable {
@@ -40,6 +44,9 @@ public class RequestController: ETaggable {
   
   /// RequestRepositories' ETag.
   var requestUserRepositoriesETag: String?
+  
+  /// RequestRepository's ETag.
+  var requestRepositoryETag: String?
   
   /// Returns the shared RequestController.
   public static let sharedInstance = RequestController()
@@ -62,6 +69,10 @@ extension RequestController: ParseDelegate {
   
   func parsedLabelsForIssue(issue: Issue, labels: Set<Label>) {
     self.delegate?.refresh(issue, labels: labels)
+  }
+  
+  func refreshIssue(issue: Issue) {
+    self.delegate?.refresh(issue)
   }
 }
 
@@ -135,8 +146,6 @@ extension RequestController {
       .responseJSON { request, response, json, error in
         print("response: \(response)")
         
-//        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
-        
         if let error = error {
           print("request: \(request)")
           print("JSON: \(json)")
@@ -180,5 +189,28 @@ extension RequestController {
         
         self.delegate?.endRefreshing()
     }
+  }
+  
+  public func requestRepositoryForIssue(issue: Issue, fullName: String) {
+    let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestRepositoryETag))
+    
+    Alamofire.request(.GET, Request.GETRepository(fullName), headers: headers)
+      .responseJSON(completionHandler: { request, response, json, error in
+        print("response: \(response)")
+        
+        guard response?.statusCode != StatusCode.NotModified.intValue else { return }
+        
+        self.requestRepositoryETag = response?.eTag
+        
+        if let error = error {
+          print("request: \(request)")
+          print("JSON: \(json)")
+          print("Error: \(error)")
+        }
+        
+        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
+          Parse.parseRepositoryForIssue(issue, json: json)
+        }
+      })
   }
 }

@@ -7,9 +7,11 @@
 //
 
 import UIKit
+import SwiftyJSON
 
 public protocol RequestDelegate {
   
+  func refresh(issue: Issue)
   func refresh(issues: [Issue])
   func refresh(issue: Issue, labels: Set<Label>)
   func refresh(repositories: [Repository])
@@ -18,6 +20,7 @@ public protocol RequestDelegate {
 
 extension RequestDelegate {
   
+  public func refresh(issue: Issue) { }
   public func refresh(issues: [Issue]) { }
   public func refresh(issue: Issue, labels: Set<Label>) { }
   public func refresh(repositories: [Repository]) { }

@@ -9,6 +9,8 @@
 import Foundation
 import SwiftyJSON
 
+private let Request = RequestController.sharedInstance
+
 public class ParseController {
   
   private var parsedRepositories: [Repository] = []
@@ -54,8 +56,6 @@ extension ParseController: Parseable {
        let creationDate = issue["created_at"].string?.date {
         
         do {
-          let repository = try self.parseRepository(repository)
-          
           var assignee: Assignee?
           
           if let _assignee = issue["assignee"].dictionary {
@@ -76,9 +76,11 @@ extension ParseController: Parseable {
           
           let closingDate = issue["closed_at"].string?.date
           
-          let ghIssue = GitHubIssue(id: id, repository: repository, number: number, title: title, body: body, state: state, locked: locked, commentsURL: commentsURL, assignee: assignee, labels: labels, milestone: milestone, creationDate: creationDate, closingDate: closingDate)
+          let ghIssue = GitHubIssue(id: id, number: number, title: title, body: body, state: state, locked: locked, commentsURL: commentsURL, assignee: assignee, labels: labels, milestone: milestone, creationDate: creationDate, closingDate: closingDate)
           
           issues.append(ghIssue)
+          
+          try self.getRepositoryForIssue(ghIssue, json: repository)
         } catch (ParseError.InvalidParse) {
           print("Invalid parsing.")
         } catch {
@@ -95,31 +97,39 @@ extension ParseController: Parseable {
 // MARK: Repositories
 extension ParseController {
   
-  func parseRepository(json: [String: JSON]) throws -> Repository {
-    print(json)
-    
-    if let id = json["id"]?.int,
-     let _owner = json["owner"]?.dictionary,
-     let name = json["name"]?.string,
-     let fullName = json["full_name"]?.string,
-     let isFork = json["fork"]?.bool,
-     let isPrivate = json["private"]?.bool {
-      
-      let alreadyAddedRepository = self.parsedRepositories.filter { $0.id == id }.first
-      
-      if let repository = alreadyAddedRepository {
-        return repository
-      }
-      
-      if let owner = self.parseUser(_owner) {
-        let newRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate)
-        self.parsedRepositories.append(newRepository)
-        
-        return newRepository
-      }
+  func getRepositoryForIssue(issue: Issue, json: [String: JSON]) throws {
+    if let fullName = json["full_name"]?.string {
+      Request.requestRepositoryForIssue(issue, fullName: fullName)
     }
     
     throw ParseError.InvalidParse
+  }
+  
+  func parseRepositoryForIssue(var issue: Issue, json: JSON) {
+    if let id = json["id"].int,
+     let _owner = json["owner"].dictionary,
+     let name = json["name"].string,
+     let fullName = json["full_name"].string,
+     let isFork = json["fork"].bool,
+     let isPrivate = json["private"].bool,
+     let canPush = json["permissions", "push"].bool {
+      let alreadyAddedRepository = self.parsedRepositories.filter { $0.id == id }.first
+    
+      if let repository = alreadyAddedRepository {
+        issue.repository = repository
+        self.delegate?.refreshIssue(issue)
+        
+        return
+      }
+    
+      if let owner = self.parseUser(_owner) {
+        let newRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate, canPush: canPush)
+        self.parsedRepositories.append(newRepository)
+            
+        issue.repository = newRepository
+        self.delegate?.refreshIssue(issue)
+      }
+    }
   }
   
   /// Parses all repositories of every public repository.
@@ -128,6 +138,7 @@ extension ParseController {
   ///
   /// - Returns: `[Repository]` array of repositories, empty if none are found.
   func parseRepositories(json: JSON) -> [Repository] {
+    print("Repositories: \(json)")
     var repositories: [Repository] = []
     
     for repository in json {
@@ -138,15 +149,20 @@ extension ParseController {
        let name = repository["name"].string,
        let fullName = repository["full_name"].string,
        let isFork = repository["fork"].bool,
-       let isPrivate = repository["private"].bool {
+       let isPrivate = repository["private"].bool,
+       let canPush = repository["permissions", "push"].bool {
         
         let labelsURL = repository["labels_url"].string
-//        print("labelsURL: \(labelsURL)")
+        print("labelsURL: \(labelsURL)")
+        
+        let assigneesURL = repository["assignees_url"].string
+        print("assigneesURL: \(assigneesURL)")
+        
         let milestonesURL = repository["milestones_url"].string
-//        print("milestonesURL: \(milestonesURL)")
+        print("milestonesURL: \(milestonesURL)")
         
         if let owner = self.parseUser(_owner) {
-          let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate)
+          let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate, canPush: canPush)
           repositories.append(ghRepository)
         }
       }

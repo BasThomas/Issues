@@ -7,27 +7,41 @@
 */
 
 /* General */
-"__ISSUE__"                    = "Issue";
-"__ISSUES__"                   = "Issues";
+"__ISSUE__"                               = "Issue";
+"__ISSUES__"                              = "Issues";
 
 /* Adding issue */
-"__ADD_AN_ISSUE__"             = "Add an issue";
-"__CHOOSE_A_REPOSITORY__"      = "Choose a repository";
+"__ADD_AN_ISSUE__"                        = "Add an issue";
+"__CHOOSE_A_REPOSITORY__"                 = "Choose a repository";
 
-"__TITLE__"                    = "Title";
-"__TITLE_PLACEHOLDER__"        = "Give the issue a clear title";
-"__BODY__"                     = "Body";
-"__BODY_PLACEHOLDER__"         = "Add more information (optional)";
+"__TITLE__"                               = "Title";
+"__TITLE_PLACEHOLDER__"                   = "Give the issue a clear title";
+"__BODY__"                                = "Body";
+"__BODY_PLACEHOLDER__"                    = "Add more information (optional)";
+
+"__ADD_LABELS__"                          = "Add a label";
+"__ADD_ASSIGNEE__"                        = "Add an assignee";
+"__ADD_MILESTONE__"                       = "Add a milestone";
+
+"__NO_LABELS__"                           = "No labels found";
+"__NO_ASSIGNEES__"                        = "No assignees found";
+"__NO_MILESTONES__"                       = "No milestones found";
+
+"__LABEL_ASSIGNEE_MILESTONE_DISCLAIMER__" = "You need push access to add a label, assignee or milestone";
 
 /* Issue overview */
-"__ISSUE_OVERVIEW__"           = "Issue overview";
-"__SELECT_AN_ISSUE__"          = "Select an issue";
+"__ISSUE_OVERVIEW__"                      = "Issue overview";
+"__SELECT_AN_ISSUE__"                     = "Select an issue";
 
-"__UNKNOWN_TITLE__"            = "Unknown title";
-"__NO_ASSIGNEE_SET__"          = "No assignee set";
-"__NO_LABELS_SET__"            = "No labels added";
-"__NO_MILESTONE_SET__"         = "No milestone set";
+"__UNKNOWN_TITLE__"                       = "Unknown title";
+"__NO_ASSIGNEE_SET__"                     = "No assignee set";
+"__NO_LABELS_SET__"                       = "No labels added";
+"__NO_MILESTONE_SET__"                    = "No milestone set";
 
 /* Loading */
-"__ISSUES_ARE_LOADING__"       = "Issues are loading...";
-"__REPOSITORIES_ARE_LOADING__" = "Repositories are loading...";
+"__ISSUES_ARE_LOADING__"                  = "Issues are loading...";
+"__REPOSITORIES_ARE_LOADING__"            = "Repositories are loading...";
+
+"__LABELS_ARE_LOADING__"                  = "Labels are loading...";
+"__ASSIGNEES_ARE_LOADING__"               = "Assignees are loading...";
+"__MILESTONES_ARE_LOADING__"              = "Milestones are loading...";

@@ -11,7 +11,6 @@ import Foundation
 public protocol Issue: CustomStringConvertible {
   
   var id: Int { get }
-  var repository: Repository { get }
   var number: Int { get }
   var title: String { get }
   var body: String { get }
@@ -20,6 +19,7 @@ public protocol Issue: CustomStringConvertible {
   
   var commentsURL: String { get }
   var comments: [Comment] { get set }
+  var repository: Repository? { get set }
   var assignee: Assignee? { get }
   var labels: Set<Label> { get set }
   var milestone: Milestone? { get set }

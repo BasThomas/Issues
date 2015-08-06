@@ -120,7 +120,7 @@ extension IssueTableViewController: RequestDelegate {
       
       for i in removeIssues {
         if let idx = ids.indexOf(i.id) {
-          self.issues.removeAtIndex(idx)
+//          self.issues.removeAtIndex(idx)
         }
       }
       
@@ -132,6 +132,22 @@ extension IssueTableViewController: RequestDelegate {
   
   func refresh(issue: Issue, labels: Set<Label>) {
     print("refreshed \(issue) w/ labels \(labels)")
+  }
+  
+  func refresh(issue: Issue) {
+    print("refreshing issue: \(issue)")
+    
+    let ids = self.issues.map { $0.id }
+    
+    if let idx = ids.indexOf(issue.id) {
+      self.issues.removeAtIndex(idx)
+      self.issues.splice([issue], atIndex: idx)
+      
+      self.tableView.beginUpdates()
+      let indexPath = NSIndexPath(forRow: idx, inSection: 0)
+      self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
+      self.tableView.endUpdates()
+    }
   }
 }
 

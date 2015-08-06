@@ -35,6 +35,12 @@
 		49437C001B4B0D04001C8557 /* String+Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49437BFF1B4B0D04001C8557 /* String+Color.swift */; };
 		4947A2671B69FB520059D943 /* Typealiases.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4947A2661B69FB520059D943 /* Typealiases.swift */; };
 		495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495750D21B51B356007F9EA7 /* GitHubIssue.swift */; };
+		495A10C21B735B5D0029B533 /* LabelTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10C11B735B5D0029B533 /* LabelTableViewController.swift */; };
+		495A10C41B735B720029B533 /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10C31B735B720029B533 /* LabelTableViewCell.swift */; };
+		495A10C61B735B7F0029B533 /* AssigneeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10C51B735B7F0029B533 /* AssigneeTableViewCell.swift */; };
+		495A10C81B735B850029B533 /* MilestoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10C71B735B850029B533 /* MilestoneTableViewCell.swift */; };
+		495A10CA1B735B910029B533 /* MilestoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10C91B735B910029B533 /* MilestoneTableViewController.swift */; };
+		495A10CC1B735B990029B533 /* AssigneeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10CB1B735B990029B533 /* AssigneeTableViewController.swift */; };
 		495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */; };
 		495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */; };
 		495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0E1B66471C00B4E32B /* String+NSDate.swift */; };
@@ -213,6 +219,12 @@
 		49437BFF1B4B0D04001C8557 /* String+Color.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Color.swift"; sourceTree = "<group>"; };
 		4947A2661B69FB520059D943 /* Typealiases.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Typealiases.swift; sourceTree = "<group>"; };
 		495750D21B51B356007F9EA7 /* GitHubIssue.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubIssue.swift; sourceTree = "<group>"; };
+		495A10C11B735B5D0029B533 /* LabelTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewController.swift; sourceTree = "<group>"; };
+		495A10C31B735B720029B533 /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		495A10C51B735B7F0029B533 /* AssigneeTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssigneeTableViewCell.swift; sourceTree = "<group>"; };
+		495A10C71B735B850029B533 /* MilestoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilestoneTableViewCell.swift; sourceTree = "<group>"; };
+		495A10C91B735B910029B533 /* MilestoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilestoneTableViewController.swift; sourceTree = "<group>"; };
+		495A10CB1B735B990029B533 /* AssigneeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssigneeTableViewController.swift; sourceTree = "<group>"; };
 		495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewController.swift; sourceTree = "<group>"; };
 		495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueOverviewTableViewController.swift; sourceTree = "<group>"; };
 		495A5E0E1B66471C00B4E32B /* String+NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+NSDate.swift"; sourceTree = "<group>"; };
@@ -461,6 +473,33 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		495A10BD1B735AE60029B533 /* LabelTableView */ = {
+			isa = PBXGroup;
+			children = (
+				495A10C11B735B5D0029B533 /* LabelTableViewController.swift */,
+				495A10C31B735B720029B533 /* LabelTableViewCell.swift */,
+			);
+			name = LabelTableView;
+			sourceTree = "<group>";
+		};
+		495A10BE1B735B0C0029B533 /* AssigneeTableView */ = {
+			isa = PBXGroup;
+			children = (
+				495A10CB1B735B990029B533 /* AssigneeTableViewController.swift */,
+				495A10C51B735B7F0029B533 /* AssigneeTableViewCell.swift */,
+			);
+			name = AssigneeTableView;
+			sourceTree = "<group>";
+		};
+		495A10C01B735B220029B533 /* MilestoneTableView */ = {
+			isa = PBXGroup;
+			children = (
+				495A10C91B735B910029B533 /* MilestoneTableViewController.swift */,
+				495A10C71B735B850029B533 /* MilestoneTableViewCell.swift */,
+			);
+			name = MilestoneTableView;
+			sourceTree = "<group>";
+		};
 		495A5E051B66414F00B4E32B /* IssueTableView */ = {
 			isa = PBXGroup;
 			children = (
@@ -475,6 +514,9 @@
 			children = (
 				495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */,
 				4969A34E1B6820E40084347D /* RepositoryTableView */,
+				495A10BD1B735AE60029B533 /* LabelTableView */,
+				495A10BE1B735B0C0029B533 /* AssigneeTableView */,
+				495A10C01B735B220029B533 /* MilestoneTableView */,
 			);
 			name = AddIssueTableView;
 			sourceTree = "<group>";
@@ -1085,10 +1127,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				495A10C81B735B850029B533 /* MilestoneTableViewCell.swift in Sources */,
+				495A10C61B735B7F0029B533 /* AssigneeTableViewCell.swift in Sources */,
+				495A10C21B735B5D0029B533 /* LabelTableViewController.swift in Sources */,
+				495A10CC1B735B990029B533 /* AssigneeTableViewController.swift in Sources */,
 				49E7C11D1B64E2E100D39322 /* IssueTableViewCell.swift in Sources */,
+				495A10CA1B735B910029B533 /* MilestoneTableViewController.swift in Sources */,
 				49CB37E91B41EF3A00809682 /* AppDelegate.swift in Sources */,
 				4969A34D1B6820E10084347D /* RepositoryTableViewCell.swift in Sources */,
 				495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */,
+				495A10C41B735B720029B533 /* LabelTableViewCell.swift in Sources */,
 				4969A34B1B6820D30084347D /* RepositoryTableViewController.swift in Sources */,
 				49E7C11B1B64053300D39322 /* IssueTableViewController.swift in Sources */,
 				495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */,

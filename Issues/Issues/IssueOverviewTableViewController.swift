@@ -90,7 +90,9 @@ extension IssueOverviewTableViewController: Setup {
     let localized = "__ISSUE__".localized
     
     if let issue = self.issue {
-      let localizedTitle = "\(localized) #\(issue.number) (\(issue.repository.name))"
+      let repositoryName = issue.repository?.name ?? "uknown repository"
+      
+      let localizedTitle = "\(localized) #\(issue.number) (\(repositoryName))"
       
       self.title = localizedTitle
     } else {

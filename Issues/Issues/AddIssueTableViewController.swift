@@ -13,6 +13,12 @@ import IssueKit
 private let Request = RequestController.sharedInstance
 private let Parse = ParseController.sharedInstance
 
+// MARK: SegueIdentifiers
+private let AddRepository = "addRepository"
+private let AddLabel = "addLabel"
+private let AddAssignee = "addAssignee"
+private let AddMilestone = "addMilestone"
+
 private let SelectTitle = 1
 private let SelectBody = 2
 
@@ -50,6 +56,10 @@ class AddIssueTableViewController: UITableViewController {
     }
   }
   
+  @IBOutlet weak var addLabelsLabel: UILabel!
+  @IBOutlet weak var addAssigneeLabel: UILabel!
+  @IBOutlet weak var addMilestoneLabel: UILabel!
+  
   private var repository: Repository?
   private var fetchedRepositories: [Repository] = []
   
@@ -77,6 +87,10 @@ extension AddIssueTableViewController: Setup {
     
     self.bodyLabel.text = "__BODY__".localized
     self.bodyTextField.placeholder = "__BODY_PLACEHOLDER__".localized
+    
+    self.addLabelsLabel.text = "__ADD_LABELS__".localized
+    self.addAssigneeLabel.text = "__ADD_ASSIGNEE__".localized
+    self.addMilestoneLabel.text = "__ADD_MILESTONE__".localized
   }
 }
 
@@ -101,6 +115,24 @@ extension AddIssueTableViewController: RepositoryDelegate {
       self.saveButton.enabled = true
     }
     
+    func enableOrDisableExtraOptions() {
+      func enableExtraOptions() {
+        self.addLabelsLabel.enabled = true
+        self.addAssigneeLabel.enabled = true
+        self.addMilestoneLabel.enabled = true
+      }
+      
+      func disableExtraOptions() {
+        self.addLabelsLabel.enabled = false
+        self.addAssigneeLabel.enabled = false
+        self.addMilestoneLabel.enabled = false
+      }
+      
+      if let canPush = self.repository?.canPush {
+        canPush ? enableExtraOptions() : disableExtraOptions()
+      }
+    }
+    
     self.repository = repository
     
     self.repositoryLabel.text = self.repository?.fullName
@@ -110,6 +142,8 @@ extension AddIssueTableViewController: RepositoryDelegate {
     }
     
     enableSaveButtonIfNeeded()
+    enableOrDisableExtraOptions()
+    
     self.tableView.beginUpdates()
     self.tableView.reloadRowsAtIndexPaths([TopIndexPath], withRowAnimation: .None)
     self.tableView.endUpdates()
@@ -129,12 +163,12 @@ extension AddIssueTableViewController {
   }
   
   override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
-    guard indexPath != TopIndexPath else { return UITableViewAutomaticDimension }
-    
-    return 44
+    return UITableViewAutomaticDimension
   }
   
   override func tableView(tableView: UITableView, willSelectRowAtIndexPath indexPath: NSIndexPath) -> NSIndexPath? {
+    guard indexPath.section == 0 else { return indexPath }
+    
     switch(indexPath.row) {
     case SelectTitle:
       self.titleTextField.becomeFirstResponder()
@@ -149,6 +183,12 @@ extension AddIssueTableViewController {
   
   override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
     self.tableView.deselectRowAtIndexPath(indexPath, animated: true)
+  }
+  
+  override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+    guard section == 1 else { return nil }
+    
+    return "__LABEL_ASSIGNEE_MILESTONE_DISCLAIMER__".localized
   }
 }
 
@@ -236,13 +276,44 @@ extension AddIssueTableViewController {
 // MARK: - Navigation
 extension AddIssueTableViewController {
   
-  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-    let dvc = segue.destinationViewController as? RepositoryTableViewController
+  override func shouldPerformSegueWithIdentifier(identifier: String, sender: AnyObject?) -> Bool {
+    switch identifier {
+    case AddLabel, AddAssignee, AddMilestone:
+      guard let repository = self.repository where repository.canPush else { return false }
+    default:
+      return true
+    }
     
-    if let dvc = dvc {
-      dvc.delegate = self
-      
-      dvc.repositories = self.fetchedRepositories
+    return true
+  }
+  
+  override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    guard let identifier = segue.identifier else { return }
+    
+    switch identifier {
+    case AddRepository:
+      if let dvc = segue.destinationViewController as? RepositoryTableViewController {
+        dvc.delegate = self
+        
+        dvc.repositories = self.fetchedRepositories
+      }
+    case AddLabel:
+      if let dvc = segue.destinationViewController as? LabelTableViewController,
+       let repository = self.repository {
+        dvc.repository = repository
+      }
+    case AddAssignee:
+      if let dvc = segue.destinationViewController as? AssigneeTableViewController,
+        let repository = self.repository {
+          dvc.repository = repository
+      }
+    case AddMilestone:
+      if let dvc = segue.destinationViewController as? MilestoneTableViewController,
+        let repository = self.repository {
+          dvc.repository = repository
+      }
+    default:
+      print("Invalid segue")
     }
   }
 }

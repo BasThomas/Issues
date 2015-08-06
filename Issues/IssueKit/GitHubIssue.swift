@@ -15,9 +15,6 @@ public struct GitHubIssue: Issue {
   /// Unique id.
   public var id: Int
   
-  /// Associated repository.
-  public var repository: Repository
-  
   /// Number to identify the issue in a repository.
   public var number: Int
   
@@ -39,6 +36,9 @@ public struct GitHubIssue: Issue {
   /// Comment(s) accompanying the issue.
   public var comments: [Comment]
   
+  /// Associated repository.
+  public var repository: Repository?
+  
   /// Assigignee assigned to the issue.
   public var assignee: Assignee?
   
@@ -54,7 +54,7 @@ public struct GitHubIssue: Issue {
   /// The closing date of the issue, if any.
   public var closingDate: NSDate?
   
-  public init(id: Int, repository: Repository, number: Int, title: String, body: String = "", state: State = .Open, locked: Bool = false, commentsURL: String, comments: [GitHubComment] = [], assignee: Assignee? = nil, labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
+  public init(id: Int, number: Int, title: String, body: String = "", state: State = .Open, locked: Bool = false, commentsURL: String, comments: [GitHubComment] = [], repository: Repository? = nil, assignee: Assignee? = nil, labels: Set<Label> = [], milestone: GitHubMilestone? = nil, creationDate: NSDate, closingDate: NSDate? = nil) {
     self.id = id
     self.repository = repository
     self.number = number
@@ -275,7 +275,7 @@ extension GitHubIssue: CustomStringConvertible, Printable {
   
   /// A textual representation of `self`.
   public var description: String {
-    return "\(self.file): [\(self.id)] \(self.title) (#\(self.number) in \(self.repository.name))"
+    return "\(self.file): [\(self.id)] \(self.title) (#\(self.number) in \(self.repository?.name))"
   }
 }
 
