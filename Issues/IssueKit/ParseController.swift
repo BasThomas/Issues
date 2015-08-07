@@ -117,7 +117,8 @@ extension ParseController {
     
       if let repository = alreadyAddedRepository {
         issue.repository = repository
-        self.delegate?.refreshIssue(issue)
+        
+        self.delegate?.refresh(issue)
         
         return
       }
@@ -125,9 +126,13 @@ extension ParseController {
       if let owner = self.parseUser(_owner) {
         let newRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate, canPush: canPush)
         self.parsedRepositories.append(newRepository)
-            
+        
+        Request.requestLabelsForRepository(newRepository)
+        Request.requestAssigneesForRepository(newRepository)
+        Request.requestMilestonesForRepository(newRepository)
+        
         issue.repository = newRepository
-        self.delegate?.refreshIssue(issue)
+        self.delegate?.refresh(issue)
       }
     }
   }
@@ -138,7 +143,6 @@ extension ParseController {
   ///
   /// - Returns: `[Repository]` array of repositories, empty if none are found.
   func parseRepositories(json: JSON) -> [Repository] {
-    print("Repositories: \(json)")
     var repositories: [Repository] = []
     
     for repository in json {
@@ -151,19 +155,25 @@ extension ParseController {
        let isFork = repository["fork"].bool,
        let isPrivate = repository["private"].bool,
        let canPush = repository["permissions", "push"].bool {
+        let alreadyAddedRepository = self.parsedRepositories.filter { $0.id == id }.first
         
-        let labelsURL = repository["labels_url"].string
-        print("labelsURL: \(labelsURL)")
-        
-        let assigneesURL = repository["assignees_url"].string
-        print("assigneesURL: \(assigneesURL)")
-        
-        let milestonesURL = repository["milestones_url"].string
-        print("milestonesURL: \(milestonesURL)")
+        if let repository = alreadyAddedRepository {
+          repositories.append(repository)
+          
+          self.delegate?.refresh(repository)
+          
+          continue
+        }
         
         if let owner = self.parseUser(_owner) {
           let ghRepository = GitHubRepository(id: id, owner: owner, name: name, fullName: fullName, isFork: isFork, isPrivate: isPrivate, canPush: canPush)
           repositories.append(ghRepository)
+          
+          Request.requestLabelsForRepository(ghRepository)
+          Request.requestAssigneesForRepository(ghRepository)
+          Request.requestMilestonesForRepository(ghRepository)
+          
+          self.delegate?.refresh(ghRepository)
         }
       }
     }
@@ -176,8 +186,8 @@ extension ParseController {
 // MARK: Labels
 extension ParseController {
   
-  func parseLabels(json: [JSON]) -> Set<Label> {
-    var labels: Set<Label> = []
+  func parseLabels(json: [JSON]) -> [Label] {
+    var labels: [Label] = []
     
     for label in json {
       if let name = label["name"].string,
@@ -186,41 +196,46 @@ extension ParseController {
         let alreadyAddedLabel = self.parsedLabels.filter { $0.name == name && $0.hex == hex }.first
         
         if let label = alreadyAddedLabel {
-          labels.insert(label)
+          labels.append(label)
           continue
         }
         
         let newLabel = Label(name: name, hex: hex)
         self.parsedLabels.insert(newLabel)
-        labels.insert(newLabel)
+        labels.append(newLabel)
       }
     }
-    
     return labels
   }
   
-  func parseMilestone(json: [String : JSON]) throws -> Milestone {
-    if let id = json["id"]?.int,
-     let title = json["title"]?.string,
-     let _state = json["state"]?.string,
-     let state = State(rawValue: _state) {
+  func parseLabels(json: JSON, var forRepository repository: Repository? = nil) -> [Label] {
+    var labels: [Label] = []
+    
+    for label in json {
+      let label = label.1
       
-      let alreadyAddedMilestone = self.parsedMilestones.filter { $0.id == id }.first
-      
-      if let milestone = alreadyAddedMilestone {
-        return milestone
+      if let name = label["name"].string,
+       let hex = label["color"].string {
+        
+        let alreadyAddedLabel = self.parsedLabels.filter { $0.name == name && $0.hex == hex }.first
+        
+        if let label = alreadyAddedLabel {
+          labels.append(label)
+          continue
+        }
+        
+        let newLabel = Label(name: name, hex: hex)
+        self.parsedLabels.insert(newLabel)
+        labels.append(newLabel)
       }
-      
-      let description = json["description"]?.string
-      let dueDate = json["due_on"]?.string?.date
-      
-      let newMilestone = GitHubMilestone(id: id, title: title, state: state, description: description, dueDate: dueDate)
-      self.parsedMilestones.append(newMilestone)
-      
-      return newMilestone
     }
     
-    throw ParseError.InvalidParse
+    repository?.labels = labels
+    
+    if let repository = repository {
+      self.delegate?.refresh(repository)
+    }
+    return labels
   }
 }
 
@@ -245,6 +260,103 @@ extension ParseController {
     }
     
     return nil
+  }
+  
+  func parseAssignees(json: JSON, var forRepository repository: Repository? = nil) -> [Assignee] {
+    var assignees: [Assignee] = []
+    
+    for assignee in json {
+      let assignee = assignee.1
+      
+      if let id = assignee["id"].int,
+        let avatarURL = assignee["avatar_url"].string,
+        let name = assignee["login"].string {
+          
+          let alreadyAddedAssignee = self.parsedUsers.filter { $0.id == id }.first
+          
+          if let assignee = alreadyAddedAssignee {
+            assignees.append(assignee)
+            continue
+          }
+          
+          let newAssignee = Assignee(id: id, avatarURL: avatarURL, name: name)
+          self.parsedUsers.append(newAssignee)
+          
+          assignees.append(newAssignee)
+      }
+    }
+    
+    repository?.assignees = assignees
+    
+    if let repository = repository {
+      self.delegate?.refresh(repository)
+    }
+    return assignees
+  }
+}
+
+// MARK: Milestones
+extension ParseController {
+  
+  func parseMilestone(json: [String : JSON]) throws -> Milestone {
+    if let id = json["id"]?.int,
+      let title = json["title"]?.string,
+      let _state = json["state"]?.string,
+      let state = State(rawValue: _state) {
+        
+        let alreadyAddedMilestone = self.parsedMilestones.filter { $0.id == id }.first
+        
+        if let milestone = alreadyAddedMilestone {
+          return milestone
+        }
+        
+        let description = json["description"]?.string
+        let dueDate = json["due_on"]?.string?.date
+        
+        let newMilestone = GitHubMilestone(id: id, title: title, state: state, description: description, dueDate: dueDate)
+        self.parsedMilestones.append(newMilestone)
+        
+        return newMilestone
+    }
+    
+    throw ParseError.InvalidParse
+  }
+  
+  func parseMilestones(json: JSON, var forRepository repository: Repository? = nil) -> [Milestone] {
+    var milestones: [Milestone] = []
+    
+    for milestone in json {
+      let milestone = milestone.1
+      
+      if let id = milestone["id"].int,
+        let title = milestone["title"].string,
+        let _state = milestone["state"].string,
+        let state = State(rawValue: _state) {
+          
+          let alreadyAddedMilestone = self.parsedMilestones.filter { $0.id == id }.first
+          
+          if let milestone = alreadyAddedMilestone {
+            milestones.append(milestone)
+            continue
+          }
+          
+          let description = milestone["description"].string
+          let dueDate = milestone["due_on"].string?.date
+          
+          let newMilestone = GitHubMilestone(id: id, title: title, state: state, description: description, dueDate: dueDate)
+          self.parsedMilestones.append(newMilestone)
+          
+          milestones.append(newMilestone)
+      }
+    }
+    
+    repository?.milestones = milestones
+    
+    if let repository = repository {
+      print("delegating repo w/ milestones: \(repository.milestones)")
+      self.delegate?.refresh(repository)
+    }
+    return milestones
   }
 }
 
@@ -272,5 +384,9 @@ extension ParseController {
     guard let data = data else { throw JSONError.InvalidObject }
     
     return JSON(data)
+  }
+  
+  func jsonFromData(data: NSData) -> JSON {
+    return JSON(data: data)
   }
 }

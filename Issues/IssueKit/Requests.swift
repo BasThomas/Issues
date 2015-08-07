@@ -19,3 +19,9 @@ public let user = "/user"
 // GET /orgs/:org/issues
 
 public let repos = "/repos"
+
+public let labels = "/labels"
+
+public let assignees = "/assignees"
+
+public let milestones = "/milestones"

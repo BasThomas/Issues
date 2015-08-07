@@ -15,4 +15,8 @@ protocol ETaggable {
   
   var requestUserRepositoriesETag: String? { get set }
   var requestRepositoryETag: String? { get set }
+  
+  var requestLabelsForRepositoryETag: String? { get set }
+  var requestAssigneesForRepositoryETag: String? { get set }
+  var requestMilestonesForRepositoryETag: String? { get set }
 }

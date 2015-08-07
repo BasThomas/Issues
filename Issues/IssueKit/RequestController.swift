@@ -22,12 +22,24 @@ private struct Request {
   
   private static let GETUserRepositories = "\(BaseURL)\(user)\(repos)"
   
-  private static func POSTissue(repository: Repository) -> String {
+  private static func POSTIssue(repository: Repository) -> String {
     return "\(BaseURL)\(repos)/\(repository.fullName)\(issues)"
   }
   
   private static func GETRepository(fullName: String) -> String {
     return "\(BaseURL)\(repos)/\(fullName)"
+  }
+  
+  private static func GETLabelsForRepository(repository: Repository) -> String {
+    return "\(BaseURL)\(repos)/\(repository.fullName)\(labels)"
+  }
+  
+  private static func GETAssigneesForRepository(repository: Repository) -> String {
+    return "\(BaseURL)\(repos)/\(repository.fullName)\(assignees)"
+  }
+  
+  private static func GETMilestonesForRepository(repository: Repository) -> String {
+    return "\(BaseURL)\(repos)/\(repository.fullName)\(milestones)"
   }
 }
 
@@ -47,6 +59,15 @@ public class RequestController: ETaggable {
   
   /// RequestRepository's ETag.
   var requestRepositoryETag: String?
+  
+  /// RequestLabelsForRepository's ETag.
+  var requestLabelsForRepositoryETag: String?
+  
+  /// RequestAssigneesForRepository's ETag.
+  var requestAssigneesForRepositoryETag: String?
+  
+  /// RequestMilestonesForRepository's ETag.
+  var requestMilestonesForRepositoryETag: String?
   
   /// Returns the shared RequestController.
   public static let sharedInstance = RequestController()
@@ -71,8 +92,12 @@ extension RequestController: ParseDelegate {
     self.delegate?.refresh(issue, labels: labels)
   }
   
-  func refreshIssue(issue: Issue) {
+  func refresh(issue: Issue) {
     self.delegate?.refresh(issue)
+  }
+  
+  func refresh(repository: Repository) {
+    self.delegate?.refresh(repository)
   }
 }
 
@@ -86,22 +111,15 @@ extension RequestController: Requestable {
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestIssuesETag))
     
     Alamofire.request(.GET, Request.GETIssues, parameters: parameters, headers: headers)
-      .responseJSON { request, response, json, error in
+      .responseJSON { request, response, json in
         print("response: \(response)")
         
         guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
-        
         self.requestIssuesETag = response?.eTag
-        
-        if let error = error {
-          print("request: \(request)")
-          print("JSON: \(json)")
-          print("Error: \(error)")
-        }
-        
-        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
-          Parse.parseIssues(json)
-        }
+        guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+        guard let value = json.value else { self.delegate?.endRefreshing(); return }
+        guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+        Parse.parseIssues(json)
         
         self.delegate?.endRefreshing()
     }
@@ -113,22 +131,15 @@ extension RequestController: Requestable {
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserIssuesETag))
     
     Alamofire.request(.GET, Request.GETUserIssues, parameters: parameters, headers: headers)
-      .responseJSON { request, response, json, error in
+      .responseJSON { request, response, json in
         print("response: \(response)")
         
         guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
-        
         self.requestUserIssuesETag = response?.eTag
-        
-        if let error = error {
-          print("request: \(request)")
-          print("JSON: \(json)")
-          print("Error: \(error)")
-        }
-        
-        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
-          Parse.parseIssues(json)
-        }
+        guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+        guard let value = json.value else { self.delegate?.endRefreshing(); return }
+        guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+        Parse.parseIssues(json)
         
         self.delegate?.endRefreshing()
     }
@@ -142,19 +153,15 @@ extension RequestController {
     let parameters = issue
     let headers = Parse.parseHeaders()
     
-    Alamofire.request(.POST, Request.POSTissue(repository), parameters: parameters, encoding: .JSON, headers: headers)
-      .responseJSON { request, response, json, error in
+    Alamofire.request(.POST, Request.POSTIssue(repository), parameters: parameters, encoding: .JSON, headers: headers)
+      .responseJSON { request, response, json in
         print("response: \(response)")
         
-        if let error = error {
-          print("request: \(request)")
-          print("JSON: \(json)")
-          print("Error: \(error)")
-        }
-        
-        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
-//          Parse.parseIssues(json)
-        }
+        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
+        guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+        guard let value = json.value else { self.delegate?.endRefreshing(); return }
+        guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+//        Parse.parseIssues(json)
         
         self.delegate?.endRefreshing()
     }
@@ -170,22 +177,15 @@ extension RequestController {
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestUserRepositoriesETag))
     
     Alamofire.request(.GET, Request.GETUserRepositories, parameters: parameters, headers: headers)
-      .responseJSON { request, response, json, error in
+      .responseJSON { request, response, json in
         print("response: \(response)")
         
         guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
-        
         self.requestUserRepositoriesETag = response?.eTag
-        
-        if let error = error {
-          print("request: \(request)")
-          print("JSON: \(json)")
-          print("Error: \(error)")
-        }
-        
-        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
-          Parse.parseRepositories(json)
-        }
+        guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+        guard let value = json.value else { self.delegate?.endRefreshing(); return }
+        guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+        Parse.parseRepositories(json)
         
         self.delegate?.endRefreshing()
     }
@@ -195,22 +195,83 @@ extension RequestController {
     let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestRepositoryETag))
     
     Alamofire.request(.GET, Request.GETRepository(fullName), headers: headers)
-      .responseJSON(completionHandler: { request, response, json, error in
+      .responseJSON { request, response, json in
         print("response: \(response)")
         
-        guard response?.statusCode != StatusCode.NotModified.intValue else { return }
-        
+        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
         self.requestRepositoryETag = response?.eTag
+        guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+        guard let value = json.value else { self.delegate?.endRefreshing(); return }
+        guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+        Parse.parseRepositoryForIssue(issue, json: json)
         
-        if let error = error {
-          print("request: \(request)")
-          print("JSON: \(json)")
-          print("Error: \(error)")
-        }
+        self.delegate?.endRefreshing()
+    }
+  }
+}
+
+// MARK: Labels
+extension RequestController {
+  
+  func requestLabelsForRepository(repository: Repository) {
+    let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestLabelsForRepositoryETag))
+    
+    Alamofire.request(.GET, Request.GETLabelsForRepository(repository), headers: headers)
+    .responseJSON { request, response, json in
+      print("response: \(response)")
+      
+      guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
+      self.requestLabelsForRepositoryETag = response?.eTag
+      guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+      guard let value = json.value else { self.delegate?.endRefreshing(); return }
+      guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+      Parse.parseLabels(json, forRepository: repository)
+      
+      self.delegate?.endRefreshing()
+    }
+  }
+}
+
+// MARK: Assignees
+extension RequestController {
+  
+  func requestAssigneesForRepository(repository: Repository) {
+    let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestAssigneesForRepositoryETag))
+    
+    Alamofire.request(.GET, Request.GETAssigneesForRepository(repository), headers: headers)
+      .responseJSON { request, response, json in
+        print("response: \(response)")
         
-        if let json = Parse.optionalJSONFromAnyObject(anyObject: json) {
-          Parse.parseRepositoryForIssue(issue, json: json)
-        }
-      })
+        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
+        self.requestAssigneesForRepositoryETag = response?.eTag
+        guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+        guard let value = json.value else { self.delegate?.endRefreshing(); return }
+        guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+        Parse.parseAssignees(json, forRepository: repository)
+        
+        self.delegate?.endRefreshing()
+      }
+  }
+}
+
+// MARK: Milestones
+extension RequestController {
+  
+  func requestMilestonesForRepository(repository: Repository) {
+    let headers = Parse.parseHeaders(HeaderOptions(eTag: self.requestMilestonesForRepositoryETag))
+    
+    Alamofire.request(.GET, Request.GETMilestonesForRepository(repository), headers: headers)
+      .responseJSON { request, response, json in
+        print("response: \(response)")
+        
+        guard response?.statusCode != StatusCode.NotModified.intValue else { self.delegate?.endRefreshing(); return }
+        self.requestMilestonesForRepositoryETag = response?.eTag
+        guard json.isSuccess else { print("request: \(request)"); print("JSON: \(json)"); self.delegate?.endRefreshing(); return }
+        guard let value = json.value else { self.delegate?.endRefreshing(); return }
+        guard let json = Parse.optionalJSONFromAnyObject(anyObject: value) else { self.delegate?.endRefreshing(); return }
+        Parse.parseMilestones(json, forRepository: repository)
+        
+        self.delegate?.endRefreshing()
+    }
   }
 }

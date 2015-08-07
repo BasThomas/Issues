@@ -8,17 +8,19 @@
 
 import Foundation
 
-public protocol LowercaseInitializable {
+public protocol LowercaseInitializable: RawRepresentable {
   
   static var allValues: [Self] { get }
   
-  init?(rawValue: String)
+  init?(rawValue: RawValue)
 }
 
-extension LowercaseInitializable where Self: RawRepresentable {
+extension LowercaseInitializable {
   
-  public init?<T: Equatable>(rawValue: T) {
-    let value = Self.allValues.filter { ($0.rawValue as? String)?.lowercaseString == (rawValue as? String)?.lowercaseString }
+  public init?(rawValue: RawValue) {
+    let rv = "\(rawValue)"
+    
+    let value = Self.allValues.filter { ($0.rawValue as? String)?.lowercaseString == rv.lowercaseString }
     
     guard let state = value.first else { return nil }
     

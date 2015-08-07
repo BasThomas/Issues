@@ -33,7 +33,7 @@ class IssueTableViewController: UITableViewController {
   
   private var issues: [Issue] = []
   private var filteredIssues: [Issue] = []
-  private var searchController: UISearchController?
+  var searchController: UISearchController?
   
   private var destionationViewController: UIViewController?
 
@@ -148,6 +148,14 @@ extension IssueTableViewController: RequestDelegate {
       self.tableView.reloadRowsAtIndexPaths([indexPath], withRowAnimation: .None)
       self.tableView.endUpdates()
     }
+  }
+  
+  func refresh(repository: Repository) {
+    let ids = self.issues.map { $0.repository?.id }
+    
+//    if let idx = ids.indexOf(repository.id) {
+//      
+//    }
   }
 }
 

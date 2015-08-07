@@ -74,4 +74,14 @@ extension AppDelegate {
     
     return false
   }
+  
+  func splitViewController(svc: UISplitViewController, willChangeToDisplayMode displayMode: UISplitViewControllerDisplayMode) {
+    guard displayMode == .PrimaryHidden else { return }
+    
+    // Just to make sure there are at least two viewControllers...
+    guard svc.viewControllers.count > 1 else { return }
+    guard let mvc = svc.masterViewController() as? IssueTableViewController else { return }
+    
+    svc.dismissSearchController(mvc.searchController)
+  }
 }

@@ -21,12 +21,12 @@ public enum OAuth: String, StringRawRepresentable, LowercaseInitializable {
 // MARK: LowercaseInitializable
 extension OAuth {
   
-  public init?<T: Equatable>(rawValue: T) {
+  public init?(rawValue: String) {
     // Returns .AccessToken when the rawValue corresponds to the case.
     // This is needed because of the custom rawValue.
-    guard (rawValue as? String)?.lowercaseString != "Authorization".lowercaseString else { self = AccessToken; return }
+    guard rawValue.lowercaseString != "Authorization".lowercaseString else { self = AccessToken; return }
     
-    let value = OAuth.allValues.filter { ($0.rawValue as String).lowercaseString == (rawValue as? String)?.lowercaseString }
+    let value = OAuth.allValues.filter { enumCase in (enumCase.rawValue as String).lowercaseString == rawValue.lowercaseString }
     
     if let state = value.first {
       self = state
@@ -220,12 +220,12 @@ public enum Milestones: String, StringRawRepresentable, LowercaseInitializable {
 // MARK: LowercaseInitializable
 extension Milestones {
   
-  public init?<T: Equatable>(rawValue: T) {
+  public init?(rawValue: String) {
     // Returns .DueOn when the rawValue corresponds to the case.
     // This is needed because of the custom rawValue.
-    guard (rawValue as? String)?.lowercaseString != "due_on".lowercaseString else { self = DueOn; return }
+    guard rawValue.lowercaseString != "due_on".lowercaseString else { self = DueOn; return }
     
-    let value = Milestones.allValues.filter { ($0.rawValue as String).lowercaseString == (rawValue as? String)?.lowercaseString }
+    let value = Milestones.allValues.filter { enumCase in (enumCase.rawValue as String).lowercaseString == rawValue.lowercaseString }
     
     if let state = value.first {
       self = state
@@ -318,12 +318,12 @@ public enum Repositories: String, StringRawRepresentable, LowercaseInitializable
 // MARK: LowercaseInitializable
 extension Repositories {
   
-  public init?<T: Equatable>(rawValue: T) {
+  public init?(rawValue: String) {
     // Returns ._Type when the rawValue corresponds to the case.
     // This is needed because of the custom rawValue.
-    guard (rawValue as? String)?.lowercaseString != "_Type".lowercaseString else { self = _Type; return }
+    guard rawValue.lowercaseString != "_Type".lowercaseString else { self = _Type; return }
     
-    let value = Repositories.allValues.filter { ($0.rawValue as String).lowercaseString == (rawValue as? String)?.lowercaseString }
+    let value = Repositories.allValues.filter { enumCase in (enumCase.rawValue as String).lowercaseString == rawValue.lowercaseString }
     
     if let state = value.first {
       self = state

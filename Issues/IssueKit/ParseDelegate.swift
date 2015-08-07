@@ -16,5 +16,7 @@ protocol ParseDelegate {
   
   func parsedRepositores(repositories: [Repository])
   
-  func refreshIssue(issue: Issue)
+  func refresh(issue: Issue)
+  
+  func refresh(repository: Repository)
 }

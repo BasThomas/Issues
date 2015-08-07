@@ -8,13 +8,13 @@
 
 import Foundation
 
-public protocol StringRawRepresentable {
+public protocol StringRawRepresentable: RawRepresentable {
   
   var string: String? { get }
   var stringValue: String { get }
 }
 
-extension StringRawRepresentable where Self: RawRepresentable {
+extension StringRawRepresentable {
   
   /// Enum case's string; nil if unknown.
   public var string: String? {

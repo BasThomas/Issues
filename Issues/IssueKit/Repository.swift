@@ -39,12 +39,12 @@ extension Repository {
   
   /// All open issues of the repository.
   public var openIssues: [Issue] {
-    return self.issues.filter { $0.state == .Open }
+    return self.issues.filter { i in i.state == .Open }
   }
   
   /// All closed issues of the repository.
   public var closedIssues: [Issue] {
-    return self.issues.filter { $0.state == .Closed }
+    return self.issues.filter { i in i.state == .Closed }
   }
   
   /// All locked issues of the repository.

@@ -103,6 +103,12 @@ extension AddIssueTableViewController: RequestDelegate {
       self.titleTextField.becomeFirstResponder()
     }
   }
+  
+  func refresh(repository: Repository) {
+    let x = "x"
+    
+    print(repository)
+  }
 }
 
 // MARK: - RepositoryDelegate

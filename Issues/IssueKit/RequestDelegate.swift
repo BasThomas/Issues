@@ -15,6 +15,8 @@ public protocol RequestDelegate {
   func refresh(issues: [Issue])
   func refresh(issue: Issue, labels: Set<Label>)
   func refresh(repositories: [Repository])
+  func refresh(repository: Repository)
+  
   func endRefreshing()
 }
 
@@ -24,6 +26,8 @@ extension RequestDelegate {
   public func refresh(issues: [Issue]) { }
   public func refresh(issue: Issue, labels: Set<Label>) { }
   public func refresh(repositories: [Repository]) { }
+  public func refresh(repository: Repository) { }
+  
   public func endRefreshing() { }
 }
 

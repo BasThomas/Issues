@@ -11,18 +11,20 @@ import Foundation
 extension UISplitViewController {
   
   public func toggleMasterView(searchController: UISearchController? = nil) {
-    guard UIDevice.currentDevice().userInterfaceIdiom == .Pad && !self.collapsed else { self.dismissSearchController(searchController); return }
+    guard !self.collapsed else { self.dismissSearchController(searchController); return }
+    guard UIDevice.currentDevice().userInterfaceIdiom == .Pad else { return }
     
     let barButtonItem = self.displayModeButtonItem()
     UIApplication.sharedApplication().sendAction(barButtonItem.action, to: barButtonItem.target, from: nil, forEvent: nil)
   }
-}
-
-private extension UISplitViewController {
   
-  func dismissSearchController(searchController: UISearchController?) {
+  public func dismissSearchController(searchController: UISearchController?) {
     if let searchController = searchController where searchController.active {
       searchController.active = false
     }
+  }
+  
+  public func masterViewController(afterNavigationController: Bool = true) -> UIViewController? {
+    return (self.viewControllers.first as? UINavigationController)?.viewControllers.first
   }
 }
