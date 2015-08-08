@@ -24,7 +24,11 @@ extension UISplitViewController {
     }
   }
   
-  public func masterViewController(afterNavigationController: Bool = true) -> UIViewController? {
+  public func masterViewController(afterNavigationController after: Bool = true) -> UIViewController? {
+    if !after {
+      return self.viewControllers.first
+    }
+    
     return (self.viewControllers.first as? UINavigationController)?.viewControllers.first
   }
 }
