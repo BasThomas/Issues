@@ -14,7 +14,7 @@ public func generateState(length: Int) -> String {
   
   for _ in 0..<length {
     let rand = Int(arc4random_uniform(UInt32(letters.characters.count)))
-    let index = advance(letters.startIndex, rand)
+    let index = letters.startIndex.advancedBy(rand)
     
     randomString.append(letters[index])
   }

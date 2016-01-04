@@ -20,7 +20,7 @@ extension String {
     let hex: Hex
     
     if self.hasPrefix("#") {
-      let index = advance(self.startIndex, 1)
+      let index = startIndex.advancedBy(1)
       hex = self.substringFromIndex(index)
     } else {
       hex = self

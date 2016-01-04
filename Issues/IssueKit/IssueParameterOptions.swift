@@ -21,7 +21,7 @@ public struct IssueParameterOptions: ParameterOptions {
     func labelsToCommaSeperatedString(labels: [Label]?) -> String {
       guard let labels = labels else { return "" }
       
-      return ",".join(labels.map { $0.name })
+      return labels.map { $0.name }.joinWithSeparator(",")
     }
     
     self.filter = filter

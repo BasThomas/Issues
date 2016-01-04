@@ -51,7 +51,7 @@ class IssueOverviewTableViewController: UITableViewController {
       var labelText = ""
       
       if let issue = self.issue {
-        labelText = ", ".join(issue.labels.map { $0.name } )
+        labelText = issue.labels.map { $0.name }.joinWithSeparator(", ")
       }
       
       guard !labelText.isEmpty else { return }

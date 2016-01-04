@@ -99,7 +99,7 @@ extension RepositoryTableViewController: RequestDelegate {
       guard removeRepositories.count != 0 || newRepositories.count != 0 else { return }
       
 //      self.repositories.removeObjects(removeRepositories)
-      self.repositories.splice(newRepositories, atIndex: 0)
+      self.repositories.insertContentsOf(newRepositories, at: 0)
       
       self.tableView.beginUpdates()
       let indexPaths = newIndexPaths(now: now.count, add: newRepositories.count)

@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CFF31C9EDFE395D674FDC22 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21696A3FB18FFADF5185AD1 /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		1CFF31C9EDFE395D674FDC22 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A21696A3FB18FFADF5185AD1 /* Pods.framework */; };
 		49024A581B5F7BCD00F5FAE3 /* Editable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A571B5F7BCD00F5FAE3 /* Editable.swift */; };
 		49024A5A1B5F7BDC00F5FAE3 /* Labelable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A591B5F7BDC00F5FAE3 /* Labelable.swift */; };
 		49024A5C1B5F7BEA00F5FAE3 /* Lockable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A5B1B5F7BEA00F5FAE3 /* Lockable.swift */; };
@@ -21,7 +21,6 @@
 		49024A6F1B5F8F1900F5FAE3 /* GitHubMilestone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A6E1B5F8F1900F5FAE3 /* GitHubMilestone.swift */; };
 		49024A711B5F8F7D00F5FAE3 /* Milestoneable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49024A701B5F8F7D00F5FAE3 /* Milestoneable.swift */; };
 		49025EB21B62F14000D56882 /* JSONError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49025EB11B62F14000D56882 /* JSONError.swift */; };
-		4911FBBC1B51174400018812 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4911FBBB1B51174400018812 /* Environment.swift */; };
 		4912A4871B621C89002E6F38 /* Requests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4861B621C89002E6F38 /* Requests.swift */; };
 		4912A4891B621C9E002E6F38 /* ParameterNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A4881B621C9E002E6F38 /* ParameterNames.swift */; };
 		4912A48B1B626185002E6F38 /* StringRawRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4912A48A1B626185002E6F38 /* StringRawRepresentable.swift */; };
@@ -41,6 +40,7 @@
 		495A10C81B735B850029B533 /* MilestoneTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10C71B735B850029B533 /* MilestoneTableViewCell.swift */; };
 		495A10CA1B735B910029B533 /* MilestoneTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10C91B735B910029B533 /* MilestoneTableViewController.swift */; };
 		495A10CC1B735B990029B533 /* AssigneeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A10CB1B735B990029B533 /* AssigneeTableViewController.swift */; };
+		495A5A711C3AAA28005126CD /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5A701C3AAA28005126CD /* Environment.swift */; };
 		495A5DFE1B6630CA00B4E32B /* AddIssueTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */; };
 		495A5E0D1B66430000B4E32B /* IssueOverviewTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */; };
 		495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 495A5E0E1B66471C00B4E32B /* String+NSDate.swift */; };
@@ -204,7 +204,6 @@
 		49024A6E1B5F8F1900F5FAE3 /* GitHubMilestone.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GitHubMilestone.swift; sourceTree = "<group>"; };
 		49024A701B5F8F7D00F5FAE3 /* Milestoneable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Milestoneable.swift; sourceTree = "<group>"; };
 		49025EB11B62F14000D56882 /* JSONError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONError.swift; sourceTree = "<group>"; };
-		4911FBBB1B51174400018812 /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		4911FBBD1B5118BA00018812 /* libPods-NXOAuth2Client.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = "libPods-NXOAuth2Client.a"; path = "Pods/../build/Debug-iphoneos/libPods-NXOAuth2Client.a"; sourceTree = "<group>"; };
 		4912A4861B621C89002E6F38 /* Requests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Requests.swift; sourceTree = "<group>"; };
 		4912A4881B621C9E002E6F38 /* ParameterNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ParameterNames.swift; sourceTree = "<group>"; };
@@ -225,6 +224,7 @@
 		495A10C71B735B850029B533 /* MilestoneTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilestoneTableViewCell.swift; sourceTree = "<group>"; };
 		495A10C91B735B910029B533 /* MilestoneTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MilestoneTableViewController.swift; sourceTree = "<group>"; };
 		495A10CB1B735B990029B533 /* AssigneeTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AssigneeTableViewController.swift; sourceTree = "<group>"; };
+		495A5A701C3AAA28005126CD /* Environment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
 		495A5DFD1B6630CA00B4E32B /* AddIssueTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddIssueTableViewController.swift; sourceTree = "<group>"; };
 		495A5E0C1B66430000B4E32B /* IssueOverviewTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IssueOverviewTableViewController.swift; sourceTree = "<group>"; };
 		495A5E0E1B66471C00B4E32B /* String+NSDate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+NSDate.swift"; sourceTree = "<group>"; };
@@ -407,7 +407,7 @@
 				49CB381F1B41F20200809682 /* IssueKit.h */,
 				49CB38211B41F20200809682 /* Info.plist */,
 				4947A2661B69FB520059D943 /* Typealiases.swift */,
-				4911FBBB1B51174400018812 /* Environment.swift */,
+				495A5A701C3AAA28005126CD /* Environment.swift */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -838,7 +838,6 @@
 				49CB381A1B41F20200809682 /* Headers */,
 				49CB381B1B41F20200809682 /* Resources */,
 				5C13E1561E89E05C2921EE0A /* Copy Pods Resources */,
-				497BA3EA1B65A1B400465E6A /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1060,21 +1059,6 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		497BA3EA1B65A1B400465E6A /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5C13E1561E89E05C2921EE0A /* Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1174,7 +1158,6 @@
 				49024A5A1B5F7BDC00F5FAE3 /* Labelable.swift in Sources */,
 				49EFE84B1B63AC1A007445E8 /* NSDate+String.swift in Sources */,
 				49FB1FDB1B6A0B6B00648E97 /* Searchable.swift in Sources */,
-				4911FBBC1B51174400018812 /* Environment.swift in Sources */,
 				49024A671B5F8B0800F5FAE3 /* GitHubRepository.swift in Sources */,
 				49024A711B5F8F7D00F5FAE3 /* Milestoneable.swift in Sources */,
 				495750D31B51B356007F9EA7 /* GitHubIssue.swift in Sources */,
@@ -1198,6 +1181,7 @@
 				493055211B6791C2004E946E /* IndexPath+Add.swift in Sources */,
 				49437BFC1B4B072E001C8557 /* User.swift in Sources */,
 				499254F31B68FD4C00A0BD25 /* String+Contains.swift in Sources */,
+				495A5A711C3AAA28005126CD /* Environment.swift in Sources */,
 				495A5E0F1B66471C00B4E32B /* String+NSDate.swift in Sources */,
 				4932F6961B66DFAA00B0677F /* ParseDelegate.swift in Sources */,
 				495A5E131B665DBC00B4E32B /* HeaderParseable.swift in Sources */,

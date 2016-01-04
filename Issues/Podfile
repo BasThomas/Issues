@@ -5,17 +5,17 @@ link_with 'Issues'
 link_with 'IssueKit'
 
 # OAuth
-pod 'OAuthSwift', :git => 'https://github.com/mwermuth/OAuthSwift.git', :branch => 'swift2.0'
+pod 'OAuthSwift', '~> 0.5.0'
 
 # Networking
-pod 'Alamofire', :git => 'https://github.com/Alamofire/Alamofire.git', :branch => 'swift-2.0'
-pod 'SwiftyJSON', :git => 'https://github.com/SwiftyJSON/SwiftyJSON.git', :branch => 'xcode7'
+pod 'Alamofire', '~> 3.1.0'
+pod 'SwiftyJSON', '~> 2.3.1'
 
 # Font Awesome
 pod 'Font-Awesome-Swift'
 
 # Images
-pod 'HanekeSwift', :git => 'https://github.com/meteochu/HanekeSwift.git', :branch => 'swift-2.0'
+pod 'HanekeSwift', '~> 0.10.0'
 
 # Empty tableviews
 pod 'DZNEmptyDataSet'

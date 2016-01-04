@@ -124,7 +124,7 @@ extension IssueTableViewController: RequestDelegate {
         }
       }
       
-      self.issues.splice(addIssues, atIndex: 0)
+      self.issues.insertContentsOf(addIssues, at: 0)
       
       self.tableView.reloadData()
     }
@@ -141,7 +141,7 @@ extension IssueTableViewController: RequestDelegate {
     
     if let idx = ids.indexOf(issue.id) {
       self.issues.removeAtIndex(idx)
-      self.issues.splice([issue], atIndex: idx)
+      self.issues.insertContentsOf([issue], at: idx)
       
       self.tableView.beginUpdates()
       let indexPath = NSIndexPath(forRow: idx, inSection: 0)
